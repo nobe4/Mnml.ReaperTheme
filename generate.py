@@ -154,4 +154,4 @@ with open("dest/assets/rtconfig.txt", "w") as f:
 # Create a zip archive of the dest folder
 print("Generate and write zip file")
 shutil.make_archive("Mnml", "zip", "dest")
-shutil.move("Mnml.zip", "../Mnml{}.ReaperThemeZip".format(time.time()))
+shutil.move("Mnml.zip", "../Mnml.ReaperThemeZip")
