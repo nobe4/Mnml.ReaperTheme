@@ -138,7 +138,6 @@ col_tr2_divline={{ black_l }}
 {# Envelople even track divider #}
 col_envlane2_divline={{ green }}
 
-
 {# Draw a line of color on the active take #}
 activetake_tag={{ black }}
 
@@ -163,24 +162,24 @@ col_mi_label_float={{ black }}
 {# Media item label floating selected #}
 col_mi_label_float_sel={{ black }}
 {# Track media item background #}
-col_mi_bg={{ black }}
-col_mi_bg2={{ black }}
+col_mi_bg={{ black | light(10) }}
+col_mi_bg2={{ black | light(10) }}
 {# Track media item background selected and fill mode #}
 col_tr1_itembgsel={{ black }}
 col_tr2_itembgsel={{ black }}
-itembg_drawmode={{ draw_mode("normal", 2) }}
+itembg_drawmode={{ draw_mode("normal", 10) }}
 {# Track media item peaks #}
 col_tr1_peaks={{ black }}
 col_tr2_peaks={{ black }}
 {# Track media item peaks selected #}
-col_tr2_ps2={{ black_l }}
-col_tr1_ps2={{ black_l }}
+col_tr2_ps2={{ black }}
+col_tr1_ps2={{ black }}
 {# Track media item peaks higlight edges #}
 col_peaksedge={{ black }}
 col_peaksedge2={{ black }}
 {# Track media item peaks higlight edges selected #}
-col_peaksedgesel={{ black_l }}
-col_peaksedgesel2={{ black_l }}
+col_peaksedgesel={{ black }}
+col_peaksedgesel2={{ black }}
 {# Media item midi cc peaks fill mod #}
 cc_chase_drawmode={{ draw_mode("normal", 5) }}
 {# Media item peaks active in crossfade editor fade-in/out #}
