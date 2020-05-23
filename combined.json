@@ -1,0 +1,6534 @@
+{
+    "h": 26664,
+    "parts": {
+        "150/envcp_arm_off.png": {
+            "h": 30,
+            "w": 90,
+            "x": 121,
+            "y": 0
+        },
+        "150/envcp_arm_off_ol.png": {
+            "h": 37,
+            "w": 98,
+            "x": 0,
+            "y": 23950
+        },
+        "150/envcp_arm_on.png": {
+            "h": 30,
+            "w": 90,
+            "x": 121,
+            "y": 92
+        },
+        "150/envcp_arm_on_ol.png": {
+            "h": 37,
+            "w": 98,
+            "x": 0,
+            "y": 23988
+        },
+        "150/envcp_bypass_off.png": {
+            "h": 3,
+            "w": 3,
+            "x": 4,
+            "y": 184
+        },
+        "150/envcp_bypass_off_ol.png": {
+            "h": 34,
+            "w": 71,
+            "x": 93,
+            "y": 188
+        },
+        "150/envcp_bypass_on.png": {
+            "h": 3,
+            "w": 3,
+            "x": 4,
+            "y": 235
+        },
+        "150/envcp_bypass_on_ol.png": {
+            "h": 34,
+            "w": 71,
+            "x": 93,
+            "y": 239
+        },
+        "150/envcp_fader.png": {
+            "h": 42,
+            "w": 33,
+            "x": 45,
+            "y": 286
+        },
+        "150/envcp_hide.png": {
+            "h": 30,
+            "w": 162,
+            "x": 217,
+            "y": 343
+        },
+        "150/envcp_knob_small.png": {
+            "h": 37,
+            "w": 36,
+            "x": 49,
+            "y": 384
+        },
+        "150/envcp_learn.png": {
+            "h": 30,
+            "w": 135,
+            "x": 181,
+            "y": 435
+        },
+        "150/envcp_learn_ol.png": {
+            "h": 35,
+            "w": 137,
+            "x": 183,
+            "y": 476
+        },
+        "150/envcp_learn_on.png": {
+            "h": 30,
+            "w": 135,
+            "x": 181,
+            "y": 523
+        },
+        "150/envcp_learn_on_ol.png": {
+            "h": 35,
+            "w": 137,
+            "x": 183,
+            "y": 564
+        },
+        "150/envcp_parammod.png": {
+            "h": 30,
+            "w": 135,
+            "x": 181,
+            "y": 611
+        },
+        "150/envcp_parammod_ol.png": {
+            "h": 35,
+            "w": 137,
+            "x": 183,
+            "y": 652
+        },
+        "150/envcp_parammod_on.png": {
+            "h": 30,
+            "w": 135,
+            "x": 181,
+            "y": 699
+        },
+        "150/envcp_parammod_on_ol.png": {
+            "h": 35,
+            "w": 137,
+            "x": 183,
+            "y": 740
+        },
+        "150/gen_end.png": {
+            "h": 36,
+            "w": 108,
+            "x": 145,
+            "y": 787
+        },
+        "150/gen_env.png": {
+            "h": 30,
+            "w": 90,
+            "x": 121,
+            "y": 836
+        },
+        "150/gen_env_latch.png": {
+            "h": 30,
+            "w": 90,
+            "x": 121,
+            "y": 877
+        },
+        "150/gen_env_preview.png": {
+            "h": 30,
+            "w": 90,
+            "x": 121,
+            "y": 918
+        },
+        "150/gen_env_read.png": {
+            "h": 30,
+            "w": 90,
+            "x": 121,
+            "y": 959
+        },
+        "150/gen_env_touch.png": {
+            "h": 30,
+            "w": 90,
+            "x": 121,
+            "y": 1000
+        },
+        "150/gen_env_write.png": {
+            "h": 30,
+            "w": 90,
+            "x": 121,
+            "y": 1041
+        },
+        "150/gen_home.png": {
+            "h": 36,
+            "w": 108,
+            "x": 145,
+            "y": 1082
+        },
+        "150/gen_io.png": {
+            "h": 30,
+            "w": 90,
+            "x": 121,
+            "y": 1131
+        },
+        "150/gen_midi_off.png": {
+            "h": 30,
+            "w": 90,
+            "x": 121,
+            "y": 1172
+        },
+        "150/gen_midi_on.png": {
+            "h": 30,
+            "w": 90,
+            "x": 121,
+            "y": 1213
+        },
+        "150/gen_mono.png": {
+            "h": 31,
+            "w": 90,
+            "x": 121,
+            "y": 1254
+        },
+        "150/gen_mute_off.png": {
+            "h": 31,
+            "w": 90,
+            "x": 121,
+            "y": 1295
+        },
+        "150/gen_mute_on.png": {
+            "h": 30,
+            "w": 90,
+            "x": 121,
+            "y": 1336
+        },
+        "150/gen_panthumb_horz.png": {
+            "h": 43,
+            "w": 28,
+            "x": 37,
+            "y": 1377
+        },
+        "150/gen_pause.png": {
+            "h": 36,
+            "w": 108,
+            "x": 145,
+            "y": 1435
+        },
+        "150/gen_pause_on.png": {
+            "h": 36,
+            "w": 108,
+            "x": 145,
+            "y": 1484
+        },
+        "150/gen_phase_inv.png": {
+            "h": 31,
+            "w": 90,
+            "x": 121,
+            "y": 1533
+        },
+        "150/gen_phase_norm.png": {
+            "h": 30,
+            "w": 90,
+            "x": 121,
+            "y": 1574
+        },
+        "150/gen_play.png": {
+            "h": 36,
+            "w": 108,
+            "x": 145,
+            "y": 1615
+        },
+        "150/gen_play_on.png": {
+            "h": 36,
+            "w": 108,
+            "x": 145,
+            "y": 1664
+        },
+        "150/gen_repeat_off.png": {
+            "h": 36,
+            "w": 108,
+            "x": 145,
+            "y": 1713
+        },
+        "150/gen_repeat_on.png": {
+            "h": 36,
+            "w": 108,
+            "x": 145,
+            "y": 1762
+        },
+        "150/gen_solo_off.png": {
+            "h": 31,
+            "w": 90,
+            "x": 121,
+            "y": 1811
+        },
+        "150/gen_solo_on.png": {
+            "h": 30,
+            "w": 90,
+            "x": 121,
+            "y": 1852
+        },
+        "150/gen_stereo.png": {
+            "h": 31,
+            "w": 90,
+            "x": 121,
+            "y": 1893
+        },
+        "150/gen_stop.png": {
+            "h": 36,
+            "w": 108,
+            "x": 145,
+            "y": 1934
+        },
+        "150/gen_volthumb_horz.png": {
+            "h": 43,
+            "w": 37,
+            "x": 49,
+            "y": 1983
+        },
+        "150/gen_volthumb_vert.png": {
+            "h": 47,
+            "w": 31,
+            "x": 42,
+            "y": 2041
+        },
+        "150/global_bypass.png": {
+            "h": 54,
+            "w": 243,
+            "x": 325,
+            "y": 2096
+        },
+        "150/global_latch.png": {
+            "h": 54,
+            "w": 243,
+            "x": 325,
+            "y": 2169
+        },
+        "150/global_off.png": {
+            "h": 54,
+            "w": 243,
+            "x": 325,
+            "y": 2242
+        },
+        "150/global_preview.png": {
+            "h": 54,
+            "w": 243,
+            "x": 325,
+            "y": 2315
+        },
+        "150/global_read.png": {
+            "h": 54,
+            "w": 243,
+            "x": 325,
+            "y": 2388
+        },
+        "150/global_touch.png": {
+            "h": 54,
+            "w": 243,
+            "x": 325,
+            "y": 2461
+        },
+        "150/global_trim.png": {
+            "h": 54,
+            "w": 243,
+            "x": 325,
+            "y": 2534
+        },
+        "150/global_write.png": {
+            "h": 54,
+            "w": 243,
+            "x": 325,
+            "y": 2607
+        },
+        "150/mcp_bg.png": {
+            "h": 54,
+            "w": 6,
+            "x": 7,
+            "y": 2680
+        },
+        "150/mcp_bgsel.png": {
+            "h": 54,
+            "w": 6,
+            "x": 7,
+            "y": 2751
+        },
+        "150/mcp_env.png": {
+            "h": 47,
+            "w": 98,
+            "x": 129,
+            "y": 2822
+        },
+        "150/mcp_env_latch.png": {
+            "h": 47,
+            "w": 98,
+            "x": 129,
+            "y": 2885
+        },
+        "150/mcp_env_preview.png": {
+            "h": 47,
+            "w": 98,
+            "x": 129,
+            "y": 2948
+        },
+        "150/mcp_env_read.png": {
+            "h": 47,
+            "w": 98,
+            "x": 129,
+            "y": 3011
+        },
+        "150/mcp_env_touch.png": {
+            "h": 47,
+            "w": 98,
+            "x": 129,
+            "y": 3074
+        },
+        "150/mcp_env_write.png": {
+            "h": 47,
+            "w": 98,
+            "x": 129,
+            "y": 3137
+        },
+        "150/mcp_fcomp_off.png": {
+            "h": 32,
+            "w": 81,
+            "x": 109,
+            "y": 3200
+        },
+        "150/mcp_fcomp_tiny.png": {
+            "h": 32,
+            "w": 81,
+            "x": 109,
+            "y": 3245
+        },
+        "150/mcp_folder_last.png": {
+            "h": 32,
+            "w": 93,
+            "x": 127,
+            "y": 3290
+        },
+        "150/mcp_fx_dis.png": {
+            "h": 32,
+            "w": 128,
+            "x": 171,
+            "y": 8885
+        },
+        "150/mcp_fx_empty.png": {
+            "h": 32,
+            "w": 128,
+            "x": 171,
+            "y": 8927
+        },
+        "150/mcp_fx_in_empty.png": {
+            "h": 3,
+            "w": 3,
+            "x": 4,
+            "y": 8969
+        },
+        "150/mcp_fx_in_empty_ol.png": {
+            "h": 32,
+            "w": 341,
+            "x": 453,
+            "y": 8973
+        },
+        "150/mcp_fx_in_norm.png": {
+            "h": 3,
+            "w": 3,
+            "x": 4,
+            "y": 9015
+        },
+        "150/mcp_fx_in_norm_ol.png": {
+            "h": 30,
+            "w": 341,
+            "x": 453,
+            "y": 9019
+        },
+        "150/mcp_fx_norm.png": {
+            "h": 32,
+            "w": 128,
+            "x": 171,
+            "y": 9061
+        },
+        "150/mcp_fxparm_byp.png": {
+            "h": 110,
+            "w": 50,
+            "x": 66,
+            "y": 3650
+        },
+        "150/mcp_fxparm_empty.png": {
+            "h": 110,
+            "w": 50,
+            "x": 66,
+            "y": 3797
+        },
+        "150/mcp_fxparm_knob_stack.png": {
+            "h": 3040,
+            "w": 40,
+            "x": 47,
+            "y": 3944
+        },
+        "150/mcp_fxparm_norm.png": {
+            "h": 110,
+            "w": 50,
+            "x": 66,
+            "y": 8591
+        },
+        "150/mcp_fxparm_off.png": {
+            "h": 110,
+            "w": 50,
+            "x": 66,
+            "y": 8738
+        },
+        "150/mcp_idxbg.png": {
+            "h": 67,
+            "w": 8,
+            "x": 11,
+            "y": 9103
+        },
+        "150/mcp_idxbg_sel.png": {
+            "h": 67,
+            "w": 8,
+            "x": 11,
+            "y": 9194
+        },
+        "150/mcp_io.png": {
+            "h": 47,
+            "w": 107,
+            "x": 141,
+            "y": 9285
+        },
+        "150/mcp_io_dis.png": {
+            "h": 47,
+            "w": 107,
+            "x": 141,
+            "y": 9348
+        },
+        "150/mcp_io_r.png": {
+            "h": 47,
+            "w": 107,
+            "x": 141,
+            "y": 9411
+        },
+        "150/mcp_io_r_dis.png": {
+            "h": 47,
+            "w": 107,
+            "x": 141,
+            "y": 9474
+        },
+        "150/mcp_io_s.png": {
+            "h": 47,
+            "w": 107,
+            "x": 141,
+            "y": 9537
+        },
+        "150/mcp_io_s_dis.png": {
+            "h": 47,
+            "w": 107,
+            "x": 141,
+            "y": 9600
+        },
+        "150/mcp_io_s_r.png": {
+            "h": 47,
+            "w": 107,
+            "x": 141,
+            "y": 9663
+        },
+        "150/mcp_io_s_r_dis.png": {
+            "h": 47,
+            "w": 107,
+            "x": 141,
+            "y": 9726
+        },
+        "150/mcp_main_namebg.png": {
+            "h": 10,
+            "w": 8,
+            "x": 9,
+            "y": 9789
+        },
+        "150/mcp_main_namebg_sel.png": {
+            "h": 10,
+            "w": 8,
+            "x": 9,
+            "y": 9801
+        },
+        "150/mcp_master_vol_label.png": {
+            "h": 5,
+            "w": 58,
+            "x": 77,
+            "y": 9916
+        },
+        "150/mcp_master_volbg.png": {
+            "h": 77,
+            "w": 193,
+            "x": 257,
+            "y": 9813
+        },
+        "150/mcp_monitor_auto.png": {
+            "h": 30,
+            "w": 96,
+            "x": 127,
+            "y": 9922
+        },
+        "150/mcp_monitor_off.png": {
+            "h": 30,
+            "w": 96,
+            "x": 127,
+            "y": 9963
+        },
+        "150/mcp_monitor_on.png": {
+            "h": 30,
+            "w": 96,
+            "x": 127,
+            "y": 10004
+        },
+        "150/mcp_mono.png": {
+            "h": 52,
+            "w": 116,
+            "x": 153,
+            "y": 10045
+        },
+        "150/mcp_mute_off.png": {
+            "h": 30,
+            "w": 96,
+            "x": 127,
+            "y": 10114
+        },
+        "150/mcp_mute_off_ol.png": {
+            "h": 35,
+            "w": 98,
+            "x": 129,
+            "y": 10155
+        },
+        "150/mcp_mute_on.png": {
+            "h": 30,
+            "w": 96,
+            "x": 127,
+            "y": 10202
+        },
+        "150/mcp_pan_knob_small.png": {
+            "h": 35,
+            "w": 32,
+            "x": 43,
+            "y": 10310
+        },
+        "150/mcp_panbg.png": {
+            "h": 11,
+            "w": 69,
+            "x": 137,
+            "y": 10243
+        },
+        "150/mcp_panthumb.png": {
+            "h": 34,
+            "w": 17,
+            "x": 25,
+            "y": 10264
+        },
+        "150/mcp_phase_inv.png": {
+            "h": 27,
+            "w": 72,
+            "x": 97,
+            "y": 10357
+        },
+        "150/mcp_phase_norm.png": {
+            "h": 27,
+            "w": 72,
+            "x": 98,
+            "y": 10394
+        },
+        "150/mcp_recarm_auto.png": {
+            "h": 36,
+            "w": 162,
+            "x": 217,
+            "y": 10431
+        },
+        "150/mcp_recarm_auto_norec.png": {
+            "h": 36,
+            "w": 162,
+            "x": 217,
+            "y": 10480
+        },
+        "150/mcp_recarm_auto_on.png": {
+            "h": 36,
+            "w": 162,
+            "x": 217,
+            "y": 10530
+        },
+        "150/mcp_recarm_norec.png": {
+            "h": 36,
+            "w": 162,
+            "x": 217,
+            "y": 10579
+        },
+        "150/mcp_recarm_off.png": {
+            "h": 36,
+            "w": 162,
+            "x": 217,
+            "y": 10629
+        },
+        "150/mcp_recarm_on.png": {
+            "h": 36,
+            "w": 162,
+            "x": 217,
+            "y": 10678
+        },
+        "150/mcp_recinput.png": {
+            "h": 26,
+            "w": 37,
+            "x": 49,
+            "y": 10727
+        },
+        "150/mcp_recmode_in.png": {
+            "h": 26,
+            "w": 188,
+            "x": 249,
+            "y": 10762
+        },
+        "150/mcp_recmode_off.png": {
+            "h": 26,
+            "w": 188,
+            "x": 249,
+            "y": 10797
+        },
+        "150/mcp_recmode_out.png": {
+            "h": 26,
+            "w": 188,
+            "x": 249,
+            "y": 10832
+        },
+        "150/mcp_sendlist_empty.png": {
+            "h": 74,
+            "w": 57,
+            "x": 75,
+            "y": 10867
+        },
+        "150/mcp_sendlist_meter.png": {
+            "h": 42,
+            "w": 57,
+            "x": 77,
+            "y": 10966
+        },
+        "150/mcp_sendlist_mute.png": {
+            "h": 74,
+            "w": 57,
+            "x": 75,
+            "y": 11116
+        },
+        "150/mcp_sendlist_norm.png": {
+            "h": 74,
+            "w": 57,
+            "x": 75,
+            "y": 11215
+        },
+        "150/mcp_solo_off.png": {
+            "h": 30,
+            "w": 96,
+            "x": 127,
+            "y": 14156
+        },
+        "150/mcp_solo_off_ol.png": {
+            "h": 35,
+            "w": 98,
+            "x": 129,
+            "y": 14197
+        },
+        "150/mcp_solo_on.png": {
+            "h": 30,
+            "w": 96,
+            "x": 127,
+            "y": 14244
+        },
+        "150/mcp_solodefeat_on.png": {
+            "h": 30,
+            "w": 96,
+            "x": 127,
+            "y": 14115
+        },
+        "150/mcp_stereo.png": {
+            "h": 52,
+            "w": 116,
+            "x": 153,
+            "y": 14285
+        },
+        "150/mcp_vol_label.png": {
+            "h": 5,
+            "w": 62,
+            "x": 82,
+            "y": 14516
+        },
+        "150/mcp_volbg.png": {
+            "h": 56,
+            "w": 131,
+            "x": 175,
+            "y": 14354
+        },
+        "150/mcp_volthumb.png": {
+            "h": 80,
+            "w": 36,
+            "x": 48,
+            "y": 14411
+        },
+        "150/mcp_width_knob_small.png": {
+            "h": 35,
+            "w": 32,
+            "x": 43,
+            "y": 14589
+        },
+        "150/mcp_widthbg.png": {
+            "h": 11,
+            "w": 69,
+            "x": 137,
+            "y": 14522
+        },
+        "150/mcp_widththumb.png": {
+            "h": 34,
+            "w": 17,
+            "x": 25,
+            "y": 14543
+        },
+        "150/meter_bg_mcp.png": {
+            "h": 52,
+            "w": 57,
+            "x": 77,
+            "y": 14636
+        },
+        "150/meter_bg_tcp.png": {
+            "h": 27,
+            "w": 65,
+            "x": 87,
+            "y": 14707
+        },
+        "150/mixer_menu.png": {
+            "h": 30,
+            "w": 90,
+            "x": 121,
+            "y": 14735
+        },
+        "150/monitor_fx_byp.png": {
+            "h": 24,
+            "w": 234,
+            "x": 313,
+            "y": 14776
+        },
+        "150/monitor_fx_byp_byp.png": {
+            "h": 24,
+            "w": 68,
+            "x": 91,
+            "y": 14809
+        },
+        "150/monitor_fx_byp_off.png": {
+            "h": 24,
+            "w": 68,
+            "x": 91,
+            "y": 14842
+        },
+        "150/monitor_fx_byp_on.png": {
+            "h": 24,
+            "w": 68,
+            "x": 91,
+            "y": 14875
+        },
+        "150/monitor_fx_off.png": {
+            "h": 24,
+            "w": 234,
+            "x": 313,
+            "y": 14908
+        },
+        "150/monitor_fx_on.png": {
+            "h": 24,
+            "w": 234,
+            "x": 313,
+            "y": 14941
+        },
+        "150/table_expand_off.png": {
+            "h": 24,
+            "w": 72,
+            "x": 97,
+            "y": 14974
+        },
+        "150/table_expand_on.png": {
+            "h": 24,
+            "w": 72,
+            "x": 97,
+            "y": 15007
+        },
+        "150/table_locked_off.png": {
+            "h": 24,
+            "w": 72,
+            "x": 97,
+            "y": 15040
+        },
+        "150/table_locked_on.png": {
+            "h": 24,
+            "w": 72,
+            "x": 97,
+            "y": 15073
+        },
+        "150/table_locked_partial.png": {
+            "h": 24,
+            "w": 72,
+            "x": 97,
+            "y": 15106
+        },
+        "150/table_mute_off.png": {
+            "h": 24,
+            "w": 72,
+            "x": 97,
+            "y": 15139
+        },
+        "150/table_mute_on.png": {
+            "h": 24,
+            "w": 72,
+            "x": 97,
+            "y": 15172
+        },
+        "150/table_recarm_off.png": {
+            "h": 24,
+            "w": 72,
+            "x": 97,
+            "y": 15205
+        },
+        "150/table_recarm_on.png": {
+            "h": 24,
+            "w": 72,
+            "x": 97,
+            "y": 15238
+        },
+        "150/table_remove_off.png": {
+            "h": 24,
+            "w": 72,
+            "x": 97,
+            "y": 15271
+        },
+        "150/table_remove_on.png": {
+            "h": 24,
+            "w": 72,
+            "x": 97,
+            "y": 15304
+        },
+        "150/table_solo_off.png": {
+            "h": 24,
+            "w": 72,
+            "x": 97,
+            "y": 15337
+        },
+        "150/table_solo_on.png": {
+            "h": 24,
+            "w": 72,
+            "x": 97,
+            "y": 15370
+        },
+        "150/table_sub_expand_off.png": {
+            "h": 24,
+            "w": 72,
+            "x": 97,
+            "y": 15403
+        },
+        "150/table_sub_expand_on.png": {
+            "h": 24,
+            "w": 72,
+            "x": 97,
+            "y": 15436
+        },
+        "150/table_target_invalid.png": {
+            "h": 24,
+            "w": 72,
+            "x": 97,
+            "y": 15469
+        },
+        "150/table_target_off.png": {
+            "h": 24,
+            "w": 72,
+            "x": 97,
+            "y": 15502
+        },
+        "150/table_target_on.png": {
+            "h": 24,
+            "w": 72,
+            "x": 97,
+            "y": 15535
+        },
+        "150/table_visible_off.png": {
+            "h": 24,
+            "w": 72,
+            "x": 97,
+            "y": 15568
+        },
+        "150/table_visible_on.png": {
+            "h": 24,
+            "w": 72,
+            "x": 97,
+            "y": 15601
+        },
+        "150/table_visible_partial.png": {
+            "h": 24,
+            "w": 72,
+            "x": 97,
+            "y": 15634
+        },
+        "150/tcp_idxbg.png": {
+            "h": 7,
+            "w": 34,
+            "x": 45,
+            "y": 15730
+        },
+        "150/tcp_idxbg_sel.png": {
+            "h": 7,
+            "w": 34,
+            "x": 45,
+            "y": 15739
+        },
+        "150/tcp_pan_knob_small.png": {
+            "h": 37,
+            "w": 34,
+            "x": 47,
+            "y": 15842
+        },
+        "150/tcp_panthumb.png": {
+            "h": 34,
+            "w": 17,
+            "x": 25,
+            "y": 15796
+        },
+        "150/tcp_recinput.png": {
+            "h": 32,
+            "w": 29,
+            "x": 39,
+            "y": 15891
+        },
+        "150/tcp_solodefeat_on.png": {
+            "h": 7,
+            "w": 7,
+            "x": 8,
+            "y": 15934
+        },
+        "150/tcp_solodefeat_on_ol.png": {
+            "h": 77,
+            "w": 110,
+            "x": 147,
+            "y": 15955
+        },
+        "150/tcp_vol_knob_small.png": {
+            "h": 37,
+            "w": 36,
+            "x": 49,
+            "y": 16162
+        },
+        "150/tcp_volbg.png": {
+            "h": 34,
+            "w": 19,
+            "x": 25,
+            "y": 16058
+        },
+        "150/tcp_volthumb.png": {
+            "h": 42,
+            "w": 33,
+            "x": 45,
+            "y": 16105
+        },
+        "150/tcp_width_knob_small.png": {
+            "h": 37,
+            "w": 34,
+            "x": 47,
+            "y": 16280
+        },
+        "150/tcp_widththumb.png": {
+            "h": 34,
+            "w": 17,
+            "x": 25,
+            "y": 16234
+        },
+        "150/toolbar_blank.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 16329
+        },
+        "150/toolbar_dock_off.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 16390
+        },
+        "150/toolbar_dock_on.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 16451
+        },
+        "150/toolbar_envitem_off.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 16512
+        },
+        "150/toolbar_envitem_on.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 16573
+        },
+        "150/toolbar_filter_off.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 16634
+        },
+        "150/toolbar_filter_on.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 16695
+        },
+        "150/toolbar_grid_off.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 16756
+        },
+        "150/toolbar_grid_on.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 16817
+        },
+        "150/toolbar_group_off.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 16878
+        },
+        "150/toolbar_group_on.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 16939
+        },
+        "150/toolbar_load.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 17000
+        },
+        "150/toolbar_lock_off.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 17061
+        },
+        "150/toolbar_lock_on.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 17122
+        },
+        "150/toolbar_metro_off.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 17183
+        },
+        "150/toolbar_metro_on.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 17244
+        },
+        "150/toolbar_midi_itemsel_off.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 17305
+        },
+        "150/toolbar_midi_itemsel_on.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 17366
+        },
+        "150/toolbar_midi_mode_event_list.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 17427
+        },
+        "150/toolbar_midi_mode_musical_notation.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 17488
+        },
+        "150/toolbar_midi_mode_named_notes.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 17549
+        },
+        "150/toolbar_midi_mode_piano_roll.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 17610
+        },
+        "150/toolbar_midi_step.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 17671
+        },
+        "150/toolbar_midi_tracksel_off.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 17732
+        },
+        "150/toolbar_midi_tracksel_on.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 17793
+        },
+        "150/toolbar_new.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 17854
+        },
+        "150/toolbar_projprop.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 17915
+        },
+        "150/toolbar_quant_off.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 17976
+        },
+        "150/toolbar_quant_on.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 18037
+        },
+        "150/toolbar_redo.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 18098
+        },
+        "150/toolbar_relsnap_off.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 18159
+        },
+        "150/toolbar_relsnap_on.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 18220
+        },
+        "150/toolbar_replacemode.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 18281
+        },
+        "150/toolbar_revert.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 18342
+        },
+        "150/toolbar_ripple_all.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 18403
+        },
+        "150/toolbar_ripple_off.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 18464
+        },
+        "150/toolbar_ripple_one.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 18525
+        },
+        "150/toolbar_save.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 18586
+        },
+        "150/toolbar_snap_off.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 18647
+        },
+        "150/toolbar_snap_on.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 18708
+        },
+        "150/toolbar_undo.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 18769
+        },
+        "150/toolbar_xfade_off.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 18830
+        },
+        "150/toolbar_xfade_on.png": {
+            "h": 45,
+            "w": 135,
+            "x": 181,
+            "y": 18891
+        },
+        "150/track_env.png": {
+            "h": 30,
+            "w": 186,
+            "x": 247,
+            "y": 18967
+        },
+        "150/track_env_latch.png": {
+            "h": 30,
+            "w": 186,
+            "x": 247,
+            "y": 19008
+        },
+        "150/track_env_latch_ol.png": {
+            "h": 34,
+            "w": 188,
+            "x": 249,
+            "y": 19049
+        },
+        "150/track_env_ol.png": {
+            "h": 34,
+            "w": 188,
+            "x": 249,
+            "y": 19096
+        },
+        "150/track_env_preview.png": {
+            "h": 30,
+            "w": 186,
+            "x": 247,
+            "y": 19143
+        },
+        "150/track_env_preview_ol.png": {
+            "h": 34,
+            "w": 188,
+            "x": 249,
+            "y": 19184
+        },
+        "150/track_env_read.png": {
+            "h": 30,
+            "w": 186,
+            "x": 247,
+            "y": 19231
+        },
+        "150/track_env_read_ol.png": {
+            "h": 34,
+            "w": 188,
+            "x": 249,
+            "y": 19272
+        },
+        "150/track_env_touch.png": {
+            "h": 30,
+            "w": 186,
+            "x": 247,
+            "y": 19319
+        },
+        "150/track_env_touch_ol.png": {
+            "h": 34,
+            "w": 188,
+            "x": 249,
+            "y": 19360
+        },
+        "150/track_env_write.png": {
+            "h": 30,
+            "w": 186,
+            "x": 247,
+            "y": 19407
+        },
+        "150/track_env_write_ol.png": {
+            "h": 34,
+            "w": 188,
+            "x": 249,
+            "y": 19448
+        },
+        "150/track_fcomp_off.png": {
+            "h": 29,
+            "w": 81,
+            "x": 109,
+            "y": 19495
+        },
+        "150/track_fcomp_small.png": {
+            "h": 29,
+            "w": 81,
+            "x": 109,
+            "y": 19534
+        },
+        "150/track_fcomp_tiny.png": {
+            "h": 29,
+            "w": 81,
+            "x": 109,
+            "y": 19573
+        },
+        "150/track_folder_last.png": {
+            "h": 21,
+            "w": 81,
+            "x": 109,
+            "y": 19612
+        },
+        "150/track_folder_off.png": {
+            "h": 21,
+            "w": 81,
+            "x": 109,
+            "y": 19641
+        },
+        "150/track_folder_on.png": {
+            "h": 21,
+            "w": 81,
+            "x": 109,
+            "y": 19670
+        },
+        "150/track_fx_dis.png": {
+            "h": 30,
+            "w": 90,
+            "x": 121,
+            "y": 20092
+        },
+        "150/track_fx_dis_ol.png": {
+            "h": 35,
+            "w": 92,
+            "x": 125,
+            "y": 20133
+        },
+        "150/track_fx_empty.png": {
+            "h": 30,
+            "w": 90,
+            "x": 121,
+            "y": 20180
+        },
+        "150/track_fx_empty_ol.png": {
+            "h": 35,
+            "w": 92,
+            "x": 125,
+            "y": 20221
+        },
+        "150/track_fx_in_empty.png": {
+            "h": 30,
+            "w": 132,
+            "x": 175,
+            "y": 20268
+        },
+        "150/track_fx_in_norm.png": {
+            "h": 30,
+            "w": 132,
+            "x": 175,
+            "y": 20309
+        },
+        "150/track_fx_norm.png": {
+            "h": 30,
+            "w": 90,
+            "x": 121,
+            "y": 20350
+        },
+        "150/track_fx_norm_ol.png": {
+            "h": 35,
+            "w": 92,
+            "x": 125,
+            "y": 20391
+        },
+        "150/track_fxempty_h.png": {
+            "h": 30,
+            "w": 72,
+            "x": 97,
+            "y": 19699
+        },
+        "150/track_fxempty_h_ol.png": {
+            "h": 35,
+            "w": 74,
+            "x": 99,
+            "y": 19740
+        },
+        "150/track_fxempty_v.png": {
+            "h": 32,
+            "w": 86,
+            "x": 117,
+            "y": 19787
+        },
+        "150/track_fxoff_h.png": {
+            "h": 30,
+            "w": 72,
+            "x": 97,
+            "y": 19830
+        },
+        "150/track_fxoff_h_ol.png": {
+            "h": 35,
+            "w": 74,
+            "x": 99,
+            "y": 19871
+        },
+        "150/track_fxoff_v.png": {
+            "h": 32,
+            "w": 86,
+            "x": 117,
+            "y": 19918
+        },
+        "150/track_fxon_h.png": {
+            "h": 30,
+            "w": 72,
+            "x": 97,
+            "y": 19961
+        },
+        "150/track_fxon_h_ol.png": {
+            "h": 35,
+            "w": 74,
+            "x": 99,
+            "y": 20002
+        },
+        "150/track_fxon_v.png": {
+            "h": 32,
+            "w": 86,
+            "x": 117,
+            "y": 20049
+        },
+        "150/track_io.png": {
+            "h": 30,
+            "w": 153,
+            "x": 205,
+            "y": 20438
+        },
+        "150/track_io_dis.png": {
+            "h": 30,
+            "w": 153,
+            "x": 205,
+            "y": 20479
+        },
+        "150/track_io_dis_ol.png": {
+            "h": 35,
+            "w": 155,
+            "x": 207,
+            "y": 20520
+        },
+        "150/track_io_ol.png": {
+            "h": 35,
+            "w": 155,
+            "x": 207,
+            "y": 20567
+        },
+        "150/track_io_r.png": {
+            "h": 30,
+            "w": 153,
+            "x": 205,
+            "y": 20614
+        },
+        "150/track_io_r_dis.png": {
+            "h": 30,
+            "w": 153,
+            "x": 205,
+            "y": 20655
+        },
+        "150/track_io_r_dis_ol.png": {
+            "h": 35,
+            "w": 155,
+            "x": 207,
+            "y": 20696
+        },
+        "150/track_io_r_ol.png": {
+            "h": 35,
+            "w": 155,
+            "x": 207,
+            "y": 20743
+        },
+        "150/track_io_s.png": {
+            "h": 30,
+            "w": 153,
+            "x": 205,
+            "y": 20790
+        },
+        "150/track_io_s_dis.png": {
+            "h": 30,
+            "w": 153,
+            "x": 205,
+            "y": 20831
+        },
+        "150/track_io_s_dis_ol.png": {
+            "h": 35,
+            "w": 155,
+            "x": 207,
+            "y": 20872
+        },
+        "150/track_io_s_ol.png": {
+            "h": 35,
+            "w": 155,
+            "x": 207,
+            "y": 20919
+        },
+        "150/track_io_s_r.png": {
+            "h": 30,
+            "w": 153,
+            "x": 205,
+            "y": 20966
+        },
+        "150/track_io_s_r_dis.png": {
+            "h": 30,
+            "w": 153,
+            "x": 205,
+            "y": 21007
+        },
+        "150/track_io_s_r_dis_ol.png": {
+            "h": 35,
+            "w": 155,
+            "x": 207,
+            "y": 21048
+        },
+        "150/track_io_s_r_ol.png": {
+            "h": 35,
+            "w": 155,
+            "x": 207,
+            "y": 21095
+        },
+        "150/track_monitor_auto.png": {
+            "h": 4,
+            "w": 4,
+            "x": 5,
+            "y": 21142
+        },
+        "150/track_monitor_auto_ol.png": {
+            "h": 34,
+            "w": 65,
+            "x": 93,
+            "y": 21147
+        },
+        "150/track_monitor_off.png": {
+            "h": 4,
+            "w": 4,
+            "x": 5,
+            "y": 21194
+        },
+        "150/track_monitor_off_ol.png": {
+            "h": 34,
+            "w": 65,
+            "x": 93,
+            "y": 21199
+        },
+        "150/track_monitor_on.png": {
+            "h": 4,
+            "w": 4,
+            "x": 5,
+            "y": 21246
+        },
+        "150/track_monitor_on_ol.png": {
+            "h": 34,
+            "w": 65,
+            "x": 93,
+            "y": 21251
+        },
+        "150/track_mono.png": {
+            "h": 30,
+            "w": 225,
+            "x": 301,
+            "y": 21298
+        },
+        "150/track_mute_off.png": {
+            "h": 4,
+            "w": 4,
+            "x": 5,
+            "y": 21339
+        },
+        "150/track_mute_off_ol.png": {
+            "h": 35,
+            "w": 98,
+            "x": 129,
+            "y": 21344
+        },
+        "150/track_mute_on.png": {
+            "h": 4,
+            "w": 4,
+            "x": 5,
+            "y": 21391
+        },
+        "150/track_mute_on_ol.png": {
+            "h": 30,
+            "w": 96,
+            "x": 127,
+            "y": 21396
+        },
+        "150/track_phase_inv.png": {
+            "h": 4,
+            "w": 4,
+            "x": 5,
+            "y": 21437
+        },
+        "150/track_phase_inv_ol.png": {
+            "h": 30,
+            "w": 72,
+            "x": 97,
+            "y": 21442
+        },
+        "150/track_phase_norm.png": {
+            "h": 4,
+            "w": 4,
+            "x": 5,
+            "y": 21483
+        },
+        "150/track_phase_norm_ol.png": {
+            "h": 30,
+            "w": 72,
+            "x": 97,
+            "y": 21488
+        },
+        "150/track_recarm_auto.png": {
+            "h": 30,
+            "w": 90,
+            "x": 121,
+            "y": 21529
+        },
+        "150/track_recarm_auto_norec.png": {
+            "h": 30,
+            "w": 90,
+            "x": 121,
+            "y": 21570
+        },
+        "150/track_recarm_auto_norec_ol.png": {
+            "h": 37,
+            "w": 98,
+            "x": 135,
+            "y": 21611
+        },
+        "150/track_recarm_auto_ol.png": {
+            "h": 37,
+            "w": 98,
+            "x": 135,
+            "y": 21662
+        },
+        "150/track_recarm_auto_on.png": {
+            "h": 30,
+            "w": 90,
+            "x": 121,
+            "y": 21713
+        },
+        "150/track_recarm_auto_on_ol.png": {
+            "h": 37,
+            "w": 98,
+            "x": 135,
+            "y": 21754
+        },
+        "150/track_recarm_norec.png": {
+            "h": 30,
+            "w": 90,
+            "x": 121,
+            "y": 21805
+        },
+        "150/track_recarm_norec_ol.png": {
+            "h": 37,
+            "w": 98,
+            "x": 135,
+            "y": 21846
+        },
+        "150/track_recarm_off.png": {
+            "h": 30,
+            "w": 90,
+            "x": 121,
+            "y": 21897
+        },
+        "150/track_recarm_off_ol.png": {
+            "h": 37,
+            "w": 98,
+            "x": 135,
+            "y": 21938
+        },
+        "150/track_recarm_on.png": {
+            "h": 30,
+            "w": 90,
+            "x": 121,
+            "y": 21989
+        },
+        "150/track_recarm_on_ol.png": {
+            "h": 37,
+            "w": 98,
+            "x": 135,
+            "y": 22030
+        },
+        "150/track_recmode_in.png": {
+            "h": 30,
+            "w": 177,
+            "x": 235,
+            "y": 22081
+        },
+        "150/track_recmode_off.png": {
+            "h": 30,
+            "w": 177,
+            "x": 235,
+            "y": 22122
+        },
+        "150/track_recmode_out.png": {
+            "h": 30,
+            "w": 177,
+            "x": 235,
+            "y": 22163
+        },
+        "150/track_solo_off.png": {
+            "h": 7,
+            "w": 7,
+            "x": 4,
+            "y": 22204
+        },
+        "150/track_solo_off_ol.png": {
+            "h": 77,
+            "w": 110,
+            "x": 147,
+            "y": 22212
+        },
+        "150/track_solo_on.png": {
+            "h": 7,
+            "w": 7,
+            "x": 4,
+            "y": 22315
+        },
+        "150/track_solo_on_ol.png": {
+            "h": 77,
+            "w": 110,
+            "x": 147,
+            "y": 22323
+        },
+        "150/track_stereo.png": {
+            "h": 30,
+            "w": 225,
+            "x": 301,
+            "y": 22426
+        },
+        "150/track_stereo_ol.png": {
+            "h": 35,
+            "w": 227,
+            "x": 303,
+            "y": 22467
+        },
+        "150/transport_end.png": {
+            "h": 44,
+            "w": 126,
+            "x": 169,
+            "y": 22514
+        },
+        "150/transport_home.png": {
+            "h": 44,
+            "w": 132,
+            "x": 175,
+            "y": 22573
+        },
+        "150/transport_knob_bg_large.png": {
+            "h": 50,
+            "w": 47,
+            "x": 63,
+            "y": 22632
+        },
+        "150/transport_next.png": {
+            "h": 44,
+            "w": 126,
+            "x": 169,
+            "y": 22699
+        },
+        "150/transport_pause.png": {
+            "h": 44,
+            "w": 132,
+            "x": 175,
+            "y": 22758
+        },
+        "150/transport_pause_on.png": {
+            "h": 44,
+            "w": 132,
+            "x": 175,
+            "y": 22817
+        },
+        "150/transport_play.png": {
+            "h": 53,
+            "w": 150,
+            "x": 199,
+            "y": 22876
+        },
+        "150/transport_play_on.png": {
+            "h": 53,
+            "w": 150,
+            "x": 199,
+            "y": 23075
+        },
+        "150/transport_play_sync.png": {
+            "h": 53,
+            "w": 150,
+            "x": 199,
+            "y": 23146
+        },
+        "150/transport_play_sync_on.png": {
+            "h": 53,
+            "w": 150,
+            "x": 199,
+            "y": 23217
+        },
+        "150/transport_playspeedbg.png": {
+            "h": 52,
+            "w": 41,
+            "x": 55,
+            "y": 22947
+        },
+        "150/transport_playspeedthumb.png": {
+            "h": 42,
+            "w": 33,
+            "x": 45,
+            "y": 23018
+        },
+        "150/transport_previous.png": {
+            "h": 44,
+            "w": 132,
+            "x": 175,
+            "y": 23288
+        },
+        "150/transport_record.png": {
+            "h": 53,
+            "w": 153,
+            "x": 205,
+            "y": 23347
+        },
+        "150/transport_record_item.png": {
+            "h": 53,
+            "w": 153,
+            "x": 205,
+            "y": 23418
+        },
+        "150/transport_record_item_on.png": {
+            "h": 53,
+            "w": 153,
+            "x": 205,
+            "y": 23489
+        },
+        "150/transport_record_loop.png": {
+            "h": 53,
+            "w": 153,
+            "x": 205,
+            "y": 23560
+        },
+        "150/transport_record_loop_on.png": {
+            "h": 53,
+            "w": 153,
+            "x": 205,
+            "y": 23631
+        },
+        "150/transport_record_on.png": {
+            "h": 53,
+            "w": 153,
+            "x": 205,
+            "y": 23702
+        },
+        "150/transport_repeat_off.png": {
+            "h": 44,
+            "w": 120,
+            "x": 163,
+            "y": 23773
+        },
+        "150/transport_repeat_on.png": {
+            "h": 44,
+            "w": 120,
+            "x": 163,
+            "y": 23832
+        },
+        "150/transport_stop.png": {
+            "h": 44,
+            "w": 132,
+            "x": 175,
+            "y": 23891
+        },
+        "150/xx mcp_send_knob_stack.png": {
+            "h": 525,
+            "w": 21,
+            "x": 0,
+            "y": 24026
+        },
+        "200/envcp_arm_off.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 0
+        },
+        "200/envcp_arm_off_OL.png": {
+            "h": 50,
+            "w": 134,
+            "x": 0,
+            "y": 41
+        },
+        "200/envcp_arm_on.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 92
+        },
+        "200/envcp_arm_on_OL.png": {
+            "h": 50,
+            "w": 134,
+            "x": 0,
+            "y": 133
+        },
+        "200/envcp_bypass_off.png": {
+            "h": 3,
+            "w": 3,
+            "x": 0,
+            "y": 184
+        },
+        "200/envcp_bypass_off_ol.png": {
+            "h": 46,
+            "w": 92,
+            "x": 0,
+            "y": 188
+        },
+        "200/envcp_bypass_on.png": {
+            "h": 3,
+            "w": 3,
+            "x": 0,
+            "y": 235
+        },
+        "200/envcp_bypass_on_ol.png": {
+            "h": 46,
+            "w": 92,
+            "x": 0,
+            "y": 239
+        },
+        "200/envcp_fader.png": {
+            "h": 56,
+            "w": 44,
+            "x": 0,
+            "y": 286
+        },
+        "200/envcp_hide.png": {
+            "h": 40,
+            "w": 216,
+            "x": 0,
+            "y": 343
+        },
+        "200/envcp_knob_small.png": {
+            "h": 50,
+            "w": 48,
+            "x": 0,
+            "y": 384
+        },
+        "200/envcp_learn.png": {
+            "h": 40,
+            "w": 180,
+            "x": 0,
+            "y": 435
+        },
+        "200/envcp_learn_ol.png": {
+            "h": 46,
+            "w": 182,
+            "x": 0,
+            "y": 476
+        },
+        "200/envcp_learn_on.png": {
+            "h": 40,
+            "w": 180,
+            "x": 0,
+            "y": 523
+        },
+        "200/envcp_learn_on_ol.png": {
+            "h": 46,
+            "w": 182,
+            "x": 0,
+            "y": 564
+        },
+        "200/envcp_parammod.png": {
+            "h": 40,
+            "w": 180,
+            "x": 0,
+            "y": 611
+        },
+        "200/envcp_parammod_ol.png": {
+            "h": 46,
+            "w": 182,
+            "x": 0,
+            "y": 652
+        },
+        "200/envcp_parammod_on.png": {
+            "h": 40,
+            "w": 180,
+            "x": 0,
+            "y": 699
+        },
+        "200/envcp_parammod_on_ol.png": {
+            "h": 46,
+            "w": 182,
+            "x": 0,
+            "y": 740
+        },
+        "200/gen_end.png": {
+            "h": 48,
+            "w": 144,
+            "x": 0,
+            "y": 787
+        },
+        "200/gen_env.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 836
+        },
+        "200/gen_env_latch.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 877
+        },
+        "200/gen_env_preview.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 918
+        },
+        "200/gen_env_read.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 959
+        },
+        "200/gen_env_touch.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 1000
+        },
+        "200/gen_env_write.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 1041
+        },
+        "200/gen_home.png": {
+            "h": 48,
+            "w": 144,
+            "x": 0,
+            "y": 1082
+        },
+        "200/gen_io.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 1131
+        },
+        "200/gen_midi_off.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 1172
+        },
+        "200/gen_midi_on.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 1213
+        },
+        "200/gen_mono.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 1254
+        },
+        "200/gen_mute_off.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 1295
+        },
+        "200/gen_mute_on.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 1336
+        },
+        "200/gen_panthumb_horz.png": {
+            "h": 57,
+            "w": 36,
+            "x": 0,
+            "y": 1377
+        },
+        "200/gen_pause.png": {
+            "h": 48,
+            "w": 144,
+            "x": 0,
+            "y": 1435
+        },
+        "200/gen_pause_on.png": {
+            "h": 48,
+            "w": 144,
+            "x": 0,
+            "y": 1484
+        },
+        "200/gen_phase_inv.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 1533
+        },
+        "200/gen_phase_norm.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 1574
+        },
+        "200/gen_play.png": {
+            "h": 48,
+            "w": 144,
+            "x": 0,
+            "y": 1615
+        },
+        "200/gen_play_on.png": {
+            "h": 48,
+            "w": 144,
+            "x": 0,
+            "y": 1664
+        },
+        "200/gen_repeat_off.png": {
+            "h": 48,
+            "w": 144,
+            "x": 0,
+            "y": 1713
+        },
+        "200/gen_repeat_on.png": {
+            "h": 48,
+            "w": 144,
+            "x": 0,
+            "y": 1762
+        },
+        "200/gen_solo_off.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 1811
+        },
+        "200/gen_solo_on.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 1852
+        },
+        "200/gen_stereo.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 1893
+        },
+        "200/gen_stop.png": {
+            "h": 48,
+            "w": 144,
+            "x": 0,
+            "y": 1934
+        },
+        "200/gen_volthumb_horz.png": {
+            "h": 57,
+            "w": 48,
+            "x": 0,
+            "y": 1983
+        },
+        "200/gen_volthumb_vert.png": {
+            "h": 54,
+            "w": 41,
+            "x": 0,
+            "y": 2041
+        },
+        "200/global_bypass.png": {
+            "h": 72,
+            "w": 324,
+            "x": 0,
+            "y": 2096
+        },
+        "200/global_latch.png": {
+            "h": 72,
+            "w": 324,
+            "x": 0,
+            "y": 2169
+        },
+        "200/global_off.png": {
+            "h": 72,
+            "w": 324,
+            "x": 0,
+            "y": 2242
+        },
+        "200/global_preview.png": {
+            "h": 72,
+            "w": 324,
+            "x": 0,
+            "y": 2315
+        },
+        "200/global_read.png": {
+            "h": 72,
+            "w": 324,
+            "x": 0,
+            "y": 2388
+        },
+        "200/global_touch.png": {
+            "h": 72,
+            "w": 324,
+            "x": 0,
+            "y": 2461
+        },
+        "200/global_trim.png": {
+            "h": 72,
+            "w": 324,
+            "x": 0,
+            "y": 2534
+        },
+        "200/global_write.png": {
+            "h": 72,
+            "w": 324,
+            "x": 0,
+            "y": 2607
+        },
+        "200/mcp_bg.png": {
+            "h": 70,
+            "w": 6,
+            "x": 0,
+            "y": 2680
+        },
+        "200/mcp_bgsel.png": {
+            "h": 70,
+            "w": 6,
+            "x": 0,
+            "y": 2751
+        },
+        "200/mcp_env.png": {
+            "h": 62,
+            "w": 128,
+            "x": 0,
+            "y": 2822
+        },
+        "200/mcp_env_latch.png": {
+            "h": 62,
+            "w": 128,
+            "x": 0,
+            "y": 2885
+        },
+        "200/mcp_env_preview.png": {
+            "h": 62,
+            "w": 128,
+            "x": 0,
+            "y": 2948
+        },
+        "200/mcp_env_read.png": {
+            "h": 62,
+            "w": 128,
+            "x": 0,
+            "y": 3011
+        },
+        "200/mcp_env_touch.png": {
+            "h": 62,
+            "w": 128,
+            "x": 0,
+            "y": 3074
+        },
+        "200/mcp_env_write.png": {
+            "h": 62,
+            "w": 128,
+            "x": 0,
+            "y": 3137
+        },
+        "200/mcp_fcomp_off.png": {
+            "h": 44,
+            "w": 108,
+            "x": 0,
+            "y": 3200
+        },
+        "200/mcp_fcomp_tiny.png": {
+            "h": 44,
+            "w": 108,
+            "x": 0,
+            "y": 3245
+        },
+        "200/mcp_folder_last.png": {
+            "h": 44,
+            "w": 126,
+            "x": 0,
+            "y": 3290
+        },
+        "200/mcp_fx_dis.png": {
+            "h": 41,
+            "w": 170,
+            "x": 0,
+            "y": 8885
+        },
+        "200/mcp_fx_empty.png": {
+            "h": 41,
+            "w": 170,
+            "x": 0,
+            "y": 8927
+        },
+        "200/mcp_fx_in_empty.png": {
+            "h": 3,
+            "w": 3,
+            "x": 0,
+            "y": 8969
+        },
+        "200/mcp_fx_in_empty_ol.png": {
+            "h": 41,
+            "w": 452,
+            "x": 0,
+            "y": 8973
+        },
+        "200/mcp_fx_in_norm.png": {
+            "h": 3,
+            "w": 3,
+            "x": 0,
+            "y": 9015
+        },
+        "200/mcp_fx_in_norm_ol.png": {
+            "h": 41,
+            "w": 452,
+            "x": 0,
+            "y": 9019
+        },
+        "200/mcp_fx_norm.png": {
+            "h": 41,
+            "w": 170,
+            "x": 0,
+            "y": 9061
+        },
+        "200/mcp_fxlist_byp.png": {
+            "h": 104,
+            "w": 74,
+            "x": 0,
+            "y": 3335
+        },
+        "200/mcp_fxlist_empty.png": {
+            "h": 104,
+            "w": 74,
+            "x": 0,
+            "y": 3440
+        },
+        "200/mcp_fxlist_norm.png": {
+            "h": 104,
+            "w": 74,
+            "x": 0,
+            "y": 3545
+        },
+        "200/mcp_fxparm_byp.png": {
+            "h": 146,
+            "w": 65,
+            "x": 0,
+            "y": 3650
+        },
+        "200/mcp_fxparm_empty.png": {
+            "h": 146,
+            "w": 65,
+            "x": 0,
+            "y": 3797
+        },
+        "200/mcp_fxparm_knob_stack.png": {
+            "h": 4646,
+            "w": 46,
+            "x": 0,
+            "y": 3944
+        },
+        "200/mcp_fxparm_norm.png": {
+            "h": 146,
+            "w": 65,
+            "x": 0,
+            "y": 8591
+        },
+        "200/mcp_fxparm_off.png": {
+            "h": 146,
+            "w": 65,
+            "x": 0,
+            "y": 8738
+        },
+        "200/mcp_idxbg.png": {
+            "h": 90,
+            "w": 10,
+            "x": 0,
+            "y": 9103
+        },
+        "200/mcp_idxbg_sel.png": {
+            "h": 90,
+            "w": 10,
+            "x": 0,
+            "y": 9194
+        },
+        "200/mcp_io.png": {
+            "h": 62,
+            "w": 140,
+            "x": 0,
+            "y": 9285
+        },
+        "200/mcp_io_dis.png": {
+            "h": 62,
+            "w": 140,
+            "x": 0,
+            "y": 9348
+        },
+        "200/mcp_io_r.png": {
+            "h": 62,
+            "w": 140,
+            "x": 0,
+            "y": 9411
+        },
+        "200/mcp_io_r_dis.png": {
+            "h": 62,
+            "w": 140,
+            "x": 0,
+            "y": 9474
+        },
+        "200/mcp_io_s.png": {
+            "h": 62,
+            "w": 140,
+            "x": 0,
+            "y": 9537
+        },
+        "200/mcp_io_s_dis.png": {
+            "h": 62,
+            "w": 140,
+            "x": 0,
+            "y": 9600
+        },
+        "200/mcp_io_s_r.png": {
+            "h": 62,
+            "w": 140,
+            "x": 0,
+            "y": 9663
+        },
+        "200/mcp_io_s_r_dis.png": {
+            "h": 62,
+            "w": 140,
+            "x": 0,
+            "y": 9726
+        },
+        "200/mcp_main_namebg.png": {
+            "h": 11,
+            "w": 8,
+            "x": 0,
+            "y": 9789
+        },
+        "200/mcp_main_namebg_sel.png": {
+            "h": 11,
+            "w": 8,
+            "x": 0,
+            "y": 9801
+        },
+        "200/mcp_master_vol_label.png": {
+            "h": 5,
+            "w": 76,
+            "x": 0,
+            "y": 9916
+        },
+        "200/mcp_master_volbg.png": {
+            "h": 102,
+            "w": 256,
+            "x": 0,
+            "y": 9813
+        },
+        "200/mcp_monitor_auto.png": {
+            "h": 40,
+            "w": 126,
+            "x": 0,
+            "y": 9922
+        },
+        "200/mcp_monitor_off.png": {
+            "h": 40,
+            "w": 126,
+            "x": 0,
+            "y": 9963
+        },
+        "200/mcp_monitor_on.png": {
+            "h": 40,
+            "w": 126,
+            "x": 0,
+            "y": 10004
+        },
+        "200/mcp_mono.png": {
+            "h": 68,
+            "w": 152,
+            "x": 0,
+            "y": 10045
+        },
+        "200/mcp_mute_off.png": {
+            "h": 40,
+            "w": 126,
+            "x": 0,
+            "y": 10114
+        },
+        "200/mcp_mute_off_ol.png": {
+            "h": 46,
+            "w": 128,
+            "x": 0,
+            "y": 10155
+        },
+        "200/mcp_mute_on.png": {
+            "h": 40,
+            "w": 126,
+            "x": 0,
+            "y": 10202
+        },
+        "200/mcp_pan_knob_small.png": {
+            "h": 46,
+            "w": 42,
+            "x": 0,
+            "y": 10310
+        },
+        "200/mcp_panbg.png": {
+            "h": 20,
+            "w": 136,
+            "x": 0,
+            "y": 10243
+        },
+        "200/mcp_panthumb.png": {
+            "h": 45,
+            "w": 24,
+            "x": 0,
+            "y": 10264
+        },
+        "200/mcp_phase_inv.png": {
+            "h": 36,
+            "w": 96,
+            "x": 0,
+            "y": 10357
+        },
+        "200/mcp_phase_norm.png": {
+            "h": 36,
+            "w": 97,
+            "x": 0,
+            "y": 10394
+        },
+        "200/mcp_recarm_auto.png": {
+            "h": 48,
+            "w": 216,
+            "x": 0,
+            "y": 10431
+        },
+        "200/mcp_recarm_auto_norec.png": {
+            "h": 49,
+            "w": 216,
+            "x": 0,
+            "y": 10480
+        },
+        "200/mcp_recarm_auto_on.png": {
+            "h": 48,
+            "w": 216,
+            "x": 0,
+            "y": 10530
+        },
+        "200/mcp_recarm_norec.png": {
+            "h": 49,
+            "w": 216,
+            "x": 0,
+            "y": 10579
+        },
+        "200/mcp_recarm_off.png": {
+            "h": 48,
+            "w": 216,
+            "x": 0,
+            "y": 10629
+        },
+        "200/mcp_recarm_on.png": {
+            "h": 48,
+            "w": 216,
+            "x": 0,
+            "y": 10678
+        },
+        "200/mcp_recinput.png": {
+            "h": 34,
+            "w": 48,
+            "x": 0,
+            "y": 10727
+        },
+        "200/mcp_recmode_in.png": {
+            "h": 34,
+            "w": 248,
+            "x": 0,
+            "y": 10762
+        },
+        "200/mcp_recmode_off.png": {
+            "h": 34,
+            "w": 248,
+            "x": 0,
+            "y": 10797
+        },
+        "200/mcp_recmode_out.png": {
+            "h": 34,
+            "w": 248,
+            "x": 0,
+            "y": 10832
+        },
+        "200/mcp_send_knob_stack.png": {
+            "h": 2800,
+            "w": 56,
+            "x": 0,
+            "y": 11314
+        },
+        "200/mcp_sendlist_empty.png": {
+            "h": 98,
+            "w": 74,
+            "x": 0,
+            "y": 10867
+        },
+        "200/mcp_sendlist_meter.png": {
+            "h": 50,
+            "w": 76,
+            "x": 0,
+            "y": 10966
+        },
+        "200/mcp_sendlist_midihw.png": {
+            "h": 98,
+            "w": 74,
+            "x": 0,
+            "y": 11017
+        },
+        "200/mcp_sendlist_mute.png": {
+            "h": 98,
+            "w": 74,
+            "x": 0,
+            "y": 11116
+        },
+        "200/mcp_sendlist_norm.png": {
+            "h": 98,
+            "w": 74,
+            "x": 0,
+            "y": 11215
+        },
+        "200/mcp_solo_off.png": {
+            "h": 40,
+            "w": 126,
+            "x": 0,
+            "y": 14156
+        },
+        "200/mcp_solo_off_ol.png": {
+            "h": 46,
+            "w": 128,
+            "x": 0,
+            "y": 14197
+        },
+        "200/mcp_solo_on.png": {
+            "h": 40,
+            "w": 126,
+            "x": 0,
+            "y": 14244
+        },
+        "200/mcp_solodefeat_on.png": {
+            "h": 40,
+            "w": 126,
+            "x": 0,
+            "y": 14115
+        },
+        "200/mcp_stereo.png": {
+            "h": 68,
+            "w": 152,
+            "x": 0,
+            "y": 14285
+        },
+        "200/mcp_vol_label.png": {
+            "h": 5,
+            "w": 81,
+            "x": 0,
+            "y": 14516
+        },
+        "200/mcp_volbg.png": {
+            "h": 53,
+            "w": 174,
+            "x": 0,
+            "y": 14354
+        },
+        "200/mcp_volthumb.png": {
+            "h": 104,
+            "w": 47,
+            "x": 0,
+            "y": 14411
+        },
+        "200/mcp_width_knob_small.png": {
+            "h": 46,
+            "w": 42,
+            "x": 0,
+            "y": 14589
+        },
+        "200/mcp_widthbg.png": {
+            "h": 20,
+            "w": 136,
+            "x": 0,
+            "y": 14522
+        },
+        "200/mcp_widththumb.png": {
+            "h": 45,
+            "w": 24,
+            "x": 0,
+            "y": 14543
+        },
+        "200/meter_bg_mcp.png": {
+            "h": 70,
+            "w": 76,
+            "x": 0,
+            "y": 14636
+        },
+        "200/meter_bg_tcp.png": {
+            "h": 27,
+            "w": 86,
+            "x": 0,
+            "y": 14707
+        },
+        "200/mixer_menu.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 14735
+        },
+        "200/monitor_fx_byp.png": {
+            "h": 32,
+            "w": 312,
+            "x": 0,
+            "y": 14776
+        },
+        "200/monitor_fx_byp_byp.png": {
+            "h": 32,
+            "w": 90,
+            "x": 0,
+            "y": 14809
+        },
+        "200/monitor_fx_byp_off.png": {
+            "h": 32,
+            "w": 90,
+            "x": 0,
+            "y": 14842
+        },
+        "200/monitor_fx_byp_on.png": {
+            "h": 32,
+            "w": 90,
+            "x": 0,
+            "y": 14875
+        },
+        "200/monitor_fx_off.png": {
+            "h": 32,
+            "w": 312,
+            "x": 0,
+            "y": 14908
+        },
+        "200/monitor_fx_on.png": {
+            "h": 32,
+            "w": 312,
+            "x": 0,
+            "y": 14941
+        },
+        "200/table_expand_off.png": {
+            "h": 32,
+            "w": 96,
+            "x": 0,
+            "y": 14974
+        },
+        "200/table_expand_on.png": {
+            "h": 32,
+            "w": 96,
+            "x": 0,
+            "y": 15007
+        },
+        "200/table_locked_off.png": {
+            "h": 32,
+            "w": 96,
+            "x": 0,
+            "y": 15040
+        },
+        "200/table_locked_on.png": {
+            "h": 32,
+            "w": 96,
+            "x": 0,
+            "y": 15073
+        },
+        "200/table_locked_partial.png": {
+            "h": 32,
+            "w": 96,
+            "x": 0,
+            "y": 15106
+        },
+        "200/table_mute_off.png": {
+            "h": 32,
+            "w": 96,
+            "x": 0,
+            "y": 15139
+        },
+        "200/table_mute_on.png": {
+            "h": 32,
+            "w": 96,
+            "x": 0,
+            "y": 15172
+        },
+        "200/table_recarm_off.png": {
+            "h": 32,
+            "w": 96,
+            "x": 0,
+            "y": 15205
+        },
+        "200/table_recarm_on.png": {
+            "h": 32,
+            "w": 96,
+            "x": 0,
+            "y": 15238
+        },
+        "200/table_remove_off.png": {
+            "h": 32,
+            "w": 96,
+            "x": 0,
+            "y": 15271
+        },
+        "200/table_remove_on.png": {
+            "h": 32,
+            "w": 96,
+            "x": 0,
+            "y": 15304
+        },
+        "200/table_solo_off.png": {
+            "h": 32,
+            "w": 96,
+            "x": 0,
+            "y": 15337
+        },
+        "200/table_solo_on.png": {
+            "h": 32,
+            "w": 96,
+            "x": 0,
+            "y": 15370
+        },
+        "200/table_sub_expand_off.png": {
+            "h": 32,
+            "w": 96,
+            "x": 0,
+            "y": 15403
+        },
+        "200/table_sub_expand_on.png": {
+            "h": 32,
+            "w": 96,
+            "x": 0,
+            "y": 15436
+        },
+        "200/table_target_invalid.png": {
+            "h": 32,
+            "w": 96,
+            "x": 0,
+            "y": 15469
+        },
+        "200/table_target_off.png": {
+            "h": 32,
+            "w": 96,
+            "x": 0,
+            "y": 15502
+        },
+        "200/table_target_on.png": {
+            "h": 32,
+            "w": 96,
+            "x": 0,
+            "y": 15535
+        },
+        "200/table_visible_off.png": {
+            "h": 32,
+            "w": 96,
+            "x": 0,
+            "y": 15568
+        },
+        "200/table_visible_on.png": {
+            "h": 32,
+            "w": 96,
+            "x": 0,
+            "y": 15601
+        },
+        "200/table_visible_partial.png": {
+            "h": 32,
+            "w": 96,
+            "x": 0,
+            "y": 15634
+        },
+        "200/tcp_fxparm_arrows_lr.png": {
+            "h": 62,
+            "w": 58,
+            "x": 0,
+            "y": 15667
+        },
+        "200/tcp_idxbg.png": {
+            "h": 8,
+            "w": 44,
+            "x": 0,
+            "y": 15730
+        },
+        "200/tcp_idxbg_sel.png": {
+            "h": 10,
+            "w": 44,
+            "x": 0,
+            "y": 15739
+        },
+        "200/tcp_namebg.png": {
+            "h": 24,
+            "w": 5,
+            "x": 0,
+            "y": 15750
+        },
+        "200/tcp_pan_knob_small.png": {
+            "h": 48,
+            "w": 46,
+            "x": 0,
+            "y": 15842
+        },
+        "200/tcp_panbg.png": {
+            "h": 20,
+            "w": 84,
+            "x": 0,
+            "y": 15775
+        },
+        "200/tcp_panthumb.png": {
+            "h": 45,
+            "w": 24,
+            "x": 0,
+            "y": 15796
+        },
+        "200/tcp_recinput.png": {
+            "h": 42,
+            "w": 38,
+            "x": 0,
+            "y": 15891
+        },
+        "200/tcp_solodefeat_on.png": {
+            "h": 7,
+            "w": 7,
+            "x": 0,
+            "y": 15934
+        },
+        "200/tcp_solodefeat_on_ol.png": {
+            "h": 102,
+            "w": 146,
+            "x": 0,
+            "y": 15955
+        },
+        "200/tcp_vol_knob_small.png": {
+            "h": 50,
+            "w": 48,
+            "x": 0,
+            "y": 16162
+        },
+        "200/tcp_volbg.png": {
+            "h": 46,
+            "w": 24,
+            "x": 0,
+            "y": 16058
+        },
+        "200/tcp_volthumb.png": {
+            "h": 56,
+            "w": 44,
+            "x": 0,
+            "y": 16105
+        },
+        "200/tcp_width_knob_small.png": {
+            "h": 48,
+            "w": 46,
+            "x": 0,
+            "y": 16280
+        },
+        "200/tcp_widthbg.png": {
+            "h": 20,
+            "w": 84,
+            "x": 0,
+            "y": 16213
+        },
+        "200/tcp_widththumb.png": {
+            "h": 45,
+            "w": 24,
+            "x": 0,
+            "y": 16234
+        },
+        "200/toolbar_blank.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 16329
+        },
+        "200/toolbar_dock_off.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 16390
+        },
+        "200/toolbar_dock_on.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 16451
+        },
+        "200/toolbar_envitem_off.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 16512
+        },
+        "200/toolbar_envitem_on.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 16573
+        },
+        "200/toolbar_filter_off.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 16634
+        },
+        "200/toolbar_filter_on.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 16695
+        },
+        "200/toolbar_grid_off.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 16756
+        },
+        "200/toolbar_grid_on.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 16817
+        },
+        "200/toolbar_group_off.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 16878
+        },
+        "200/toolbar_group_on.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 16939
+        },
+        "200/toolbar_load.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 17000
+        },
+        "200/toolbar_lock_off.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 17061
+        },
+        "200/toolbar_lock_on.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 17122
+        },
+        "200/toolbar_metro_off.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 17183
+        },
+        "200/toolbar_metro_on.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 17244
+        },
+        "200/toolbar_midi_itemsel_off.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 17305
+        },
+        "200/toolbar_midi_itemsel_on.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 17366
+        },
+        "200/toolbar_midi_mode_event_list.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 17427
+        },
+        "200/toolbar_midi_mode_musical_notation.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 17488
+        },
+        "200/toolbar_midi_mode_named_notes.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 17549
+        },
+        "200/toolbar_midi_mode_piano_roll.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 17610
+        },
+        "200/toolbar_midi_step.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 17671
+        },
+        "200/toolbar_midi_tracksel_off.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 17732
+        },
+        "200/toolbar_midi_tracksel_on.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 17793
+        },
+        "200/toolbar_new.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 17854
+        },
+        "200/toolbar_projprop.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 17915
+        },
+        "200/toolbar_quant_off.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 17976
+        },
+        "200/toolbar_quant_on.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 18037
+        },
+        "200/toolbar_redo.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 18098
+        },
+        "200/toolbar_relsnap_off.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 18159
+        },
+        "200/toolbar_relsnap_on.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 18220
+        },
+        "200/toolbar_replacemode.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 18281
+        },
+        "200/toolbar_revert.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 18342
+        },
+        "200/toolbar_ripple_all.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 18403
+        },
+        "200/toolbar_ripple_off.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 18464
+        },
+        "200/toolbar_ripple_one.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 18525
+        },
+        "200/toolbar_save.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 18586
+        },
+        "200/toolbar_snap_off.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 18647
+        },
+        "200/toolbar_snap_on.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 18708
+        },
+        "200/toolbar_undo.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 18769
+        },
+        "200/toolbar_xfade_off.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 18830
+        },
+        "200/toolbar_xfade_on.png": {
+            "h": 60,
+            "w": 180,
+            "x": 0,
+            "y": 18891
+        },
+        "200/toosmall_r.png": {
+            "h": 14,
+            "w": 48,
+            "x": 0,
+            "y": 18952
+        },
+        "200/track_env.png": {
+            "h": 40,
+            "w": 246,
+            "x": 0,
+            "y": 18967
+        },
+        "200/track_env_latch.png": {
+            "h": 40,
+            "w": 246,
+            "x": 0,
+            "y": 19008
+        },
+        "200/track_env_latch_ol.png": {
+            "h": 46,
+            "w": 248,
+            "x": 0,
+            "y": 19049
+        },
+        "200/track_env_ol.png": {
+            "h": 46,
+            "w": 248,
+            "x": 0,
+            "y": 19096
+        },
+        "200/track_env_preview.png": {
+            "h": 40,
+            "w": 246,
+            "x": 0,
+            "y": 19143
+        },
+        "200/track_env_preview_ol.png": {
+            "h": 46,
+            "w": 248,
+            "x": 0,
+            "y": 19184
+        },
+        "200/track_env_read.png": {
+            "h": 40,
+            "w": 246,
+            "x": 0,
+            "y": 19231
+        },
+        "200/track_env_read_ol.png": {
+            "h": 46,
+            "w": 248,
+            "x": 0,
+            "y": 19272
+        },
+        "200/track_env_touch.png": {
+            "h": 40,
+            "w": 246,
+            "x": 0,
+            "y": 19319
+        },
+        "200/track_env_touch_ol.png": {
+            "h": 46,
+            "w": 248,
+            "x": 0,
+            "y": 19360
+        },
+        "200/track_env_write.png": {
+            "h": 40,
+            "w": 246,
+            "x": 0,
+            "y": 19407
+        },
+        "200/track_env_write_ol.png": {
+            "h": 46,
+            "w": 248,
+            "x": 0,
+            "y": 19448
+        },
+        "200/track_fcomp_off.png": {
+            "h": 38,
+            "w": 108,
+            "x": 0,
+            "y": 19495
+        },
+        "200/track_fcomp_small.png": {
+            "h": 38,
+            "w": 108,
+            "x": 0,
+            "y": 19534
+        },
+        "200/track_fcomp_tiny.png": {
+            "h": 38,
+            "w": 108,
+            "x": 0,
+            "y": 19573
+        },
+        "200/track_folder_last.png": {
+            "h": 28,
+            "w": 108,
+            "x": 0,
+            "y": 19612
+        },
+        "200/track_folder_off.png": {
+            "h": 28,
+            "w": 108,
+            "x": 0,
+            "y": 19641
+        },
+        "200/track_folder_on.png": {
+            "h": 28,
+            "w": 108,
+            "x": 0,
+            "y": 19670
+        },
+        "200/track_fx_dis.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 20092
+        },
+        "200/track_fx_dis_ol.png": {
+            "h": 46,
+            "w": 124,
+            "x": 0,
+            "y": 20133
+        },
+        "200/track_fx_empty.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 20180
+        },
+        "200/track_fx_empty_ol.png": {
+            "h": 46,
+            "w": 124,
+            "x": 0,
+            "y": 20221
+        },
+        "200/track_fx_in_empty.png": {
+            "h": 40,
+            "w": 174,
+            "x": 0,
+            "y": 20268
+        },
+        "200/track_fx_in_norm.png": {
+            "h": 40,
+            "w": 174,
+            "x": 0,
+            "y": 20309
+        },
+        "200/track_fx_norm.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 20350
+        },
+        "200/track_fx_norm_ol.png": {
+            "h": 46,
+            "w": 124,
+            "x": 0,
+            "y": 20391
+        },
+        "200/track_fxempty_h.png": {
+            "h": 40,
+            "w": 96,
+            "x": 0,
+            "y": 19699
+        },
+        "200/track_fxempty_h_ol.png": {
+            "h": 46,
+            "w": 98,
+            "x": 0,
+            "y": 19740
+        },
+        "200/track_fxempty_v.png": {
+            "h": 42,
+            "w": 116,
+            "x": 0,
+            "y": 19787
+        },
+        "200/track_fxoff_h.png": {
+            "h": 40,
+            "w": 96,
+            "x": 0,
+            "y": 19830
+        },
+        "200/track_fxoff_h_ol.png": {
+            "h": 46,
+            "w": 98,
+            "x": 0,
+            "y": 19871
+        },
+        "200/track_fxoff_v.png": {
+            "h": 42,
+            "w": 116,
+            "x": 0,
+            "y": 19918
+        },
+        "200/track_fxon_h.png": {
+            "h": 40,
+            "w": 96,
+            "x": 0,
+            "y": 19961
+        },
+        "200/track_fxon_h_ol.png": {
+            "h": 46,
+            "w": 98,
+            "x": 0,
+            "y": 20002
+        },
+        "200/track_fxon_v.png": {
+            "h": 42,
+            "w": 116,
+            "x": 0,
+            "y": 20049
+        },
+        "200/track_io.png": {
+            "h": 40,
+            "w": 204,
+            "x": 0,
+            "y": 20438
+        },
+        "200/track_io_dis.png": {
+            "h": 40,
+            "w": 204,
+            "x": 0,
+            "y": 20479
+        },
+        "200/track_io_dis_ol.png": {
+            "h": 46,
+            "w": 206,
+            "x": 0,
+            "y": 20520
+        },
+        "200/track_io_ol.png": {
+            "h": 46,
+            "w": 206,
+            "x": 0,
+            "y": 20567
+        },
+        "200/track_io_r.png": {
+            "h": 40,
+            "w": 204,
+            "x": 0,
+            "y": 20614
+        },
+        "200/track_io_r_dis.png": {
+            "h": 40,
+            "w": 204,
+            "x": 0,
+            "y": 20655
+        },
+        "200/track_io_r_dis_ol.png": {
+            "h": 46,
+            "w": 206,
+            "x": 0,
+            "y": 20696
+        },
+        "200/track_io_r_ol.png": {
+            "h": 46,
+            "w": 206,
+            "x": 0,
+            "y": 20743
+        },
+        "200/track_io_s.png": {
+            "h": 40,
+            "w": 204,
+            "x": 0,
+            "y": 20790
+        },
+        "200/track_io_s_dis.png": {
+            "h": 40,
+            "w": 204,
+            "x": 0,
+            "y": 20831
+        },
+        "200/track_io_s_dis_ol.png": {
+            "h": 46,
+            "w": 206,
+            "x": 0,
+            "y": 20872
+        },
+        "200/track_io_s_ol.png": {
+            "h": 46,
+            "w": 206,
+            "x": 0,
+            "y": 20919
+        },
+        "200/track_io_s_r.png": {
+            "h": 40,
+            "w": 204,
+            "x": 0,
+            "y": 20966
+        },
+        "200/track_io_s_r_dis.png": {
+            "h": 40,
+            "w": 204,
+            "x": 0,
+            "y": 21007
+        },
+        "200/track_io_s_r_dis_ol.png": {
+            "h": 46,
+            "w": 206,
+            "x": 0,
+            "y": 21048
+        },
+        "200/track_io_s_r_ol.png": {
+            "h": 46,
+            "w": 206,
+            "x": 0,
+            "y": 21095
+        },
+        "200/track_monitor_auto.png": {
+            "h": 4,
+            "w": 4,
+            "x": 0,
+            "y": 21142
+        },
+        "200/track_monitor_auto_ol.png": {
+            "h": 46,
+            "w": 92,
+            "x": 0,
+            "y": 21147
+        },
+        "200/track_monitor_off.png": {
+            "h": 4,
+            "w": 4,
+            "x": 0,
+            "y": 21194
+        },
+        "200/track_monitor_off_ol.png": {
+            "h": 46,
+            "w": 92,
+            "x": 0,
+            "y": 21199
+        },
+        "200/track_monitor_on.png": {
+            "h": 4,
+            "w": 4,
+            "x": 0,
+            "y": 21246
+        },
+        "200/track_monitor_on_ol.png": {
+            "h": 46,
+            "w": 92,
+            "x": 0,
+            "y": 21251
+        },
+        "200/track_mono.png": {
+            "h": 40,
+            "w": 300,
+            "x": 0,
+            "y": 21298
+        },
+        "200/track_mute_off.png": {
+            "h": 4,
+            "w": 4,
+            "x": 0,
+            "y": 21339
+        },
+        "200/track_mute_off_ol.png": {
+            "h": 46,
+            "w": 128,
+            "x": 0,
+            "y": 21344
+        },
+        "200/track_mute_on.png": {
+            "h": 4,
+            "w": 4,
+            "x": 0,
+            "y": 21391
+        },
+        "200/track_mute_on_ol.png": {
+            "h": 40,
+            "w": 126,
+            "x": 0,
+            "y": 21396
+        },
+        "200/track_phase_inv.png": {
+            "h": 4,
+            "w": 4,
+            "x": 0,
+            "y": 21437
+        },
+        "200/track_phase_inv_ol.png": {
+            "h": 40,
+            "w": 96,
+            "x": 0,
+            "y": 21442
+        },
+        "200/track_phase_norm.png": {
+            "h": 4,
+            "w": 4,
+            "x": 0,
+            "y": 21483
+        },
+        "200/track_phase_norm_ol.png": {
+            "h": 40,
+            "w": 96,
+            "x": 0,
+            "y": 21488
+        },
+        "200/track_recarm_auto.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 21529
+        },
+        "200/track_recarm_auto_norec.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 21570
+        },
+        "200/track_recarm_auto_norec_ol.png": {
+            "h": 50,
+            "w": 134,
+            "x": 0,
+            "y": 21611
+        },
+        "200/track_recarm_auto_ol.png": {
+            "h": 50,
+            "w": 134,
+            "x": 0,
+            "y": 21662
+        },
+        "200/track_recarm_auto_on.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 21713
+        },
+        "200/track_recarm_auto_on_ol.png": {
+            "h": 50,
+            "w": 134,
+            "x": 0,
+            "y": 21754
+        },
+        "200/track_recarm_norec.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 21805
+        },
+        "200/track_recarm_norec_ol.png": {
+            "h": 50,
+            "w": 134,
+            "x": 0,
+            "y": 21846
+        },
+        "200/track_recarm_off.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 21897
+        },
+        "200/track_recarm_off_ol.png": {
+            "h": 50,
+            "w": 134,
+            "x": 0,
+            "y": 21938
+        },
+        "200/track_recarm_on.png": {
+            "h": 40,
+            "w": 120,
+            "x": 0,
+            "y": 21989
+        },
+        "200/track_recarm_on_ol.png": {
+            "h": 50,
+            "w": 134,
+            "x": 0,
+            "y": 22030
+        },
+        "200/track_recmode_in.png": {
+            "h": 40,
+            "w": 234,
+            "x": 0,
+            "y": 22081
+        },
+        "200/track_recmode_off.png": {
+            "h": 40,
+            "w": 234,
+            "x": 0,
+            "y": 22122
+        },
+        "200/track_recmode_out.png": {
+            "h": 40,
+            "w": 234,
+            "x": 0,
+            "y": 22163
+        },
+        "200/track_solo_off.png": {
+            "h": 3,
+            "w": 3,
+            "x": 0,
+            "y": 22204
+        },
+        "200/track_solo_off_ol.png": {
+            "h": 102,
+            "w": 146,
+            "x": 0,
+            "y": 22212
+        },
+        "200/track_solo_on.png": {
+            "h": 3,
+            "w": 3,
+            "x": 0,
+            "y": 22315
+        },
+        "200/track_solo_on_ol.png": {
+            "h": 102,
+            "w": 146,
+            "x": 0,
+            "y": 22323
+        },
+        "200/track_stereo.png": {
+            "h": 40,
+            "w": 300,
+            "x": 0,
+            "y": 22426
+        },
+        "200/track_stereo_ol.png": {
+            "h": 46,
+            "w": 302,
+            "x": 0,
+            "y": 22467
+        },
+        "200/transport_end.png": {
+            "h": 58,
+            "w": 168,
+            "x": 0,
+            "y": 22514
+        },
+        "200/transport_home.png": {
+            "h": 58,
+            "w": 174,
+            "x": 0,
+            "y": 22573
+        },
+        "200/transport_knob_bg_large.png": {
+            "h": 66,
+            "w": 62,
+            "x": 0,
+            "y": 22632
+        },
+        "200/transport_next.png": {
+            "h": 58,
+            "w": 168,
+            "x": 0,
+            "y": 22699
+        },
+        "200/transport_pause.png": {
+            "h": 58,
+            "w": 174,
+            "x": 0,
+            "y": 22758
+        },
+        "200/transport_pause_on.png": {
+            "h": 58,
+            "w": 174,
+            "x": 0,
+            "y": 22817
+        },
+        "200/transport_play.png": {
+            "h": 70,
+            "w": 198,
+            "x": 0,
+            "y": 22876
+        },
+        "200/transport_play_on.png": {
+            "h": 70,
+            "w": 198,
+            "x": 0,
+            "y": 23075
+        },
+        "200/transport_play_sync.png": {
+            "h": 70,
+            "w": 198,
+            "x": 0,
+            "y": 23146
+        },
+        "200/transport_play_sync_on.png": {
+            "h": 70,
+            "w": 198,
+            "x": 0,
+            "y": 23217
+        },
+        "200/transport_playspeedbg.png": {
+            "h": 70,
+            "w": 54,
+            "x": 0,
+            "y": 22947
+        },
+        "200/transport_playspeedthumb.png": {
+            "h": 56,
+            "w": 44,
+            "x": 0,
+            "y": 23018
+        },
+        "200/transport_previous.png": {
+            "h": 58,
+            "w": 174,
+            "x": 0,
+            "y": 23288
+        },
+        "200/transport_record.png": {
+            "h": 70,
+            "w": 204,
+            "x": 0,
+            "y": 23347
+        },
+        "200/transport_record_item.png": {
+            "h": 70,
+            "w": 204,
+            "x": 0,
+            "y": 23418
+        },
+        "200/transport_record_item_on.png": {
+            "h": 70,
+            "w": 204,
+            "x": 0,
+            "y": 23489
+        },
+        "200/transport_record_loop.png": {
+            "h": 70,
+            "w": 204,
+            "x": 0,
+            "y": 23560
+        },
+        "200/transport_record_loop_on.png": {
+            "h": 70,
+            "w": 204,
+            "x": 0,
+            "y": 23631
+        },
+        "200/transport_record_on.png": {
+            "h": 70,
+            "w": 204,
+            "x": 0,
+            "y": 23702
+        },
+        "200/transport_repeat_off.png": {
+            "h": 58,
+            "w": 162,
+            "x": 0,
+            "y": 23773
+        },
+        "200/transport_repeat_on.png": {
+            "h": 58,
+            "w": 162,
+            "x": 0,
+            "y": 23832
+        },
+        "200/transport_stop.png": {
+            "h": 58,
+            "w": 174,
+            "x": 0,
+            "y": 23891
+        },
+        "envcp_arm_off.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 0
+        },
+        "envcp_arm_off_OL.png": {
+            "h": 26,
+            "w": 68,
+            "x": 135,
+            "y": 41
+        },
+        "envcp_arm_on.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 92
+        },
+        "envcp_arm_on_OL.png": {
+            "h": 26,
+            "w": 68,
+            "x": 135,
+            "y": 133
+        },
+        "envcp_bg.png": {
+            "h": 12,
+            "w": 48,
+            "x": 0,
+            "y": 24552
+        },
+        "envcp_bgsel.png": {
+            "h": 12,
+            "w": 48,
+            "x": 0,
+            "y": 24565
+        },
+        "envcp_bypass_off.png": {
+            "h": 3,
+            "w": 3,
+            "x": 8,
+            "y": 184
+        },
+        "envcp_bypass_off_ol.png": {
+            "h": 24,
+            "w": 47,
+            "x": 165,
+            "y": 188
+        },
+        "envcp_bypass_on.png": {
+            "h": 3,
+            "w": 3,
+            "x": 8,
+            "y": 235
+        },
+        "envcp_bypass_on_ol.png": {
+            "h": 24,
+            "w": 47,
+            "x": 165,
+            "y": 239
+        },
+        "envcp_fader.png": {
+            "h": 29,
+            "w": 23,
+            "x": 79,
+            "y": 286
+        },
+        "envcp_hide.png": {
+            "h": 20,
+            "w": 108,
+            "x": 380,
+            "y": 343
+        },
+        "envcp_knob_small.png": {
+            "h": 26,
+            "w": 25,
+            "x": 86,
+            "y": 384
+        },
+        "envcp_learn.png": {
+            "h": 20,
+            "w": 90,
+            "x": 317,
+            "y": 435
+        },
+        "envcp_learn_ol.png": {
+            "h": 24,
+            "w": 92,
+            "x": 321,
+            "y": 476
+        },
+        "envcp_learn_on.png": {
+            "h": 20,
+            "w": 90,
+            "x": 317,
+            "y": 523
+        },
+        "envcp_learn_on_ol.png": {
+            "h": 24,
+            "w": 92,
+            "x": 321,
+            "y": 564
+        },
+        "envcp_parammod.png": {
+            "h": 20,
+            "w": 90,
+            "x": 317,
+            "y": 611
+        },
+        "envcp_parammod_ol.png": {
+            "h": 24,
+            "w": 92,
+            "x": 321,
+            "y": 652
+        },
+        "envcp_parammod_on.png": {
+            "h": 20,
+            "w": 90,
+            "x": 317,
+            "y": 699
+        },
+        "envcp_parammod_on_ol.png": {
+            "h": 24,
+            "w": 92,
+            "x": 321,
+            "y": 740
+        },
+        "folder_end.png": {
+            "h": 3,
+            "w": 3,
+            "x": 0,
+            "y": 24578
+        },
+        "folder_indent.png": {
+            "h": 3,
+            "w": 3,
+            "x": 0,
+            "y": 24582
+        },
+        "folder_start.png": {
+            "h": 3,
+            "w": 3,
+            "x": 0,
+            "y": 24586
+        },
+        "gen_end.png": {
+            "h": 24,
+            "w": 72,
+            "x": 254,
+            "y": 787
+        },
+        "gen_env.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 836
+        },
+        "gen_env_latch.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 877
+        },
+        "gen_env_preview.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 918
+        },
+        "gen_env_read.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 959
+        },
+        "gen_env_touch.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 1000
+        },
+        "gen_env_write.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 1041
+        },
+        "gen_home.png": {
+            "h": 24,
+            "w": 72,
+            "x": 254,
+            "y": 1082
+        },
+        "gen_io.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 1131
+        },
+        "gen_knob_bg_small.png": {
+            "h": 20,
+            "w": 18,
+            "x": 0,
+            "y": 24590
+        },
+        "gen_midi_off.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 1172
+        },
+        "gen_midi_on.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 1213
+        },
+        "gen_mono.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 1254
+        },
+        "gen_mute_off.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 1295
+        },
+        "gen_mute_on.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 1336
+        },
+        "gen_panbg_horz.png": {
+            "h": 14,
+            "w": 14,
+            "x": 0,
+            "y": 24611
+        },
+        "gen_panthumb_horz.png": {
+            "h": 29,
+            "w": 19,
+            "x": 66,
+            "y": 1377
+        },
+        "gen_pause.png": {
+            "h": 24,
+            "w": 72,
+            "x": 254,
+            "y": 1435
+        },
+        "gen_pause_on.png": {
+            "h": 24,
+            "w": 72,
+            "x": 254,
+            "y": 1484
+        },
+        "gen_phase_inv.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 1533
+        },
+        "gen_phase_norm.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 1574
+        },
+        "gen_play.png": {
+            "h": 24,
+            "w": 72,
+            "x": 254,
+            "y": 1615
+        },
+        "gen_play_on.png": {
+            "h": 24,
+            "w": 72,
+            "x": 254,
+            "y": 1664
+        },
+        "gen_repeat_off.png": {
+            "h": 24,
+            "w": 72,
+            "x": 254,
+            "y": 1713
+        },
+        "gen_repeat_on.png": {
+            "h": 24,
+            "w": 72,
+            "x": 254,
+            "y": 1762
+        },
+        "gen_solo_off.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 1811
+        },
+        "gen_solo_on.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 1852
+        },
+        "gen_stereo.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 1893
+        },
+        "gen_stop.png": {
+            "h": 24,
+            "w": 72,
+            "x": 254,
+            "y": 1934
+        },
+        "gen_volbg_horz.png": {
+            "h": 14,
+            "w": 14,
+            "x": 0,
+            "y": 24626
+        },
+        "gen_volbg_vert.png": {
+            "h": 14,
+            "w": 14,
+            "x": 0,
+            "y": 24641
+        },
+        "gen_volthumb_horz.png": {
+            "h": 29,
+            "w": 25,
+            "x": 87,
+            "y": 1983
+        },
+        "gen_volthumb_vert.png": {
+            "h": 31,
+            "w": 21,
+            "x": 74,
+            "y": 2041
+        },
+        "global_bypass.png": {
+            "h": 36,
+            "w": 162,
+            "x": 569,
+            "y": 2096
+        },
+        "global_latch.png": {
+            "h": 36,
+            "w": 162,
+            "x": 569,
+            "y": 2169
+        },
+        "global_off.png": {
+            "h": 36,
+            "w": 162,
+            "x": 569,
+            "y": 2242
+        },
+        "global_preview.png": {
+            "h": 36,
+            "w": 162,
+            "x": 569,
+            "y": 2315
+        },
+        "global_read.png": {
+            "h": 36,
+            "w": 162,
+            "x": 569,
+            "y": 2388
+        },
+        "global_touch.png": {
+            "h": 36,
+            "w": 162,
+            "x": 569,
+            "y": 2461
+        },
+        "global_trim.png": {
+            "h": 36,
+            "w": 162,
+            "x": 569,
+            "y": 2534
+        },
+        "global_write.png": {
+            "h": 36,
+            "w": 162,
+            "x": 569,
+            "y": 2607
+        },
+        "item_bg.png": {
+            "h": 33,
+            "w": 19,
+            "x": 0,
+            "y": 24656
+        },
+        "item_bg_sel.png": {
+            "h": 33,
+            "w": 19,
+            "x": 0,
+            "y": 24690
+        },
+        "item_env_off.png": {
+            "h": 14,
+            "w": 42,
+            "x": 0,
+            "y": 24724
+        },
+        "item_env_on.png": {
+            "h": 14,
+            "w": 42,
+            "x": 0,
+            "y": 24739
+        },
+        "item_fx_off.png": {
+            "h": 14,
+            "w": 42,
+            "x": 0,
+            "y": 24754
+        },
+        "item_fx_on.png": {
+            "h": 14,
+            "w": 42,
+            "x": 0,
+            "y": 24769
+        },
+        "item_group.png": {
+            "h": 14,
+            "w": 42,
+            "x": 0,
+            "y": 24784
+        },
+        "item_group_sel.png": {
+            "h": 14,
+            "w": 42,
+            "x": 0,
+            "y": 24799
+        },
+        "item_lock_off.png": {
+            "h": 14,
+            "w": 42,
+            "x": 0,
+            "y": 24814
+        },
+        "item_lock_on.png": {
+            "h": 14,
+            "w": 42,
+            "x": 0,
+            "y": 24829
+        },
+        "item_mute_off.png": {
+            "h": 14,
+            "w": 42,
+            "x": 0,
+            "y": 24844
+        },
+        "item_mute_on.png": {
+            "h": 14,
+            "w": 42,
+            "x": 0,
+            "y": 24859
+        },
+        "item_note_off.png": {
+            "h": 14,
+            "w": 42,
+            "x": 0,
+            "y": 24874
+        },
+        "item_note_on.png": {
+            "h": 14,
+            "w": 42,
+            "x": 0,
+            "y": 24889
+        },
+        "item_props.png": {
+            "h": 14,
+            "w": 42,
+            "x": 0,
+            "y": 24904
+        },
+        "item_props_on.png": {
+            "h": 14,
+            "w": 42,
+            "x": 0,
+            "y": 24919
+        },
+        "item_vol.png": {
+            "h": 14,
+            "w": 42,
+            "x": 0,
+            "y": 24934
+        },
+        "item_vol_on.png": {
+            "h": 14,
+            "w": 42,
+            "x": 0,
+            "y": 24968
+        },
+        "item_volknob.png": {
+            "h": 18,
+            "w": 48,
+            "x": 0,
+            "y": 24949
+        },
+        "mcp_arrowbuttons_ud.png": {
+            "h": 42,
+            "w": 50,
+            "x": 0,
+            "y": 24983
+        },
+        "mcp_bg.png": {
+            "h": 38,
+            "w": 6,
+            "x": 14,
+            "y": 2680
+        },
+        "mcp_bgsel.png": {
+            "h": 38,
+            "w": 6,
+            "x": 14,
+            "y": 2751
+        },
+        "mcp_env.png": {
+            "h": 32,
+            "w": 65,
+            "x": 228,
+            "y": 2822
+        },
+        "mcp_env_latch.png": {
+            "h": 32,
+            "w": 65,
+            "x": 228,
+            "y": 2885
+        },
+        "mcp_env_preview.png": {
+            "h": 32,
+            "w": 65,
+            "x": 228,
+            "y": 2948
+        },
+        "mcp_env_read.png": {
+            "h": 32,
+            "w": 65,
+            "x": 228,
+            "y": 3011
+        },
+        "mcp_env_touch.png": {
+            "h": 32,
+            "w": 65,
+            "x": 228,
+            "y": 3074
+        },
+        "mcp_env_write.png": {
+            "h": 32,
+            "w": 65,
+            "x": 228,
+            "y": 3137
+        },
+        "mcp_extmixbg.png": {
+            "h": 4,
+            "w": 85,
+            "x": 0,
+            "y": 25026
+        },
+        "mcp_extmixbgsel.png": {
+            "h": 4,
+            "w": 85,
+            "x": 0,
+            "y": 25031
+        },
+        "mcp_fcomp_off.png": {
+            "h": 22,
+            "w": 54,
+            "x": 191,
+            "y": 3200
+        },
+        "mcp_fcomp_tiny.png": {
+            "h": 22,
+            "w": 54,
+            "x": 191,
+            "y": 3245
+        },
+        "mcp_folder_last.png": {
+            "h": 22,
+            "w": 63,
+            "x": 221,
+            "y": 3290
+        },
+        "mcp_fx_dis.png": {
+            "h": 22,
+            "w": 86,
+            "x": 300,
+            "y": 8885
+        },
+        "mcp_fx_empty.png": {
+            "h": 22,
+            "w": 86,
+            "x": 300,
+            "y": 8927
+        },
+        "mcp_fx_in_empty.png": {
+            "h": 3,
+            "w": 3,
+            "x": 8,
+            "y": 8969
+        },
+        "mcp_fx_in_empty_ol.png": {
+            "h": 21,
+            "w": 227,
+            "x": 795,
+            "y": 8973
+        },
+        "mcp_fx_in_norm.png": {
+            "h": 3,
+            "w": 3,
+            "x": 8,
+            "y": 9015
+        },
+        "mcp_fx_in_norm_ol.png": {
+            "h": 21,
+            "w": 227,
+            "x": 795,
+            "y": 9019
+        },
+        "mcp_fx_norm.png": {
+            "h": 22,
+            "w": 86,
+            "x": 300,
+            "y": 9061
+        },
+        "mcp_fxlist_arrows.png": {
+            "h": 44,
+            "w": 20,
+            "x": 0,
+            "y": 25036
+        },
+        "mcp_fxlist_bg.png": {
+            "h": 4,
+            "w": 84,
+            "x": 0,
+            "y": 25081
+        },
+        "mcp_fxlist_byp.png": {
+            "h": 53,
+            "w": 38,
+            "x": 75,
+            "y": 3335
+        },
+        "mcp_fxlist_empty.png": {
+            "h": 53,
+            "w": 38,
+            "x": 75,
+            "y": 3440
+        },
+        "mcp_fxlist_norm.png": {
+            "h": 53,
+            "w": 38,
+            "x": 75,
+            "y": 3545
+        },
+        "mcp_fxlist_off.png": {
+            "h": 44,
+            "w": 9,
+            "x": 0,
+            "y": 25086
+        },
+        "mcp_fxparm_bg.png": {
+            "h": 5,
+            "w": 84,
+            "x": 0,
+            "y": 25131
+        },
+        "mcp_fxparm_byp.png": {
+            "h": 74,
+            "w": 34,
+            "x": 117,
+            "y": 3650
+        },
+        "mcp_fxparm_empty.png": {
+            "h": 74,
+            "w": 34,
+            "x": 117,
+            "y": 3797
+        },
+        "mcp_fxparm_knob_stack.png": {
+            "h": 1150,
+            "w": 23,
+            "x": 88,
+            "y": 3944
+        },
+        "mcp_fxparm_norm.png": {
+            "h": 74,
+            "w": 34,
+            "x": 117,
+            "y": 8591
+        },
+        "mcp_fxparm_off.png": {
+            "h": 74,
+            "w": 34,
+            "x": 117,
+            "y": 8738
+        },
+        "mcp_iconbg.png": {
+            "h": 11,
+            "w": 6,
+            "x": 0,
+            "y": 25137
+        },
+        "mcp_iconbgsel.png": {
+            "h": 11,
+            "w": 6,
+            "x": 0,
+            "y": 25149
+        },
+        "mcp_idxbg.png": {
+            "h": 46,
+            "w": 6,
+            "x": 20,
+            "y": 9103
+        },
+        "mcp_idxbg_sel.png": {
+            "h": 46,
+            "w": 6,
+            "x": 20,
+            "y": 9194
+        },
+        "mcp_io.png": {
+            "h": 32,
+            "w": 71,
+            "x": 249,
+            "y": 9285
+        },
+        "mcp_io_dis.png": {
+            "h": 32,
+            "w": 71,
+            "x": 249,
+            "y": 9348
+        },
+        "mcp_io_r.png": {
+            "h": 32,
+            "w": 71,
+            "x": 249,
+            "y": 9411
+        },
+        "mcp_io_r_dis.png": {
+            "h": 32,
+            "w": 71,
+            "x": 249,
+            "y": 9474
+        },
+        "mcp_io_s.png": {
+            "h": 32,
+            "w": 71,
+            "x": 249,
+            "y": 9537
+        },
+        "mcp_io_s_dis.png": {
+            "h": 32,
+            "w": 71,
+            "x": 249,
+            "y": 9600
+        },
+        "mcp_io_s_r.png": {
+            "h": 32,
+            "w": 71,
+            "x": 249,
+            "y": 9663
+        },
+        "mcp_io_s_r_dis.png": {
+            "h": 32,
+            "w": 71,
+            "x": 249,
+            "y": 9726
+        },
+        "mcp_main_namebg.png": {
+            "h": 9,
+            "w": 8,
+            "x": 18,
+            "y": 9789
+        },
+        "mcp_main_namebg_sel.png": {
+            "h": 9,
+            "w": 8,
+            "x": 18,
+            "y": 9801
+        },
+        "mcp_mainbg.png": {
+            "h": 9,
+            "w": 22,
+            "x": 0,
+            "y": 25161
+        },
+        "mcp_mainbgsel.png": {
+            "h": 9,
+            "w": 22,
+            "x": 0,
+            "y": 25171
+        },
+        "mcp_master_vol_label.png": {
+            "h": 5,
+            "w": 43,
+            "x": 136,
+            "y": 9916
+        },
+        "mcp_master_volbg.png": {
+            "h": 52,
+            "w": 129,
+            "x": 451,
+            "y": 9813
+        },
+        "mcp_monitor_auto.png": {
+            "h": 20,
+            "w": 63,
+            "x": 224,
+            "y": 9922
+        },
+        "mcp_monitor_off.png": {
+            "h": 20,
+            "w": 63,
+            "x": 224,
+            "y": 9963
+        },
+        "mcp_monitor_on.png": {
+            "h": 20,
+            "w": 63,
+            "x": 224,
+            "y": 10004
+        },
+        "mcp_mono.png": {
+            "h": 35,
+            "w": 77,
+            "x": 270,
+            "y": 10045
+        },
+        "mcp_mute_off.png": {
+            "h": 20,
+            "w": 63,
+            "x": 224,
+            "y": 10114
+        },
+        "mcp_mute_off_ol.png": {
+            "h": 24,
+            "w": 65,
+            "x": 228,
+            "y": 10155
+        },
+        "mcp_mute_on.png": {
+            "h": 20,
+            "w": 63,
+            "x": 224,
+            "y": 10202
+        },
+        "mcp_namebg.png": {
+            "h": 7,
+            "w": 5,
+            "x": 0,
+            "y": 25181
+        },
+        "mcp_pan_knob_small.png": {
+            "h": 24,
+            "w": 22,
+            "x": 76,
+            "y": 10310
+        },
+        "mcp_pan_label.png": {
+            "h": 4,
+            "w": 4,
+            "x": 0,
+            "y": 25189
+        },
+        "mcp_panbg.png": {
+            "h": 11,
+            "w": 69,
+            "x": 207,
+            "y": 10243
+        },
+        "mcp_panthumb.png": {
+            "h": 23,
+            "w": 13,
+            "x": 43,
+            "y": 10264
+        },
+        "mcp_phase_inv.png": {
+            "h": 18,
+            "w": 48,
+            "x": 170,
+            "y": 10357
+        },
+        "mcp_phase_norm.png": {
+            "h": 18,
+            "w": 48,
+            "x": 171,
+            "y": 10394
+        },
+        "mcp_recarm_auto.png": {
+            "h": 24,
+            "w": 108,
+            "x": 380,
+            "y": 10431
+        },
+        "mcp_recarm_auto_norec.png": {
+            "h": 24,
+            "w": 108,
+            "x": 380,
+            "y": 10480
+        },
+        "mcp_recarm_auto_on.png": {
+            "h": 24,
+            "w": 108,
+            "x": 380,
+            "y": 10530
+        },
+        "mcp_recarm_norec.png": {
+            "h": 24,
+            "w": 108,
+            "x": 380,
+            "y": 10579
+        },
+        "mcp_recarm_off.png": {
+            "h": 24,
+            "w": 108,
+            "x": 380,
+            "y": 10629
+        },
+        "mcp_recarm_on.png": {
+            "h": 24,
+            "w": 108,
+            "x": 380,
+            "y": 10678
+        },
+        "mcp_recinput.png": {
+            "h": 18,
+            "w": 25,
+            "x": 87,
+            "y": 10727
+        },
+        "mcp_recmode_in.png": {
+            "h": 18,
+            "w": 125,
+            "x": 438,
+            "y": 10762
+        },
+        "mcp_recmode_off.png": {
+            "h": 18,
+            "w": 125,
+            "x": 438,
+            "y": 10797
+        },
+        "mcp_recmode_out.png": {
+            "h": 18,
+            "w": 125,
+            "x": 438,
+            "y": 10832
+        },
+        "mcp_send_knob_stack.png": {
+            "h": 700,
+            "w": 28,
+            "x": 57,
+            "y": 11314
+        },
+        "mcp_sendlist_arrows.png": {
+            "h": 44,
+            "w": 20,
+            "x": 0,
+            "y": 25194
+        },
+        "mcp_sendlist_bg.png": {
+            "h": 4,
+            "w": 72,
+            "x": 0,
+            "y": 25239
+        },
+        "mcp_sendlist_empty.png": {
+            "h": 50,
+            "w": 38,
+            "x": 133,
+            "y": 10867
+        },
+        "mcp_sendlist_meter.png": {
+            "h": 26,
+            "w": 38,
+            "x": 135,
+            "y": 10966
+        },
+        "mcp_sendlist_midihw.png": {
+            "h": 50,
+            "w": 38,
+            "x": 75,
+            "y": 11017
+        },
+        "mcp_sendlist_mute.png": {
+            "h": 50,
+            "w": 38,
+            "x": 133,
+            "y": 11116
+        },
+        "mcp_sendlist_norm.png": {
+            "h": 50,
+            "w": 38,
+            "x": 133,
+            "y": 11215
+        },
+        "mcp_solo_off.png": {
+            "h": 20,
+            "w": 63,
+            "x": 224,
+            "y": 14156
+        },
+        "mcp_solo_off_ol.png": {
+            "h": 24,
+            "w": 65,
+            "x": 228,
+            "y": 14197
+        },
+        "mcp_solo_on.png": {
+            "h": 20,
+            "w": 63,
+            "x": 224,
+            "y": 14244
+        },
+        "mcp_solodefeat_on.png": {
+            "h": 20,
+            "w": 63,
+            "x": 224,
+            "y": 14115
+        },
+        "mcp_stereo.png": {
+            "h": 35,
+            "w": 77,
+            "x": 270,
+            "y": 14285
+        },
+        "mcp_vol_label.png": {
+            "h": 5,
+            "w": 43,
+            "x": 145,
+            "y": 14516
+        },
+        "mcp_volbg.png": {
+            "h": 55,
+            "w": 88,
+            "x": 307,
+            "y": 14354
+        },
+        "mcp_volbg_horz.png": {
+            "h": 4,
+            "w": 4,
+            "x": 0,
+            "y": 25244
+        },
+        "mcp_volthumb.png": {
+            "h": 53,
+            "w": 24,
+            "x": 85,
+            "y": 14411
+        },
+        "mcp_wid_label.png": {
+            "h": 4,
+            "w": 4,
+            "x": 0,
+            "y": 25249
+        },
+        "mcp_width_knob_small.png": {
+            "h": 24,
+            "w": 22,
+            "x": 76,
+            "y": 14589
+        },
+        "mcp_widthbg.png": {
+            "h": 11,
+            "w": 69,
+            "x": 207,
+            "y": 14522
+        },
+        "mcp_widththumb.png": {
+            "h": 23,
+            "w": 13,
+            "x": 43,
+            "y": 14543
+        },
+        "meter_bg_h.png": {
+            "h": 4,
+            "w": 4,
+            "x": 0,
+            "y": 25254
+        },
+        "meter_bg_mcp.png": {
+            "h": 36,
+            "w": 39,
+            "x": 135,
+            "y": 14636
+        },
+        "meter_bg_tcp.png": {
+            "h": 14,
+            "w": 44,
+            "x": 153,
+            "y": 14707
+        },
+        "meter_bg_v.png": {
+            "h": 4,
+            "w": 4,
+            "x": 0,
+            "y": 25259
+        },
+        "meter_clip_h.png": {
+            "h": 4,
+            "w": 8,
+            "x": 0,
+            "y": 25264
+        },
+        "meter_clip_v.png": {
+            "h": 8,
+            "w": 4,
+            "x": 0,
+            "y": 25269
+        },
+        "meter_clip_v_rms2.png": {
+            "h": 4,
+            "w": 4,
+            "x": 0,
+            "y": 25278
+        },
+        "meter_foldermute.png": {
+            "h": 12,
+            "w": 12,
+            "x": 0,
+            "y": 25283
+        },
+        "meter_mute.png": {
+            "h": 12,
+            "w": 12,
+            "x": 0,
+            "y": 25296
+        },
+        "meter_solodim.png": {
+            "h": 12,
+            "w": 12,
+            "x": 0,
+            "y": 25309
+        },
+        "meter_strip_h.png": {
+            "h": 16,
+            "w": 4,
+            "x": 0,
+            "y": 25322
+        },
+        "meter_strip_v.png": {
+            "h": 2,
+            "w": 32,
+            "x": 0,
+            "y": 25339
+        },
+        "meter_strip_v_rms.png": {
+            "h": 2,
+            "w": 32,
+            "x": 0,
+            "y": 25342
+        },
+        "meter_unsolo.png": {
+            "h": 12,
+            "w": 12,
+            "x": 0,
+            "y": 25345
+        },
+        "midi_inline_ccwithitems_off.png": {
+            "h": 14,
+            "w": 42,
+            "x": 0,
+            "y": 25358
+        },
+        "midi_inline_ccwithitems_on.png": {
+            "h": 14,
+            "w": 42,
+            "x": 0,
+            "y": 25373
+        },
+        "midi_inline_close.png": {
+            "h": 14,
+            "w": 42,
+            "x": 0,
+            "y": 25388
+        },
+        "midi_inline_fold_none.png": {
+            "h": 14,
+            "w": 42,
+            "x": 0,
+            "y": 25403
+        },
+        "midi_inline_fold_unnamed.png": {
+            "h": 14,
+            "w": 42,
+            "x": 0,
+            "y": 25418
+        },
+        "midi_inline_fold_unused_unnamed.png": {
+            "h": 14,
+            "w": 42,
+            "x": 0,
+            "y": 25433
+        },
+        "midi_inline_noteview_diamond.png": {
+            "h": 14,
+            "w": 42,
+            "x": 0,
+            "y": 25448
+        },
+        "midi_inline_noteview_rect.png": {
+            "h": 14,
+            "w": 42,
+            "x": 0,
+            "y": 25463
+        },
+        "midi_inline_noteview_triangle.png": {
+            "h": 14,
+            "w": 42,
+            "x": 0,
+            "y": 25478
+        },
+        "midi_inline_scroll.png": {
+            "h": 14,
+            "w": 42,
+            "x": 0,
+            "y": 25493
+        },
+        "midi_inline_scrollbar.png": {
+            "h": 19,
+            "w": 12,
+            "x": 0,
+            "y": 25508
+        },
+        "midi_inline_scrollthumb.png": {
+            "h": 16,
+            "w": 45,
+            "x": 0,
+            "y": 25528
+        },
+        "midi_note_colormap.png": {
+            "h": 130,
+            "w": 157,
+            "x": 0,
+            "y": 25545
+        },
+        "midi_score_colormap.png": {
+            "h": 130,
+            "w": 157,
+            "x": 0,
+            "y": 25676
+        },
+        "mixer_menu.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 14735
+        },
+        "monitor_fx_byp.png": {
+            "h": 16,
+            "w": 156,
+            "x": 548,
+            "y": 14776
+        },
+        "monitor_fx_byp_byp.png": {
+            "h": 16,
+            "w": 45,
+            "x": 160,
+            "y": 14809
+        },
+        "monitor_fx_byp_off.png": {
+            "h": 16,
+            "w": 45,
+            "x": 160,
+            "y": 14842
+        },
+        "monitor_fx_byp_on.png": {
+            "h": 16,
+            "w": 45,
+            "x": 160,
+            "y": 14875
+        },
+        "monitor_fx_off.png": {
+            "h": 16,
+            "w": 156,
+            "x": 548,
+            "y": 14908
+        },
+        "monitor_fx_on.png": {
+            "h": 16,
+            "w": 156,
+            "x": 548,
+            "y": 14941
+        },
+        "piano_black_key.png": {
+            "h": 10,
+            "w": 9,
+            "x": 0,
+            "y": 25807
+        },
+        "piano_black_key_sel.png": {
+            "h": 10,
+            "w": 9,
+            "x": 0,
+            "y": 25818
+        },
+        "piano_white_key.png": {
+            "h": 10,
+            "w": 9,
+            "x": 0,
+            "y": 25829
+        },
+        "piano_white_key_sel.png": {
+            "h": 10,
+            "w": 9,
+            "x": 0,
+            "y": 25840
+        },
+        "scrollbar.png": {
+            "h": 238,
+            "w": 204,
+            "x": 0,
+            "y": 25851
+        },
+        "scrollbar_3.png": {
+            "h": 238,
+            "w": 204,
+            "x": 0,
+            "y": 26090
+        },
+        "table_expand_off.png": {
+            "h": 16,
+            "w": 48,
+            "x": 170,
+            "y": 14974
+        },
+        "table_expand_on.png": {
+            "h": 16,
+            "w": 48,
+            "x": 170,
+            "y": 15007
+        },
+        "table_locked_off.png": {
+            "h": 16,
+            "w": 48,
+            "x": 170,
+            "y": 15040
+        },
+        "table_locked_on.png": {
+            "h": 16,
+            "w": 48,
+            "x": 170,
+            "y": 15073
+        },
+        "table_locked_partial.png": {
+            "h": 16,
+            "w": 48,
+            "x": 170,
+            "y": 15106
+        },
+        "table_mute_off.png": {
+            "h": 16,
+            "w": 48,
+            "x": 170,
+            "y": 15139
+        },
+        "table_mute_on.png": {
+            "h": 16,
+            "w": 48,
+            "x": 170,
+            "y": 15172
+        },
+        "table_recarm_off.png": {
+            "h": 16,
+            "w": 48,
+            "x": 170,
+            "y": 15205
+        },
+        "table_recarm_on.png": {
+            "h": 16,
+            "w": 48,
+            "x": 170,
+            "y": 15238
+        },
+        "table_remove_off.png": {
+            "h": 16,
+            "w": 48,
+            "x": 170,
+            "y": 15271
+        },
+        "table_remove_on.png": {
+            "h": 16,
+            "w": 48,
+            "x": 170,
+            "y": 15304
+        },
+        "table_solo_off.png": {
+            "h": 16,
+            "w": 48,
+            "x": 170,
+            "y": 15337
+        },
+        "table_solo_on.png": {
+            "h": 16,
+            "w": 48,
+            "x": 170,
+            "y": 15370
+        },
+        "table_sub_expand_off.png": {
+            "h": 16,
+            "w": 48,
+            "x": 170,
+            "y": 15403
+        },
+        "table_sub_expand_on.png": {
+            "h": 16,
+            "w": 48,
+            "x": 170,
+            "y": 15436
+        },
+        "table_target_invalid.png": {
+            "h": 16,
+            "w": 48,
+            "x": 170,
+            "y": 15469
+        },
+        "table_target_off.png": {
+            "h": 16,
+            "w": 48,
+            "x": 170,
+            "y": 15502
+        },
+        "table_target_on.png": {
+            "h": 16,
+            "w": 48,
+            "x": 170,
+            "y": 15535
+        },
+        "table_visible_off.png": {
+            "h": 16,
+            "w": 48,
+            "x": 170,
+            "y": 15568
+        },
+        "table_visible_on.png": {
+            "h": 16,
+            "w": 48,
+            "x": 170,
+            "y": 15601
+        },
+        "table_visible_partial.png": {
+            "h": 16,
+            "w": 48,
+            "x": 170,
+            "y": 15634
+        },
+        "tcp_arrowbuttons_lr.png": {
+            "h": 33,
+            "w": 26,
+            "x": 0,
+            "y": 26329
+        },
+        "tcp_arrowbuttons_ud.png": {
+            "h": 42,
+            "w": 50,
+            "x": 0,
+            "y": 26363
+        },
+        "tcp_bg.png": {
+            "h": 12,
+            "w": 48,
+            "x": 0,
+            "y": 26406
+        },
+        "tcp_bgsel.png": {
+            "h": 12,
+            "w": 48,
+            "x": 0,
+            "y": 26419
+        },
+        "tcp_fxparm_arrows_lr.png": {
+            "h": 32,
+            "w": 30,
+            "x": 59,
+            "y": 15667
+        },
+        "tcp_fxparm_arrows_ud.png": {
+            "h": 20,
+            "w": 30,
+            "x": 0,
+            "y": 26432
+        },
+        "tcp_fxparm_bg.png": {
+            "h": 10,
+            "w": 10,
+            "x": 0,
+            "y": 26453
+        },
+        "tcp_fxparm_byp.png": {
+            "h": 74,
+            "w": 31,
+            "x": 0,
+            "y": 26464
+        },
+        "tcp_iconbg.png": {
+            "h": 16,
+            "w": 15,
+            "x": 0,
+            "y": 26539
+        },
+        "tcp_iconbgsel.png": {
+            "h": 16,
+            "w": 15,
+            "x": 0,
+            "y": 26556
+        },
+        "tcp_idxbg.png": {
+            "h": 5,
+            "w": 23,
+            "x": 80,
+            "y": 15730
+        },
+        "tcp_idxbg_sel.png": {
+            "h": 6,
+            "w": 23,
+            "x": 80,
+            "y": 15739
+        },
+        "tcp_main_namebg_sel.png": {
+            "h": 3,
+            "w": 3,
+            "x": 0,
+            "y": 26593
+        },
+        "tcp_mainbg.png": {
+            "h": 9,
+            "w": 22,
+            "x": 0,
+            "y": 26573
+        },
+        "tcp_mainbgsel.png": {
+            "h": 9,
+            "w": 22,
+            "x": 0,
+            "y": 26583
+        },
+        "tcp_namebg.png": {
+            "h": 24,
+            "w": 5,
+            "x": 6,
+            "y": 15750
+        },
+        "tcp_pan_knob_small.png": {
+            "h": 25,
+            "w": 24,
+            "x": 82,
+            "y": 15842
+        },
+        "tcp_panbg.png": {
+            "h": 11,
+            "w": 43,
+            "x": 85,
+            "y": 15775
+        },
+        "tcp_panthumb.png": {
+            "h": 23,
+            "w": 13,
+            "x": 43,
+            "y": 15796
+        },
+        "tcp_recinput.png": {
+            "h": 22,
+            "w": 20,
+            "x": 69,
+            "y": 15891
+        },
+        "tcp_solodefeat_on.png": {
+            "h": 20,
+            "w": 63,
+            "x": 16,
+            "y": 15934
+        },
+        "tcp_solodefeat_on_ol.png": {
+            "h": 52,
+            "w": 74,
+            "x": 258,
+            "y": 15955
+        },
+        "tcp_vol_knob_small.png": {
+            "h": 26,
+            "w": 25,
+            "x": 86,
+            "y": 16162
+        },
+        "tcp_volbg.png": {
+            "h": 24,
+            "w": 13,
+            "x": 45,
+            "y": 16058
+        },
+        "tcp_volthumb.png": {
+            "h": 29,
+            "w": 23,
+            "x": 79,
+            "y": 16105
+        },
+        "tcp_width_knob_small.png": {
+            "h": 25,
+            "w": 24,
+            "x": 82,
+            "y": 16280
+        },
+        "tcp_widthbg.png": {
+            "h": 11,
+            "w": 43,
+            "x": 85,
+            "y": 16213
+        },
+        "tcp_widththumb.png": {
+            "h": 23,
+            "w": 13,
+            "x": 43,
+            "y": 16234
+        },
+        "toolbar_blank.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 16329
+        },
+        "toolbar_dock_off.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 16390
+        },
+        "toolbar_dock_on.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 16451
+        },
+        "toolbar_envitem_off.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 16512
+        },
+        "toolbar_envitem_on.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 16573
+        },
+        "toolbar_filter_off.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 16634
+        },
+        "toolbar_filter_on.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 16695
+        },
+        "toolbar_grid_off.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 16756
+        },
+        "toolbar_grid_on.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 16817
+        },
+        "toolbar_group_off.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 16878
+        },
+        "toolbar_group_on.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 16939
+        },
+        "toolbar_load.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 17000
+        },
+        "toolbar_lock_off.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 17061
+        },
+        "toolbar_lock_on.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 17122
+        },
+        "toolbar_metro_off.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 17183
+        },
+        "toolbar_metro_on.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 17244
+        },
+        "toolbar_midi_itemsel_off.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 17305
+        },
+        "toolbar_midi_itemsel_on.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 17366
+        },
+        "toolbar_midi_mode_event_list.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 17427
+        },
+        "toolbar_midi_mode_musical_notation.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 17488
+        },
+        "toolbar_midi_mode_named_notes.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 17549
+        },
+        "toolbar_midi_mode_piano_roll.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 17610
+        },
+        "toolbar_midi_step.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 17671
+        },
+        "toolbar_midi_tracksel_off.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 17732
+        },
+        "toolbar_midi_tracksel_on.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 17793
+        },
+        "toolbar_new.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 17854
+        },
+        "toolbar_projprop.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 17915
+        },
+        "toolbar_quant_off.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 17976
+        },
+        "toolbar_quant_on.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 18037
+        },
+        "toolbar_redo.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 18098
+        },
+        "toolbar_relsnap_off.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 18159
+        },
+        "toolbar_relsnap_on.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 18220
+        },
+        "toolbar_replacemode.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 18281
+        },
+        "toolbar_revert.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 18342
+        },
+        "toolbar_ripple_all.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 18403
+        },
+        "toolbar_ripple_off.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 18464
+        },
+        "toolbar_ripple_one.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 18525
+        },
+        "toolbar_save.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 18586
+        },
+        "toolbar_snap_off.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 18647
+        },
+        "toolbar_snap_on.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 18708
+        },
+        "toolbar_undo.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 18769
+        },
+        "toolbar_xfade_off.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 18830
+        },
+        "toolbar_xfade_on.png": {
+            "h": 30,
+            "w": 90,
+            "x": 317,
+            "y": 18891
+        },
+        "toosmall_b.png": {
+            "h": 16,
+            "w": 16,
+            "x": 0,
+            "y": 26597
+        },
+        "toosmall_r.png": {
+            "h": 14,
+            "w": 24,
+            "x": 49,
+            "y": 18952
+        },
+        "track_env.png": {
+            "h": 20,
+            "w": 123,
+            "x": 434,
+            "y": 18967
+        },
+        "track_env_latch.png": {
+            "h": 20,
+            "w": 123,
+            "x": 434,
+            "y": 19008
+        },
+        "track_env_latch_ol.png": {
+            "h": 24,
+            "w": 125,
+            "x": 438,
+            "y": 19049
+        },
+        "track_env_ol.png": {
+            "h": 24,
+            "w": 125,
+            "x": 438,
+            "y": 19096
+        },
+        "track_env_preview.png": {
+            "h": 20,
+            "w": 123,
+            "x": 434,
+            "y": 19143
+        },
+        "track_env_preview_ol.png": {
+            "h": 24,
+            "w": 125,
+            "x": 438,
+            "y": 19184
+        },
+        "track_env_read.png": {
+            "h": 20,
+            "w": 123,
+            "x": 434,
+            "y": 19231
+        },
+        "track_env_read_ol.png": {
+            "h": 24,
+            "w": 125,
+            "x": 438,
+            "y": 19272
+        },
+        "track_env_touch.png": {
+            "h": 20,
+            "w": 123,
+            "x": 434,
+            "y": 19319
+        },
+        "track_env_touch_ol.png": {
+            "h": 24,
+            "w": 125,
+            "x": 438,
+            "y": 19360
+        },
+        "track_env_write.png": {
+            "h": 20,
+            "w": 123,
+            "x": 434,
+            "y": 19407
+        },
+        "track_env_write_ol.png": {
+            "h": 24,
+            "w": 125,
+            "x": 438,
+            "y": 19448
+        },
+        "track_fcomp_off.png": {
+            "h": 19,
+            "w": 54,
+            "x": 191,
+            "y": 19495
+        },
+        "track_fcomp_small.png": {
+            "h": 19,
+            "w": 54,
+            "x": 191,
+            "y": 19534
+        },
+        "track_fcomp_tiny.png": {
+            "h": 19,
+            "w": 54,
+            "x": 191,
+            "y": 19573
+        },
+        "track_folder_last.png": {
+            "h": 14,
+            "w": 54,
+            "x": 191,
+            "y": 19612
+        },
+        "track_folder_off.png": {
+            "h": 14,
+            "w": 54,
+            "x": 191,
+            "y": 19641
+        },
+        "track_folder_on.png": {
+            "h": 14,
+            "w": 54,
+            "x": 191,
+            "y": 19670
+        },
+        "track_fx_dis.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 20092
+        },
+        "track_fx_dis_ol.png": {
+            "h": 24,
+            "w": 62,
+            "x": 218,
+            "y": 20133
+        },
+        "track_fx_empty.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 20180
+        },
+        "track_fx_empty_ol.png": {
+            "h": 24,
+            "w": 62,
+            "x": 218,
+            "y": 20221
+        },
+        "track_fx_in_empty.png": {
+            "h": 20,
+            "w": 87,
+            "x": 308,
+            "y": 20268
+        },
+        "track_fx_in_norm.png": {
+            "h": 20,
+            "w": 87,
+            "x": 308,
+            "y": 20309
+        },
+        "track_fx_norm.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 20350
+        },
+        "track_fx_norm_ol.png": {
+            "h": 24,
+            "w": 62,
+            "x": 218,
+            "y": 20391
+        },
+        "track_fxempty_h.png": {
+            "h": 20,
+            "w": 48,
+            "x": 170,
+            "y": 19699
+        },
+        "track_fxempty_h_ol.png": {
+            "h": 24,
+            "w": 50,
+            "x": 174,
+            "y": 19740
+        },
+        "track_fxempty_v.png": {
+            "h": 22,
+            "w": 59,
+            "x": 204,
+            "y": 19787
+        },
+        "track_fxoff_h.png": {
+            "h": 20,
+            "w": 48,
+            "x": 170,
+            "y": 19830
+        },
+        "track_fxoff_h_ol.png": {
+            "h": 24,
+            "w": 50,
+            "x": 174,
+            "y": 19871
+        },
+        "track_fxoff_v.png": {
+            "h": 22,
+            "w": 59,
+            "x": 204,
+            "y": 19918
+        },
+        "track_fxon_h.png": {
+            "h": 20,
+            "w": 48,
+            "x": 170,
+            "y": 19961
+        },
+        "track_fxon_h_ol.png": {
+            "h": 24,
+            "w": 50,
+            "x": 174,
+            "y": 20002
+        },
+        "track_fxon_v.png": {
+            "h": 22,
+            "w": 59,
+            "x": 204,
+            "y": 20049
+        },
+        "track_io.png": {
+            "h": 20,
+            "w": 102,
+            "x": 359,
+            "y": 20438
+        },
+        "track_io_dis.png": {
+            "h": 20,
+            "w": 102,
+            "x": 359,
+            "y": 20479
+        },
+        "track_io_dis_ol.png": {
+            "h": 24,
+            "w": 104,
+            "x": 363,
+            "y": 20520
+        },
+        "track_io_ol.png": {
+            "h": 24,
+            "w": 104,
+            "x": 363,
+            "y": 20567
+        },
+        "track_io_r.png": {
+            "h": 20,
+            "w": 102,
+            "x": 359,
+            "y": 20614
+        },
+        "track_io_r_dis.png": {
+            "h": 20,
+            "w": 102,
+            "x": 359,
+            "y": 20655
+        },
+        "track_io_r_dis_ol.png": {
+            "h": 24,
+            "w": 104,
+            "x": 363,
+            "y": 20696
+        },
+        "track_io_r_ol.png": {
+            "h": 24,
+            "w": 104,
+            "x": 363,
+            "y": 20743
+        },
+        "track_io_s.png": {
+            "h": 20,
+            "w": 102,
+            "x": 359,
+            "y": 20790
+        },
+        "track_io_s_dis.png": {
+            "h": 20,
+            "w": 102,
+            "x": 359,
+            "y": 20831
+        },
+        "track_io_s_dis_ol.png": {
+            "h": 24,
+            "w": 104,
+            "x": 363,
+            "y": 20872
+        },
+        "track_io_s_ol.png": {
+            "h": 24,
+            "w": 104,
+            "x": 363,
+            "y": 20919
+        },
+        "track_io_s_r.png": {
+            "h": 20,
+            "w": 102,
+            "x": 359,
+            "y": 20966
+        },
+        "track_io_s_r_dis.png": {
+            "h": 20,
+            "w": 102,
+            "x": 359,
+            "y": 21007
+        },
+        "track_io_s_r_dis_ol.png": {
+            "h": 24,
+            "w": 104,
+            "x": 363,
+            "y": 21048
+        },
+        "track_io_s_r_ol.png": {
+            "h": 24,
+            "w": 104,
+            "x": 363,
+            "y": 21095
+        },
+        "track_monitor_auto.png": {
+            "h": 4,
+            "w": 4,
+            "x": 10,
+            "y": 21142
+        },
+        "track_monitor_auto_ol.png": {
+            "h": 24,
+            "w": 47,
+            "x": 159,
+            "y": 21147
+        },
+        "track_monitor_off.png": {
+            "h": 4,
+            "w": 4,
+            "x": 10,
+            "y": 21194
+        },
+        "track_monitor_off_ol.png": {
+            "h": 24,
+            "w": 47,
+            "x": 159,
+            "y": 21199
+        },
+        "track_monitor_on.png": {
+            "h": 4,
+            "w": 4,
+            "x": 10,
+            "y": 21246
+        },
+        "track_monitor_on_ol.png": {
+            "h": 24,
+            "w": 47,
+            "x": 159,
+            "y": 21251
+        },
+        "track_mono.png": {
+            "h": 20,
+            "w": 150,
+            "x": 527,
+            "y": 21298
+        },
+        "track_mute_off.png": {
+            "h": 4,
+            "w": 4,
+            "x": 10,
+            "y": 21339
+        },
+        "track_mute_off_ol.png": {
+            "h": 24,
+            "w": 65,
+            "x": 228,
+            "y": 21344
+        },
+        "track_mute_on.png": {
+            "h": 4,
+            "w": 4,
+            "x": 10,
+            "y": 21391
+        },
+        "track_mute_on_ol.png": {
+            "h": 20,
+            "w": 63,
+            "x": 224,
+            "y": 21396
+        },
+        "track_phase_inv.png": {
+            "h": 4,
+            "w": 4,
+            "x": 10,
+            "y": 21437
+        },
+        "track_phase_inv_ol.png": {
+            "h": 20,
+            "w": 48,
+            "x": 170,
+            "y": 21442
+        },
+        "track_phase_norm.png": {
+            "h": 4,
+            "w": 4,
+            "x": 10,
+            "y": 21483
+        },
+        "track_phase_norm_ol.png": {
+            "h": 20,
+            "w": 48,
+            "x": 170,
+            "y": 21488
+        },
+        "track_recarm_auto.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 21529
+        },
+        "track_recarm_auto_norec.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 21570
+        },
+        "track_recarm_auto_norec_ol.png": {
+            "h": 26,
+            "w": 68,
+            "x": 234,
+            "y": 21611
+        },
+        "track_recarm_auto_ol.png": {
+            "h": 26,
+            "w": 68,
+            "x": 234,
+            "y": 21662
+        },
+        "track_recarm_auto_on.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 21713
+        },
+        "track_recarm_auto_on_ol.png": {
+            "h": 26,
+            "w": 68,
+            "x": 234,
+            "y": 21754
+        },
+        "track_recarm_norec.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 21805
+        },
+        "track_recarm_norec_ol.png": {
+            "h": 26,
+            "w": 68,
+            "x": 234,
+            "y": 21846
+        },
+        "track_recarm_off.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 21897
+        },
+        "track_recarm_off_ol.png": {
+            "h": 26,
+            "w": 68,
+            "x": 234,
+            "y": 21938
+        },
+        "track_recarm_on.png": {
+            "h": 20,
+            "w": 60,
+            "x": 212,
+            "y": 21989
+        },
+        "track_recarm_on_ol.png": {
+            "h": 26,
+            "w": 68,
+            "x": 234,
+            "y": 22030
+        },
+        "track_recmode_in.png": {
+            "h": 20,
+            "w": 117,
+            "x": 413,
+            "y": 22081
+        },
+        "track_recmode_off.png": {
+            "h": 20,
+            "w": 117,
+            "x": 413,
+            "y": 22122
+        },
+        "track_recmode_out.png": {
+            "h": 20,
+            "w": 117,
+            "x": 413,
+            "y": 22163
+        },
+        "track_solo_off.png": {
+            "h": 3,
+            "w": 3,
+            "x": 12,
+            "y": 22204
+        },
+        "track_solo_off_ol.png": {
+            "h": 52,
+            "w": 74,
+            "x": 258,
+            "y": 22212
+        },
+        "track_solo_on.png": {
+            "h": 3,
+            "w": 3,
+            "x": 12,
+            "y": 22315
+        },
+        "track_solo_on_ol.png": {
+            "h": 52,
+            "w": 74,
+            "x": 258,
+            "y": 22323
+        },
+        "track_stereo.png": {
+            "h": 20,
+            "w": 150,
+            "x": 527,
+            "y": 22426
+        },
+        "track_stereo_ol.png": {
+            "h": 24,
+            "w": 152,
+            "x": 531,
+            "y": 22467
+        },
+        "transport_bg.png": {
+            "h": 5,
+            "w": 6,
+            "x": 0,
+            "y": 26614
+        },
+        "transport_bpm.png": {
+            "h": 10,
+            "w": 6,
+            "x": 0,
+            "y": 26620
+        },
+        "transport_bpm_bg.png": {
+            "h": 10,
+            "w": 6,
+            "x": 0,
+            "y": 26631
+        },
+        "transport_end.png": {
+            "h": 29,
+            "w": 84,
+            "x": 296,
+            "y": 22514
+        },
+        "transport_home.png": {
+            "h": 29,
+            "w": 87,
+            "x": 308,
+            "y": 22573
+        },
+        "transport_knob_bg_large.png": {
+            "h": 34,
+            "w": 32,
+            "x": 111,
+            "y": 22632
+        },
+        "transport_next.png": {
+            "h": 29,
+            "w": 84,
+            "x": 296,
+            "y": 22699
+        },
+        "transport_pause.png": {
+            "h": 29,
+            "w": 87,
+            "x": 308,
+            "y": 22758
+        },
+        "transport_pause_on.png": {
+            "h": 29,
+            "w": 87,
+            "x": 308,
+            "y": 22817
+        },
+        "transport_play.png": {
+            "h": 35,
+            "w": 99,
+            "x": 350,
+            "y": 22876
+        },
+        "transport_play_on.png": {
+            "h": 35,
+            "w": 99,
+            "x": 350,
+            "y": 23075
+        },
+        "transport_play_sync.png": {
+            "h": 35,
+            "w": 99,
+            "x": 350,
+            "y": 23146
+        },
+        "transport_play_sync_on.png": {
+            "h": 35,
+            "w": 99,
+            "x": 350,
+            "y": 23217
+        },
+        "transport_playspeedbg.png": {
+            "h": 10,
+            "w": 6,
+            "x": 97,
+            "y": 22947
+        },
+        "transport_playspeedthumb.png": {
+            "h": 27,
+            "w": 23,
+            "x": 79,
+            "y": 23018
+        },
+        "transport_previous.png": {
+            "h": 29,
+            "w": 87,
+            "x": 308,
+            "y": 23288
+        },
+        "transport_record.png": {
+            "h": 35,
+            "w": 102,
+            "x": 359,
+            "y": 23347
+        },
+        "transport_record_item.png": {
+            "h": 35,
+            "w": 102,
+            "x": 359,
+            "y": 23418
+        },
+        "transport_record_item_on.png": {
+            "h": 35,
+            "w": 102,
+            "x": 359,
+            "y": 23489
+        },
+        "transport_record_loop.png": {
+            "h": 35,
+            "w": 102,
+            "x": 359,
+            "y": 23560
+        },
+        "transport_record_loop_on.png": {
+            "h": 35,
+            "w": 102,
+            "x": 359,
+            "y": 23631
+        },
+        "transport_record_on.png": {
+            "h": 35,
+            "w": 102,
+            "x": 359,
+            "y": 23702
+        },
+        "transport_repeat_off.png": {
+            "h": 29,
+            "w": 81,
+            "x": 284,
+            "y": 23773
+        },
+        "transport_repeat_on.png": {
+            "h": 29,
+            "w": 81,
+            "x": 284,
+            "y": 23832
+        },
+        "transport_status_bg.png": {
+            "h": 10,
+            "w": 6,
+            "x": 0,
+            "y": 26642
+        },
+        "transport_status_bg_err.png": {
+            "h": 10,
+            "w": 6,
+            "x": 0,
+            "y": 26653
+        },
+        "transport_stop.png": {
+            "h": 29,
+            "w": 87,
+            "x": 308,
+            "y": 23891
+        }
+    },
+    "w": 1023
+}
