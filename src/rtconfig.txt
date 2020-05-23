@@ -167,65 +167,100 @@
 		endMacro
 
 	; Compute all the variables to draw the master tcp later
-		macro calcMasterTcpSecs
-			set tcp_row_height 							 20
-			set tcp_MeterSize_s						 tcp_meter_size
-			set mTcp_PanSize							trackpanmode==3 20 43
-			set meter_flip_v						 [100 130 183] 	;[narrow_width flip_height flip_height(narrow)]
-			set meter_flip								w>meter_flip_v{0} h<meter_flip_v{1} [1] [0] h<meter_flip_v{2} [1] [0]
-			set meter_right								tcp_meter_position{0}
-			set meter_section								!meter_flip{0} [0] !meter_right{0} \
-														 + [0 4 50 -1] [0 0 tcp_MeterSize_s h] \
-															+ - + [-33 0 33] [0 0 tcp_MeterSize_s h] [tcp_MeterSize_s] [w]
-			set vol_sec									!meter_flip{0} [0] !meter_right{0} \
-															+ - [meter_section{2} h w] [0 0 meter_section{2}] [3 -20 -2 21] \
-															- + [0 h w] [0 -22 -3 22] [0 0 meter_section{2}]
-			set main_section								?meter_flip{0} \
-															!meter_right{0} \
-																- - - [meter_section{2} 0 w h] [0 6] [0 0 meter_section{2}] [0 0 0 vol_sec] \
-																- - [0 0 w h] [6 6] [0 0 meter_section{2} vol_sec] \
-															- - [0 0 w h] [0 6] [0 0 0 meter_section]
-			set main_size								main_section{2}
-			set mainCollapse_h						 64
-			set main_section_narrow							main_section{2}<mainCollapse_h{0} 1 0
-			set tcpNullElement							+ + [main_section main_section] [0 6 0 20]
-			set previous_element 						tcpNullElement
+		macro calc_master_tcp_sections
+			set tcp_row_height 20
+			set mTcp_PanSize trackpanmode==3 20 43
+
+			;TODO: Have this switch at the same time that regular tcp
+			set meter_flip w>100 h<130 [1] [0] h<180 [1] [0]
+
+			; Is the meter at the right?
+			set meter_right tcp_meter_position{0}
+
+			set meter_section \
+				!meter_flip{0} [0] \
+					!meter_right{0} \
+						+ \
+							[0 4 50 -1] \
+							[0 0 tcp_meter_size h] \
+						+ \
+							- \
+								+ \
+									[-33 0 33] \
+									[0 0 tcp_meter_size h] \
+								[tcp_meter_size]
+							[w]
+
+			set vol_sec !meter_flip{0} [0] !meter_right{0} \
+			+ - [meter_section{2} h w] [0 0 meter_section{2}] [3 -20 -2 21] \
+			- + [0 h w] [0 -22 -3 22] [0 0 meter_section{2}]
+			set main_section ?meter_flip{0} \
+			!meter_right{0} \
+			- - - [meter_section{2} 0 w h] [0 6] [0 0 meter_section{2}] [0 0 0 vol_sec] \
+			- - [0 0 w h] [6 6] [0 0 meter_section{2} vol_sec] \
+			- - [0 0 w h] [0 6] [0 0 0 meter_section]
+			set main_size main_section{2}
+			set mainCollapse_h 64
+
+			set main_section_narrow main_section{2}<mainCollapse_h{0} 1 0
+
+			set tcpNullElement + + [main_section main_section] [0 6 0 20]
+			set previous_element tcpNullElement
 		endMacro
 
 	; Draw the master tcp
 		macro draw_master_tcp
-			set master.tcp.size						 [300 100 40 56]
-			set main_section								!meter_flip{0} + [0 0 0 this_y_end{0}] [0 0 0 8]  ; recalculate sections now we know this_y_end
-			set vol_sec									!meter_flip{0} + [0 main_section{3} w 0] [0 0 0 22] .
-			set meter_section								?main_section_narrow{0} [0 0 w h] !meter_flip{0} tcp_fxparms>0 \
-																											+ [0 vol_sec w 70] [0 vol_sec{3}] \
-																											- - + [0 vol_sec w h] [0 vol_sec{3}] [0 0 0 main_section] [0 0 0 vol_sec]
-			set master.tcp.meter                   		- - + meter_section [5 2 -5 -5] [0 0 tcp.mute{2}] [0 0 0]
+			; Min Size
+				set master.tcp.size  [300 100 40 56]
+
+			; Main section
+				set main_section !meter_flip{0} + [0 0 0 this_y_end{0}] [0 0 0 8]
+
+			; Volume Section
+				set vol_sec !meter_flip{0} + [0 main_section{3} w 0] [0 0 0 22] .
+
+			; Meter section
+				set meter_section ?main_section_narrow{0} [0 0 w h] !meter_flip{0} tcp_fxparms>0 \
+				+ [0 vol_sec w 70] [0 vol_sec{3}] \
+				- - + [0 vol_sec w h] [0 vol_sec{3}] [0 0 0 main_section] [0 0 0 vol_sec]
+
+				set master.tcp.meter meter_section
+
 				set master.tcp.meter.vu.div                    [1]
 				set master.tcp.meter.readout.color             [100 100 100 255 255 183 171 255]
 				set master.tcp.meter.scale.color.lit.bottom    [0 0 0 200 0 0 0 0]
 				set master.tcp.meter.scale.color.lit.top       [0 0 0 200 0 0 0 0]
 				set master.tcp.meter.scale.color.unlit.bottom  [255 255 255 120 0 0 0 0]
 				set master.tcp.meter.scale.color.unlit.top     [255 255 255 120 0 0 0 0]
-			;set master.tcp.mute               			+ + [meter_section meter_section] [meter_section{2}] [-25 4 21 20]
-			;set master.tcp.solo 						+ + [0 2] master.tcp.mute [0 master.tcp.mute{3}]
-			set master.tcp.label.color					tcp.label.color
-			set master.tcp.label.font					[3]
-			set master.tcp.fx 							!master_fx_group{2} [0] + [0 0 20] [master_fx_group master_fx_group 0 tcp_row_height]
-			set master.tcp.fxbyp 						!master_fx_group{2} [0] + + [0 0 16] [master.tcp.fx master.tcp.fx 0 tcp_row_height] [master.tcp.fx{2}]
-			set master.tcp.pan 							!master_pan_group{2} [0 0 0 0] trackpanmode==6 \
-															* [master_pan_group master_pan_group master_pan_group master_pan_group tcp_row_height] [1 1 1 0.5] \
-															[master_pan_group master_pan_group tcp_row_height tcp_row_height] ; knobs have the same h and w
-				set master.tcp.pan.fadermode         	gl_fader_swap
-				set master.tcp.pan.color              	gl_pan_color
-			set master.tcp.width						trackpanmode==3 [0] !master_pan_group{2} [0 0 0 0] trackpanmode==6 \
-															+ [master.tcp.pan master.tcp.pan master.tcp.pan master.tcp.pan] [0 master.tcp.pan{3}] \
-															- + [master_pan_group master_pan_group tcp_row_height tcp_row_height] [master_pan_group{2}] [tcp_row_height]
-				set master.tcp.width.fadermode        	gl_fader_swap
-				set master.tcp.width.color            	gl_pan_color
-			set main_val_color							?track_selected [160 160 160] [115 115 115]
-			set master.tcp.fxparm  						- + [0 meter_section w h] [0 meter_section{3}] + [0 0 0 meter_section{1}] [0 0 0 meter_section{3}]
-			set master.tcp.fxparm.margin			 [3 0 3 0 0 14]
+
+			;set master.tcp.mute                + + [meter_section meter_section] [meter_section{2}] [-25 4 21 20]
+			;set master.tcp.solo  + + [0 2] master.tcp.mute [0 master.tcp.mute{3}]
+
+			; Label
+				set master.tcp.label.color tcp.label.color
+				set master.tcp.label.font [1]
+
+			; FX
+				set master.tcp.fx  !master_fx_group{2} [0] + [0 0 20] [master_fx_group master_fx_group 0 tcp_row_height]
+				set master.tcp.fxbyp  !master_fx_group{2} [0] + + [0 0 16] [master.tcp.fx master.tcp.fx 0 tcp_row_height] [master.tcp.fx{2}]
+			
+			; Pan
+				set master.tcp.volume !master.tcp.volume{2} [0 0 0 0] [master.tcp.volume master.tcp.volume master.tcp.volume tcp_row_height]
+				set master.tcp.volume.fadermode [1]
+				set master.tcp.volume.label [0]
+
+			; Pan
+				set master.tcp.pan !master.tcp.pan{2} [0 0 0 0] [master.tcp.pan master.tcp.pan tcp_row_height tcp_row_height]
+				set master.tcp.pan.fadermode [1]
+				set master.tcp.pan.label [0]
+
+			; Width
+				set master.tcp.width !master.tcp.width{2} [0 0 0 0] [master.tcp.width master.tcp.width master.tcp.width tcp_row_height]
+				set master.tcp.width.fadermode [1]
+
+			; Fx Param
+				set master.tcp.fxparm - + [0 meter_section w h] [0 meter_section{3}] + [0 0 0 meter_section{1}] [0 0 0 meter_section{3}]
+				set master.tcp.fxparm.margin [0]
 		endMacro
 
 	; Apply hide on elements depending on settings
@@ -704,20 +739,6 @@
 	compute_tcp_sections
 	resetHides
 
-	; Hide some elements
-	;doHideLogic tcp.recarm   5
-	;doHideLogic tcp.recmon   6
-	;doHideLogic tcp.label    7
-	;doHideLogic tcp.volume   8
-	;doHideLogic tcp.io       9
-	;doHideLogic fx_group     10
-	;doHideLogic tcp.env      11
-	;doHideLogic pan_group    12
-	;doHideLogic tcp.recmode  13
-	;doHideLogic input_group  14
-	doHideLogic values       15
-	;doHideLogic meter_values 16
-
 	; Element ordering in the tcp
 		;    element     size
 		then tcp.recarm  20
@@ -776,29 +797,32 @@
 	paramPair 	tcp_meter_size 					4 4 10 22 40 80 160 320
 	paramPair 	tcp_meter_position 					17 0 1 2
 
-	calcMasterTcpSecs
+	calc_master_tcp_sections
 	resetHides
 
- ;    element          size
- then master.tcp.label 50
- then master.tcp.io    34
- then master_fx_group  36
- then master.tcp.env   41
- then master_pan_group mTcp_PanSize
- then master.tcp.mono  50
- then master.tcp.solo  20
- then master.tcp.mute  20
+ ;       element           size
+		then master.tcp.label  50
+		then master.tcp.volume 20
+		then master.tcp.pan    20
+		then master.tcp.width  20
+		then master.tcp.mono   50
+		then master.tcp.solo   20
+		then master.tcp.mute   20
+		then master.tcp.io     34
+		then master_fx_group   36
+		then master.tcp.env    41
 
-	draw_master_tcp 1
+	draw_master_tcp
 
 ; Envelope Control Panels
 	paramPair 	EnvcpLabelSize 					21 0 20 50 80 110 140 170
 	paramPair 	EnvcpVolSize 					23 20 40 70 100 130 160 190
+
 	set EnvLabelAutoMeasured 					param22
 	set EnvFolderIndent							param24
 
 	clear envcp.*
-	front		envcp.fader
+	front envcp.fader
 
 	macro calcEnvSecs 
 
@@ -817,9 +841,10 @@
 		set envcpNullElement						+ + [main_section] [envcp_padding envcp_padding] [0 0 0 20]
 		set previous_element 						envcpNullElement		; Let's start at the very beginning. A very good place to start.
 		set addCont									envcp_type==4 [30 1] [0 0]
+
 	endMacro
 
-	calcEnvSecs 
+	calcEnvSecs
 
 	macro envThen element width use_padding
 		set s_width				 width 
@@ -872,6 +897,7 @@
 	Layout "A"
 		set envcp.label  .
 		drawEnvcp
+	endlayout
 
 ; Mixer
 	macro doModeLogic variable paramIdx
