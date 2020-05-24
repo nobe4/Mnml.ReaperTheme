@@ -51,13 +51,17 @@
 		set pushLuma 90 ; (0 to 255) very dim custom color brighness
 
 	; TCP
-		set tcp_folder_width [0 0 20 0]  ; Folder vertical width
-		set tcp_folder_indent 2          ; Px to indent a folder by
-		set tcp_control_align 1          ; Align the control regardless of a folder
-		set tcp_row_height 20            ; Height of a TCP row
-		set tcp_min_width tcp_row_height ; Min width of a row is its height
-		set tcp_min_label_width 180      ; Minimum size for the tcp label
-		set tcp_main_collapse_width 200  ; Min witdh before main section collapses
+		set tcp_control_align 1                                   ; Align the control regardless of a folder
+		set tcp_folder_indent 2                                   ; Px to indent a folder by
+		set tcp_folder_width [0 0 20 0]                           ; Folder vertical width
+		set tcp_label_size 100                                    ; Label size for each tcp row
+		set tcp_main_collapse_width 200                           ; Min witdh before main section collapses
+		set tcp_meter_lit_color [100 100 100 255]                 ; Lit meter is light grey
+		set tcp_meter_readout_color [100 100 100 255 255 0 0 255] ; Top value, always visible, non clipped and clipped.
+		set tcp_meter_unlit_color [0]                             ; Unlit meter is transparent
+		set tcp_min_label_width 180                               ; Minimum size for the tcp label
+		set tcp_min_width tcp_row_height                          ; Min width of a row is its height
+		set tcp_row_height 20                                     ; Height of a TCP row
 
 ; Macros
 	; Reset all the hide settings
@@ -82,21 +86,10 @@
 				; tcp_supercollapsed is whether the parent height is too small for the tcp section
 				set tcp_supercollapsed h<10 1 0
 
-				; Invert position of meter if the tcp is on the right.
-				set meter_right tcp_meter_position{0} < 2 tcp_meter_position{0} ?recarm 0 1
+			; Default and minimal tcp size
+				set tcp.size + [300 100] [0 0 tcp_min_width{0}]
 
 			; Label
-				set tcp_LabelAutoMesure \
-					tcpLabelAutoMeasured{0}<tcp_min_label_width \
-						tcp_min_label_width \
-						+ tcpLabelAutoMeasured{0}
-
-				; Effective label size
-				set tcp_label_size \
-					tcp_LabelPair{0}==0 \
-						tcp_LabelAutoMesure \
-						tcp_LabelPair
-
 				; Label is the track name
 				set tcp_label_end + tcp_label_size{0} 54
 
@@ -115,126 +108,73 @@
 				; Between the folder and the meter, contains the buttons and label.
 				set main_section_width - - w folder_section{2} tcp_meter_size{2}
 				; If the tcp is on the right, we need to add the meter's size to the x, as it's displayed before.
-				set main_section_x + folder_section{2} !meter_right{0} tcp_meter_size{2} 0
+				set main_section_x folder_section{2}
 				set main_section [main_section_x 0 main_section_width h]
 
-				; Is the label vertical or not: the main section is shorter than the label size.
-				set tcp_label_vertical main_section{2}<tcp_label_end{0} 1 0
 
 				; collapse main_section to enough for a flipped label if its too small to be useful, then scale meter to fill the gap
 				set main_section_narrow main_section{2}<tcp_main_collapse_width{0} 1 0
 
-				; Reduce main_section if label is flipped
-					; TODO: redo this, works but not great
-					set main_section \
-						?tcp_supercollapsed{0} [0] \
-						?main_section_narrow{0} \
-							?meter_right{0} \
-								[folder_section{2} 0 tcp_row_height h] \
-								- [w 0 tcp_row_height h] [tcp_row_height] \
-								?tcp_label_vertical{0} \
-									- main_section [0 0 tcp_row_height] \
-									main_section
+				; If narrow, allow up to tcp_row_height for label display
+				set main_section ?main_section_narrow{0} [folder_section{2} 0 tcp_row_height h]
+
+				; If supercollapsed, hide it
+				set main_section ?tcp_supercollapsed{0} [0] .
 
 				; Effective width of main_section, used to determine row width.
-				; Basically 0 if the section is narrowed, otherwise its width minus 5 to wrap without overlap
-				set main_size ?main_section_narrow{0} 0 - main_section{2} 5
+				set main_size ?main_section_narrow{0} 0 main_section{2}
 
 			; Meter
-				; Meter section is the position/size of the meter: location of the folder
-				; with the width of the meter.
-				set meter_section + [folder_section{2} 0 0 h] [0 0 tcp_meter_size{0}]
-				set meter_section ?meter_right{0} - [w 0 meter_section meter_section] [meter_section{2}]
+				; Meter section is the position/size of the meter: rightmost - tcp width
+				set meter_section - [w 0 tcp_meter_size{2} h] [tcp_meter_size{2}]
 
 				; Update for the collapsed/narrow situations, simiar to main section above.
 				; Same TODO
 				set meter_section \
-					?tcp_supercollapsed{0} [0] \
-					?main_section_narrow{0} \
-						?meter_right{0} \
-							- + [main_section 0 w h] [main_section{2} 0] \
-								+ [0 0 main_section{0}] [0 0 main_section] \
-							- - [folder_section{2} 0 w h] [0 0 folder_section] \
-								[0 0 10]
-
-			; Minimal tcp size
-			set tcp.size + [300 100] [0 0 tcp_min_width{0}]
-
-			set tcp_label_size ?tcp_label_vertical{0} [0] ; not included in mainsec calculations if flipped
+					?tcp_supercollapsed{0} \
+						[0] \
+						?main_section_narrow{0} \
+							- \
+								+ [main_section 0 w h] [main_section{2} 0] \
+								+ [0 0 main_section{0}] [0 0 main_section{2}] \
+							meter_section
 
 			; First element to build from is the main section
-			set previous_element [main_section]
+				set previous_element [main_section]
 		endMacro
 
 	; Compute all the variables to draw the master tcp later
 		macro calc_master_tcp_sections
-			set tcp_row_height 20
-			set mTcp_PanSize trackpanmode==3 20 43
+			; Main section
+				set main_section_width - w meter_section{2}
+				set main_section [0 0 main_section_width h]
+				set main_size main_section{2}
+				set mainCollapse_h 64
+				set main_section_narrow main_section{2}<mainCollapse_h{0} 1 0
 
-			;TODO: Have this switch at the same time that regular tcp
-			set meter_flip w>100 h<130 [1] [0] h<180 [1] [0]
+			; Meter
+				set meter_section \
+					?main_section_narrow{0} \
+						[0 0 w h] \
+						[main_section_width 0 tcp_meter_size h]
 
-			; Is the meter at the right?
-			set meter_right tcp_meter_position{0}
-
-			set meter_section \
-				!meter_flip{0} [0] \
-					!meter_right{0} \
-						+ \
-							[0 4 50 -1] \
-							[0 0 tcp_meter_size h] \
-						+ \
-							- \
-								+ \
-									[-33 0 33] \
-									[0 0 tcp_meter_size h] \
-								[tcp_meter_size]
-							[w]
-
-			set vol_sec !meter_flip{0} [0] !meter_right{0} \
-			+ - [meter_section{2} h w] [0 0 meter_section{2}] [3 -20 -2 21] \
-			- + [0 h w] [0 -22 -3 22] [0 0 meter_section{2}]
-			set main_section ?meter_flip{0} \
-			!meter_right{0} \
-			- - - [meter_section{2} 0 w h] [0 6] [0 0 meter_section{2}] [0 0 0 vol_sec] \
-			- - [0 0 w h] [6 6] [0 0 meter_section{2} vol_sec] \
-			- - [0 0 w h] [0 6] [0 0 0 meter_section]
-			set main_size main_section{2}
-			set mainCollapse_h 64
-
-			set main_section_narrow main_section{2}<mainCollapse_h{0} 1 0
-
-			set tcpNullElement + + [main_section main_section] [0 6 0 20]
+			set tcpNullElement [main_section]
 			set previous_element tcpNullElement
 		endMacro
 
 	; Draw the master tcp
 		macro draw_master_tcp
-			; Min Size
-				set master.tcp.size  [300 100 40 56]
-
-			; Main section
-				set main_section !meter_flip{0} + [0 0 0 this_y_end{0}] [0 0 0 8]
-
-			; Volume Section
-				set vol_sec !meter_flip{0} + [0 main_section{3} w 0] [0 0 0 22] .
-
-			; Meter section
-				set meter_section ?main_section_narrow{0} [0 0 w h] !meter_flip{0} tcp_fxparms>0 \
-				+ [0 vol_sec w 70] [0 vol_sec{3}] \
-				- - + [0 vol_sec w h] [0 vol_sec{3}] [0 0 0 main_section] [0 0 0 vol_sec]
+			; Default and Min Size
+				set master.tcp.size [300 20 100 20]
+				set master.tcp.margin [0]
 
 				set master.tcp.meter meter_section
-
-				set master.tcp.meter.vu.div                    [1]
-				set master.tcp.meter.readout.color             [100 100 100 255 255 183 171 255]
-				set master.tcp.meter.scale.color.lit.bottom    [0 0 0 200 0 0 0 0]
-				set master.tcp.meter.scale.color.lit.top       [0 0 0 200 0 0 0 0]
-				set master.tcp.meter.scale.color.unlit.bottom  [255 255 255 120 0 0 0 0]
-				set master.tcp.meter.scale.color.unlit.top     [255 255 255 120 0 0 0 0]
-
-			;set master.tcp.mute                + + [meter_section meter_section] [meter_section{2}] [-25 4 21 20]
-			;set master.tcp.solo  + + [0 2] master.tcp.mute [0 master.tcp.mute{3}]
+				set master.tcp.meter.vu.div [1]
+				set master.tcp.meter.readout.color tcp_meter_readout_color
+				set master.tcp.meter.scale.color.unlit.bottom tcp_meter_unlit_color
+				set master.tcp.meter.scale.color.unlit.top tcp_meter_unlit_color
+				set master.tcp.meter.scale.color.lit.bottom tcp_meter_lit_color
+				set master.tcp.meter.scale.color.lit.top tcp_meter_lit_color
 
 			; Label
 				set master.tcp.label.color tcp.label.color
@@ -244,7 +184,7 @@
 				set master.tcp.fx  !master_fx_group{2} [0] + [0 0 20] [master_fx_group master_fx_group 0 tcp_row_height]
 				set master.tcp.fxbyp  !master_fx_group{2} [0] + + [0 0 16] [master.tcp.fx master.tcp.fx 0 tcp_row_height] [master.tcp.fx{2}]
 			
-			; Pan
+			; Volume
 				set master.tcp.volume !master.tcp.volume{2} [0 0 0 0] [master.tcp.volume master.tcp.volume master.tcp.volume tcp_row_height]
 				set master.tcp.volume.fadermode [1]
 				set master.tcp.volume.label [0]
@@ -257,10 +197,12 @@
 			; Width
 				set master.tcp.width !master.tcp.width{2} [0 0 0 0] [master.tcp.width master.tcp.width master.tcp.width tcp_row_height]
 				set master.tcp.width.fadermode [1]
+				set master.tcp.width.label [0]
 
 			; Fx Param
-				set master.tcp.fxparm - + [0 meter_section w h] [0 meter_section{3}] + [0 0 0 meter_section{1}] [0 0 0 meter_section{3}]
+				set master.tcp.fxparm [main_section main_section_last_visible_element{0} main_section main_section]
 				set master.tcp.fxparm.margin [0]
+				set master.tcp.fxparm.font [1]
 		endMacro
 
 	; Apply hide on elements depending on settings
@@ -292,14 +234,17 @@
 			; Get top of next row
 			set next_row + [0 previous_element{3}] [0 element]
 
-			; If element overflows, move to next row
-			set element element_rightmost{0}>main_size{0} [main_section next_row element element]
+			; If element overflows, move to next row. 5 here is a padding
+			; for preventing visual overflow;
+			set right_space_left - + element_rightmost{0} 5 main_size{0}
+			set element right_space_left{0}>0 [main_section next_row element element]
 		
 			; Recalculate element_rightmost, now that the element is on a new row
 			set element_rightmost - + element{0} element{2} main_section{0}
+			set right_space_left - + element_rightmost{0} 5 main_size{0}
 
 			; Remove if still not fitting
-			set element element_rightmost{0}>main_size{0} [. . 0 0]
+			set element right_space_left{0}>0 [. . 0 0]
 			
 			; Find its bottom: top + height
 			set this_y_end + element{1} element{3}
@@ -316,6 +261,8 @@
 
 	; Draw the tcp section
 		macro draw_tcp
+				set tcp.margin [0]
+
 			; Track id
 				set tcp.trackidx + + [0 0 this_tcp_indent] [folder_section 0 0 0 0 0 0 1] [0 0 18 100]
 				; if collapsed, add to the current track some height to hide the text
@@ -358,19 +305,20 @@
 					set tcp.meter.vu.div [1] ; show divisions
 
 				; meter text color
-					; Top value, always visible    non clipped     clipped
-						set tcp.meter.readout.color [100 100 100 255 255 0 0 255]
-					; meter scale bottom and top color for unlit (no sound) and lit (sound)
-					; Don't display anything for unlit, and a grey for lit.
-						set tcp.meter.scale.color.unlit.bottom [0]
-						set tcp.meter.scale.color.unlit.top tcp.meter.scale.color.unlit.bottom
-						set tcp.meter.scale.color.lit.bottom [100 100 100 255]
-						set tcp.meter.scale.color.lit.top tcp.meter.scale.color.lit.bottom
+						set tcp.meter.readout.color tcp_meter_readout_color
+						set tcp.meter.scale.color.unlit.bottom tcp_meter_unlit_color
+						set tcp.meter.scale.color.unlit.top tcp_meter_unlit_color
+						set tcp.meter.scale.color.lit.bottom tcp_meter_lit_color
+						set tcp.meter.scale.color.lit.top tcp_meter_lit_color
 
 			; Flip label if vertical for condensed vue
-				set tcp.label ?tcp_label_vertical{0} + [main_section 0 1 -2] [main_size{0} 0 tcp_row_height h]
+				set tcp.label \
+					?main_section_narrow{0} \
+						+ \
+						[main_section 0 1 -2] \
+						[main_size{0} 0 tcp_row_height h]
 				; If vertical, align horizontally and vertically, otherwise, only vertically.
-				set tcp_label_horizontal_align ?tcp_label_vertical 0.5 0
+				set tcp_label_horizontal_align ?main_section_narrow 0.5 0
 				set tcp.label.margin [1 1 1 1 tcp_label_horizontal_align 0.5]
 				; Dynamic coloring
 				track_label_color tcp.label.color
@@ -407,7 +355,7 @@
 					set tcp.width.fadermode 1
 
 			; Fx parameter controls list
-				set tcp.fxparm  [main_section main_section_last_visible_element{0} main_section main_section]
+				set tcp.fxparm [main_section main_section_last_visible_element{0} main_section main_section]
 				set tcp.fxparm.font [1]
 				set tcp.fxparm.margin [0]
 		endMacro
@@ -725,16 +673,11 @@
 
 	front tcp.recarm tcp.label tcp.volume tcp.pan_group tcp.solo tcp.mute tcp.phase tcp.width tcp.foldercomp tcp.folder
 
-	; Param19 is A_tcp_LabelMeasure'
-	set tcpLabelAutoMeasured param19
-
 	; Set parameters for different elements
 		;         name              id min x  x  x   x   x   max
 		paramPair tcp_meter_size     4  4   10 24 40  100 180 320
-		paramPair tcp_meter_position      17 0   1  2
 		paramPair tcp_VolSize       3  20  40 70 100 130 160 190
 		paramPair tcp_InSize        20 49  64 80 100 130 190 240
-		paramPair tcp_LabelPair     18 0   20 50 80  110 140 170
 
 	compute_tcp_sections
 	resetHides
@@ -795,7 +738,6 @@
 ; Master Track Control Panel
 
 	paramPair 	tcp_meter_size 					4 4 10 22 40 80 160 320
-	paramPair 	tcp_meter_position 					17 0 1 2
 
 	calc_master_tcp_sections
 	resetHides
