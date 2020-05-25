@@ -51,17 +51,18 @@
 		set pushLuma 90 ; (0 to 255) very dim custom color brighness
 
 	; TCP
-		set tcp_control_align 1                                   ; Align the control regardless of a folder
 		set tcp_folder_indent 2                                   ; Px to indent a folder by
-		set tcp_folder_width [0 0 20 0]                           ; Folder vertical width
-		set tcp_label_size 100                                    ; Label size for each tcp row
+		set tcp_folder_width 20                                   ; Folder vertical width
+		set tcp_label_width 100                                   ; Label size for each tcp row
 		set tcp_main_collapse_width 200                           ; Min witdh before main section collapses
 		set tcp_meter_lit_color [100 100 100 255]                 ; Lit meter is light grey
 		set tcp_meter_readout_color [100 100 100 255 255 0 0 255] ; Top value, always visible, non clipped and clipped.
 		set tcp_meter_unlit_color [0]                             ; Unlit meter is transparent
+		set tcp_meter_width 19
 		set tcp_min_label_width 180                               ; Minimum size for the tcp label
 		set tcp_min_width tcp_row_height                          ; Min width of a row is its height
 		set tcp_row_height 20                                     ; Height of a TCP row
+		set tcp.margin [0]
 
 ; Macros
 	; Reset all the hide settings
@@ -89,76 +90,151 @@
 			; Default and minimal tcp size
 				set tcp.size + [300 100] [0 0 tcp_min_width{0}]
 
-			; Label
-				; Label is the track name
-				set tcp_label_end + tcp_label_size{0} 54
-
 			; Indent
-				set this_tcp_indent * tcp_folder_indent folderdepth{0}
+				set tcp_row_indent * tcp_folder_indent folderdepth{0}
 
-				set folder_section \
-					+ tcp_folder_width \
-						* [0 0 1] \
-							* tcp_folder_indent{0} \
-							? tcp_control_align{0} \
-								maxfolderdepth{0} \
-								folderdepth{0}
+			; Folder section.
+				set tcp_folder_section_width + tcp_folder_width * tcp_folder_indent maxfolderdepth
+				set tcp_folder_section [tcp_row_indent 0 tcp_folder_section_width h]
+				set tcp_folder_compact_button [tcp_folder_section{0} tcp_folder_section{1} 20 20]
+				set tcp_folder_modify_button [tcp_folder_section{0} 86 20 14 0 1 0 1]
+
+				; Hide elements if supercollapsed
+				set tcp_folder_section ?tcp_supercollapsed{0} [0] .
+				set tcp_folder_compact_button ?tcp_supercollapsed{0} [0] .
+				set tcp_folder_modify_button ?tcp_supercollapsed{0} [0] .
+
+				set tcp_folder_section_end + tcp_folder_section{0} tcp_folder_section{2}
+
+			; Buttons section
+				set tcp_button_section_hidden w<tcp_main_collapse_width{0} 1 0
+				set tcp_button_section_width - - - w tcp_folder_section{2} tcp_label_width tcp_meter_width
+				set tcp_button_section [tcp_folder_section{2} 0 tcp_button_section_width h]
+				set tcp_button_section ?tcp_button_section_hidden [0] .
 
 			; Main section
-				; Between the folder and the meter, contains the buttons and label.
-				set main_section_width - - w folder_section{2} tcp_meter_size{2}
-				; If the tcp is on the right, we need to add the meter's size to the x, as it's displayed before.
-				set main_section_x folder_section{2}
-				set main_section [main_section_x 0 main_section_width h]
-
-
 				; collapse main_section to enough for a flipped label if its too small to be useful, then scale meter to fill the gap
-				set main_section_narrow main_section{2}<tcp_main_collapse_width{0} 1 0
+				set main_section_narrow w<tcp_main_collapse_width{0} 1 0
 
-				; If narrow, allow up to tcp_row_height for label display
-				set main_section ?main_section_narrow{0} [folder_section{2} 0 tcp_row_height h]
+				; Between the folder and the meter, contains the buttons and label.
+				set main_section_width - - w tcp_folder_section{2} tcp_meter_width
+
+				set main_section_width !main_section_narrow - main_section_width tcp_label_width .
+
+				set main_section [tcp_folder_section{2} 0 main_section_width h]
+				set main_section_end + main_section{0} main_section{2}
 
 				; If supercollapsed, hide it
 				set main_section ?tcp_supercollapsed{0} [0] .
 
-				; Effective width of main_section, used to determine row width.
-				set main_size ?main_section_narrow{0} 0 main_section{2}
-
 			; Meter
 				; Meter section is the position/size of the meter: rightmost - tcp width
-				set meter_section - [w 0 tcp_meter_size{2} h] [tcp_meter_size{2}]
-
-				; Update for the collapsed/narrow situations, simiar to main section above.
-				; Same TODO
-				set meter_section \
-					?tcp_supercollapsed{0} \
-						[0] \
-						?main_section_narrow{0} \
-							- \
-								+ [main_section 0 w h] [main_section{2} 0] \
-								+ [0 0 main_section{0}] [0 0 main_section{2}] \
-							meter_section
+				set meter_section - [w 0 tcp_meter_width h] [tcp_meter_width]
+				; If supercollapsed, hide it
+				set meter_section ?tcp_supercollapsed{0} [0] .
 
 			; First element to build from is the main section
-				set previous_element [main_section]
+				set previous_element [tcp_button_section]
+		endMacro
+
+	; Draw the tcp section
+		macro draw_tcp
+			; Track id
+				set tcp.trackidx + [0 0 tcp_row_indent] [0 0 20 100 0 0 0 1]
+				; if collapsed, add to the current track some height to hide the text
+				set tcp.trackidx ?tcp_supercollapsed{0} + tcp.trackidx [0 0 0 40]
+
+				; vertical margin for track number
+				set tcp.trackidx.margin [tcp_row_indent 0 0 0 0.5 0.5]
+
+				; font
+				set tcp.trackidx.font [2]
+
+				; color
+				text_over_custom tcp.trackidx.color
+				set tcp.trackidx.color ?track_selected [50 50 50]
+
+			; Folders
+				; folder compact button
+					set tcp.foldercomp h<40 [0] tcp_folder_compact_button
+
+				; folder button
+					; If folder too small, hide modify button
+					set tcp.folder h<40 [0] tcp_folder_modify_button
+
+
+			; Meter view: the meter section wit
+					set tcp.meter meter_section  ; set size
+					set tcp.meter.vu.div [1] ; show divisions
+
+				; meter text color
+						set tcp.meter.readout.color tcp_meter_readout_color
+						set tcp.meter.scale.color.unlit.bottom tcp_meter_unlit_color
+						set tcp.meter.scale.color.unlit.top tcp_meter_unlit_color
+						set tcp.meter.scale.color.lit.bottom tcp_meter_lit_color
+						set tcp.meter.scale.color.lit.top tcp_meter_lit_color
+
+			; Buttons
+				; Fx
+					; Add fx button at its position, fixing width to 20.
+					set tcp.fx !fx_group{2} [0] [fx_group fx_group 20 tcp_row_height]
+
+					; Fx bypass button, after fx button, width of 16
+					set tcp_fxbyp_x + tcp.fx{0} tcp.fx{2}
+					set tcp.fxbyp !fx_group{2} [0] [tcp_fxbyp_x tcp.fx 16 tcp_row_height]
+
+				; Fx input, with padding for button.
+					set tcp.fxin !input_group{2} [0] [input_group input_group 29 tcp_row_height]
+					; Text item is larger and has reduced width for the button.
+					set tcp.recinput - + [tcp.fxin{2}] [tcp.fxin tcp.fxin input_group tcp_row_height] [0 0 tcp.fxin{2}]
+					; Margin right 20 is to prevent overlap with the icon.
+					set tcp.recinput.margin [0 0 20 0 0.5]
+					set tcp.recinput.font [1]
+
+				; Fx and record input, with padding for button
+
+				; Volume
+					set tcp.volume [tcp.volume tcp.volume tcp.volume tcp_row_height]
+					set tcp.volume.fadermode 1
+
+				; Pan
+					set tcp.pan [tcp.pan tcp.pan tcp.pan tcp_row_height]
+					set tcp.pan.fadermode 1
+
+				; Width
+					set tcp.width [tcp.width tcp.width tcp.width tcp_row_height]
+					set tcp.width.fadermode 1
+
+			; Label
+				; If narrow, occupy all space
+				set tcp.label ?main_section_narrow{0} \
+					[tcp_button_section{0} 0 tcp_button_section{2} h] \
+					[main_section_end 0 tcp_label_width h]
+
+				; 1px of margin, vertically centered, horizontally left-centerd
+				set tcp.label.margin [5 1 5 1 0 0.5]
+				; Dynamic coloring
+				track_label_color tcp.label.color
+
+			; Fx parameter controls list
+				set tcp.fxparm [tcp_button_section main_section_last_visible_element{0} tcp_button_section tcp_button_section]
+				set tcp.fxparm.font [1]
+				set tcp.fxparm.margin [0]
 		endMacro
 
 	; Compute all the variables to draw the master tcp later
 		macro calc_master_tcp_sections
 			; Main section
 				set main_section_width - w meter_section{2}
-				set main_section [0 0 main_section_width h]
-				set main_size main_section{2}
-				set mainCollapse_h 64
-				set main_section_narrow main_section{2}<mainCollapse_h{0} 1 0
+				set tcp_button_section [0 0 main_section_width h]
 
 			; Meter
 				set meter_section \
 					?main_section_narrow{0} \
 						[0 0 w h] \
-						[main_section_width 0 tcp_meter_size h]
+						[main_section_width 0 tcp_meter_width h]
 
-			set tcpNullElement [main_section]
+			set tcpNullElement [tcp_button_section]
 			set previous_element tcpNullElement
 		endMacro
 
@@ -200,18 +276,10 @@
 				set master.tcp.width.label [0]
 
 			; Fx Param
-				set master.tcp.fxparm [main_section main_section_last_visible_element{0} main_section main_section]
+				set master.tcp.fxparm [tcp_button_section main_section_last_visible_element{0} tcp_button_section tcp_button_section]
 				set master.tcp.fxparm.margin [0]
 				set master.tcp.fxparm.font [1]
 		endMacro
-
-	; Apply hide on elements depending on settings
-		macro doHideLogic element paramIdx
-			set hide_##element param##paramIdx##&1 ?mixer_visible 1 0
-			set hide_##element param##paramIdx##&2 !track_selected 1 hide_##element
-			set hide_##element param##paramIdx##&4 !recarm 1 hide_##element
-			set hide_##element param##paramIdx##&8 1 hide_##element
-		endmacro
 
 	; Then macro to handle elements one after the other
 		macro then element element_width
@@ -226,7 +294,7 @@
 
 			; Compute current element rightmost point: it's position + width, minus
 			; the main section position.
-			set element_rightmost - + element{0} element{2} main_section{0}
+			set element_rightmost - + element{0} element{2} tcp_button_section{0}
 
 			; If collapsed, change the width and height to 0 0
 			set element ?main_section_narrow{0} [. . 0 0]
@@ -236,12 +304,12 @@
 
 			; If element overflows, move to next row. 5 here is a padding
 			; for preventing visual overflow;
-			set right_space_left - + element_rightmost{0} 5 main_size{0}
-			set element right_space_left{0}>0 [main_section next_row element element]
+			set right_space_left - + element_rightmost{0} 5 tcp_button_section{2}
+			set element right_space_left{0}>0 [tcp_button_section next_row element element]
 		
 			; Recalculate element_rightmost, now that the element is on a new row
-			set element_rightmost - + element{0} element{2} main_section{0}
-			set right_space_left - + element_rightmost{0} 5 main_size{0}
+			set element_rightmost - + element{0} element{2} tcp_button_section{0}
+			set right_space_left - + element_rightmost{0} 5 tcp_button_section{2}
 
 			; Remove if still not fitting
 			set element right_space_left{0}>0 [. . 0 0]
@@ -250,7 +318,7 @@
 			set this_y_end + element{1} element{3}
 
 			; Cull if there's not enough height to fit, or if previous_element was culled;
-			set element this_y_end{0}>main_section{3} [. . 0 0] .
+			set element this_y_end{0}>tcp_button_section{3} [. . 0 0] .
 
 			; Save reference to previous element
 			set previous_element element
@@ -258,107 +326,6 @@
 			; save reference to main last visible element
 			set main_section_last_visible_element element{3}>0 this_y_end{0} .
 		endmacro
-
-	; Draw the tcp section
-		macro draw_tcp
-				set tcp.margin [0]
-
-			; Track id
-				set tcp.trackidx + + [0 0 this_tcp_indent] [folder_section 0 0 0 0 0 0 1] [0 0 18 100]
-				; if collapsed, add to the current track some height to hide the text
-				set tcp.trackidx ?tcp_supercollapsed{0} + tcp.trackidx [0 0 0 40]
-
-				; vertical margin for track number
-				set tcp_idx_margin - / h 2 18
-				set tcp.trackidx.margin + [this_tcp_indent] + [0 tcp_idx_margin 0 tcp_idx_margin 0.5] folderstate<0 [0 -6 0 6] folderstate==1 [0 16] 0
-
-				; font
-				set tcp.trackidx.font [2]
-
-				; color
-				text_over_custom tcp.trackidx.color
-				set tcp.trackidx.color ?track_selected [50 50 50]
-
-			; Folders
-				; folder compact button
-					set tcp.foldercomp \
-						?tcp_supercollapsed{0} [0] \
-							+ \
-								+ [this_tcp_indent] [folder_section] \
-							 [0 0 18 19]
-
-				; folder button
-					set tcp.folder \
-						?tcp_supercollapsed{0} \
-							[0] \
-							+ [this_tcp_indent] \
-								[folder_section 86 18 14 0 1 0 1]
-				
-				; If folder min size and not last one, hide button
-					set tcp.folder \
-						h<32 \
-							folderstate<0 . [0] \
-							.
-
-			; Meter view: the meter section wit
-					set tcp.meter meter_section  ; set size
-					set tcp.meter.vu.div [1] ; show divisions
-
-				; meter text color
-						set tcp.meter.readout.color tcp_meter_readout_color
-						set tcp.meter.scale.color.unlit.bottom tcp_meter_unlit_color
-						set tcp.meter.scale.color.unlit.top tcp_meter_unlit_color
-						set tcp.meter.scale.color.lit.bottom tcp_meter_lit_color
-						set tcp.meter.scale.color.lit.top tcp_meter_lit_color
-
-			; Flip label if vertical for condensed vue
-				set tcp.label \
-					?main_section_narrow{0} \
-						+ \
-						[main_section 0 1 -2] \
-						[main_size{0} 0 tcp_row_height h]
-				; If vertical, align horizontally and vertically, otherwise, only vertically.
-				set tcp_label_horizontal_align ?main_section_narrow 0.5 0
-				set tcp.label.margin [1 1 1 1 tcp_label_horizontal_align 0.5]
-				; Dynamic coloring
-				track_label_color tcp.label.color
-
-			; Buttons
-				; Fx
-					; Add fx button at its position, fixing width to 20.
-					set tcp.fx !fx_group{2} [0] [fx_group fx_group 20 tcp_row_height]
-
-					; Fx bypass button, after fx button, width of 16
-					set tcp_fxbyp_x + tcp.fx{0} tcp.fx{2}
-					set tcp.fxbyp !fx_group{2} [0] [tcp_fxbyp_x tcp.fx 16 tcp_row_height]
-
-				; Fx input, with padding for button.
-					set tcp.fxin !input_group{2} [0] [input_group input_group 29 tcp_row_height]
-					; Text item is larger and has reduced width for the button.
-					set tcp.recinput - + [tcp.fxin{2}] [tcp.fxin tcp.fxin input_group tcp_row_height] [0 0 tcp.fxin{2}]
-					; Margin right 20 is to prevent overlap with the icon.
-					set tcp.recinput.margin [0 0 20 0 0.5]
-					set tcp.recinput.font [1]
-
-				; Fx and record input, with padding for button
-
-				; Volume
-					set tcp.volume [tcp.volume tcp.volume tcp.volume tcp_row_height]
-					set tcp.volume.fadermode 1
-
-				; Pan
-					set tcp.pan [tcp.pan tcp.pan tcp.pan tcp_row_height]
-					set tcp.pan.fadermode 1
-
-				; Width
-					set tcp.width [tcp.width tcp.width tcp.width tcp_row_height]
-					set tcp.width.fadermode 1
-
-			; Fx parameter controls list
-				set tcp.fxparm [main_section main_section_last_visible_element{0} main_section main_section]
-				set tcp.fxparm.font [1]
-				set tcp.fxparm.margin [0]
-		endMacro
 
 	; Mixer
 		macro drawMcp
@@ -673,31 +640,25 @@
 
 	front tcp.recarm tcp.label tcp.volume tcp.pan_group tcp.solo tcp.mute tcp.phase tcp.width tcp.foldercomp tcp.folder
 
-	; Set parameters for different elements
-		;         name              id min x  x  x   x   x   max
-		paramPair tcp_meter_size     4  4   10 24 40  100 180 320
-		paramPair tcp_VolSize       3  20  40 70 100 130 160 190
-		paramPair tcp_InSize        20 49  64 80 100 130 190 240
-
 	compute_tcp_sections
 	resetHides
 
 	; Element ordering in the tcp
 		;    element     size
 		then tcp.recarm  20
-		then tcp.recmon  15
-		then tcp.label   tcp_label_size
+		then tcp.recmon  20
 		then tcp.volume  20
 		then tcp.pan     20
 		then tcp.width   20
 		then tcp.mute    20
 		then tcp.solo    20
 		then tcp.phase   20
-		then tcp.io      34
-		then fx_group    36
-		then input_group tcp_InSize
-		then tcp.env     41
-		then tcp.recmode 39
+		then tcp.io      30
+		then fx_group    30
+		then input_group 100
+		then tcp.env     30
+		then tcp.recmode 30
+		;then tcp.label   tcp_label_width
 
 	; Draw the layout
 	draw_tcp
@@ -708,37 +669,20 @@
 		;;	compute_tcp_sections
 		;;	resetHides
 
-		;;	doHideLogic tcp.recarm   5
-		;;	doHideLogic tcp.recmon   6
-		;;	doHideLogic tcp.label    7
-		;;	doHideLogic tcp.volume   8
-		;;	doHideLogic tcp.io       9
-		;;	doHideLogic fx_group     10
-		;;	doHideLogic tcp.env      11
-		;;	doHideLogic pan_group    12
-		;;	doHideLogic tcp.recmode  13
-		;;	doHideLogic input_group  14
-		;;	doHideLogic values       15
-		;;	doHideLogic meter_values 16
-
 		;;	then tcp.recarm  20            0
 		;;	then tcp.recmon  15            0
-		;;	then tcp.label   tcp_label_size 0
-		;;	then tcp.volume  tcp_VolSize   0
+		;;	then tcp.label   tcp_label_width 0
 		;;	then pan_group   tcp_PanSize   1
 		;;	then fx_group    36            1
 		;;	then tcp.io      34            1
 		;;	then tcp.env     41            1
 		;;	then tcp.recmode 39            1
-		;;	then input_group tcp_InSize    1
 
 		;;	set tcp.label  .
+		;; draw_tcp
 		;;EndLayout
 
 ; Master Track Control Panel
-
-	paramPair 	tcp_meter_size 					4 4 10 22 40 80 160 320
-
 	calc_master_tcp_sections
 	resetHides
 
@@ -1026,6 +970,3 @@
 			set master.mcp.fxparm.margin                mcp.fxparm.margin
 	endmacro
 	drawMasterMcp
-
-; Transport
-	; hidden from editor, can remove everything related to it
