@@ -51,10 +51,9 @@
 		set pushLuma 90 ; (0 to 255) very dim custom color brighness
 
 	; TCP
-		set tcp_folder_indent 2                                   ; Px to indent a folder by
+		set tcp_folder_indent 1                                   ; Px to indent a folder by
 		set tcp_folder_width 20                                   ; Folder vertical width
 		set tcp_label_width 100                                   ; Label size for each tcp row
-		set tcp_main_collapse_width 200                           ; Min witdh before main section collapses
 		set tcp_meter_lit_color [100 100 100 255]                 ; Lit meter is light grey
 		set tcp_meter_readout_color [100 100 100 255 255 0 0 255] ; Top value, always visible, non clipped and clipped.
 		set tcp_meter_unlit_color [0]                             ; Unlit meter is transparent
@@ -63,23 +62,6 @@
 		set tcp_min_width tcp_row_height                          ; Min width of a row is its height
 		set tcp_row_height 20                                     ; Height of a TCP row
 		set tcp.margin [0]
-
-; Macros
-	; Reset all the hide settings
-		macro resetHides
-			set hide_tcp.recarm   0
-			set hide_tcp.recmon   0
-			set hide_tcp.label    0
-			set hide_tcp.volume   0
-			set hide_tcp.io       0
-			set hide_fx_group     0
-			set hide_tcp.env      0
-			set hide_pan_group    0
-			set hide_tcp.recmode  0
-			set hide_input_group  0
-			set hide_values       0
-			set hide_meter_values 0
-		endMacro
 
 	; Compute all the variables to draw the tcp later
 		macro compute_tcp_sections
@@ -107,8 +89,8 @@
 				set tcp_folder_section_end + tcp_folder_section{0} tcp_folder_section{2}
 
 			; Buttons section
-				set tcp_button_section_hidden w<tcp_main_collapse_width{0} 1 0
 				set tcp_button_section_width - - - w tcp_folder_section{2} tcp_label_width tcp_meter_width
+				set tcp_button_section_hidden tcp_button_section_width{0}<5 1 0
 				set tcp_button_section [tcp_folder_section{2} 0 tcp_button_section_width h]
 				set tcp_button_section ?tcp_button_section_hidden [0] .
 
@@ -164,15 +146,15 @@
 
 
 			; Meter view: the meter section wit
-					set tcp.meter meter_section  ; set size
-					set tcp.meter.vu.div [1] ; show divisions
+				set tcp.meter meter_section  ; set size
+				set tcp.meter.vu.div [1] ; show divisions
 
 				; meter text color
-						set tcp.meter.readout.color tcp_meter_readout_color
-						set tcp.meter.scale.color.unlit.bottom tcp_meter_unlit_color
-						set tcp.meter.scale.color.unlit.top tcp_meter_unlit_color
-						set tcp.meter.scale.color.lit.bottom tcp_meter_lit_color
-						set tcp.meter.scale.color.lit.top tcp_meter_lit_color
+					set tcp.meter.readout.color tcp_meter_readout_color
+					set tcp.meter.scale.color.unlit.bottom tcp_meter_unlit_color
+					set tcp.meter.scale.color.unlit.top tcp_meter_unlit_color
+					set tcp.meter.scale.color.lit.bottom tcp_meter_lit_color
+					set tcp.meter.scale.color.lit.top tcp_meter_lit_color
 
 			; Buttons
 				; Fx
@@ -206,10 +188,10 @@
 					set tcp.width.fadermode 1
 
 			; Label
-				; If narrow, occupy all space
-				set tcp.label ?main_section_narrow{0} \
-					[tcp_button_section{0} 0 tcp_button_section{2} h] \
-					[main_section_end 0 tcp_label_width h]
+				; Default to all space
+				set tcp.label [tcp_button_section{0} 0 w h]
+				; If buttons are visible, shift by the button section width.
+				set tcp.label !tcp_button_section_hidden{0} + [tcp_button_section{2} 0 0 0]
 
 				; 1px of margin, vertically centered, horizontally left-centerd
 				set tcp.label.margin [5 1 5 1 0 0.5]
@@ -641,7 +623,6 @@
 	front tcp.recarm tcp.label tcp.volume tcp.pan_group tcp.solo tcp.mute tcp.phase tcp.width tcp.foldercomp tcp.folder
 
 	compute_tcp_sections
-	resetHides
 
 	; Element ordering in the tcp
 		;    element     size
@@ -658,7 +639,6 @@
 		then input_group 100
 		then tcp.env     30
 		then tcp.recmode 30
-		;then tcp.label   tcp_label_width
 
 	; Draw the layout
 	draw_tcp
@@ -667,7 +647,6 @@
 	;;Layout "A"
 
 		;;	compute_tcp_sections
-		;;	resetHides
 
 		;;	then tcp.recarm  20            0
 		;;	then tcp.recmon  15            0
@@ -684,9 +663,8 @@
 
 ; Master Track Control Panel
 	calc_master_tcp_sections
-	resetHides
 
- ;       element           size
+	;      element           size
 		then master.tcp.label  50
 		then master.tcp.volume 20
 		then master.tcp.pan    20
