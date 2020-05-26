@@ -175,7 +175,7 @@ macro draw_tcp
   set tcp.pan.label.margin       [0 1 0 0 1]
   set tcp.pan.label.color        trackpanmode<=5 val_color [130 90 90]    
   set tcp.label.margin           [2 0 2 2 0]
-  set tcp.label.color            ?recarm [255 255 255] [184 184 184]
+  set tcp.label.color            ?recarm [100 0 00] [184 0 184]
   set tcp.fxparm.font            [2]
   set tcp.fxparm.margin          [0 0 3 0]
   set tcp.pan.fadermode          gl_fader_swap   
