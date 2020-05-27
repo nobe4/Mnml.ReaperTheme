@@ -34,9 +34,13 @@
 		tinttcp 298
 		peaksedges 0
 		no_meter_reclbl 1
-		tcp_heights 2 20 20 20   ; supercollapsed, collapsed, small(norecarm), recarm size
+
+		tcp_heights 2 12 20 20   ; TPC heights presets: supercollapsed, collapsed, small(norecarm), recarm size
+		envcp_min_height 12
+
 		tcp_folderindent 0 ; control the indent with tcp_folder_indent
-		envcp_min_height 27
+		; Envcp min height
+
 		misc_dpi_translate 134 150
 		misc_dpi_translate 174 200
 
@@ -49,13 +53,10 @@
 	; Global text colors settings
 		set custom_col [trackcolor_r trackcolor_g trackcolor_b]
 		set luma + + * 0.299 [trackcolor_r] * 0.587 [trackcolor_g] * 0.114 [trackcolor_b]
-
-		; macro for the color of text that is drawn over custom colors
-		set swapLuma 130 ; (0 to 255) custom color brightness to switch from 'light' to 'dark' text
-		set pushLuma 90 ; (0 to 255) very dim custom color brighness
+		set track_label_color luma{0}<130 255 0
 	
 	; Track Control Panel
-		set tcp_folder_indent 1                                   ; Px to indent a folder by
+		set tcp_folder_indent 2                                   ; Px to indent a folder by
 		set tcp_folder_width 20                                   ; Folder vertical width
 		set tcp_label_width 100                                   ; Label size for each tcp row
 		set tcp_meter_lit_color [100 100 100 255]                 ; Lit meter is light grey
@@ -64,8 +65,8 @@
 		set tcp_meter_width 19
 		set tcp_min_label_width 180                               ; Minimum size for the tcp label
 		set tcp_max_button_width 385                              ; Max size for the button section, 20 * 8 + 30 * 4 + 100 + 5 padding
-		set tcp_min_width tcp_row_height                          ; Min width of a row is its height
 		set tcp_row_height 20                                     ; Height of a TCP row
+		set tcp_min_width tcp_row_height                          ; Min width of a row is its height
 		set tcp.margin [0]
 	; Envelope Control Panel
 		set envcp_button_max_width 155 ; 3 * 20 + 3 * 30 + 5 padding
@@ -86,7 +87,7 @@
 				set tcp_row_indent * tcp_folder_indent folderdepth{0}
 
 			; Folder section.
-				set tcp_folder_section_width + tcp_folder_width * tcp_folder_indent maxfolderdepth
+				set tcp_folder_section_width + + 4 tcp_folder_width * tcp_folder_indent maxfolderdepth
 				set tcp_folder_section [tcp_row_indent 0 tcp_folder_section_width h]
 				set tcp_folder_compact_button [tcp_folder_section{0} tcp_folder_section{1} 20 20]
 				set tcp_folder_modify_button [tcp_folder_section{0} 86 20 14 0 1 0 1]
@@ -105,7 +106,10 @@
 				; Width can't be above max
 				set tcp_button_section_width tcp_button_section_width{0}>tcp_max_button_width{0} tcp_max_button_width .
 				set tcp_button_section [tcp_folder_section{2} 0 tcp_button_section_width h]
-			
+
+				; If too small for buttons, hide them
+				set tcp_button_section h<20 [0] .
+
 			; Label
 				set tcp_label_section_width - - w tcp_button_section_width tcp_meter_width
 				set tcp_label_section + [tcp_button_section{2} 0 tcp_label_section_width h] [tcp_folder_section{2}]
@@ -121,6 +125,7 @@
 		endMacro
 
 		macro draw_tcp
+
 			; Track id
 				set tcp.trackidx + [0 0 tcp_row_indent] [0 0 20 100 0 0 0 1]
 				; if collapsed, add to the current track some height to hide the text
@@ -190,10 +195,10 @@
 				set tcp.label tcp_label_section
 
 				; 1px of margin, vertically centered, horizontally left-centerd
-				set tcp.label.margin [5 1 5 1 0 0.5]
+				set tcp.label.margin [0 -2 0 0 0 0.5]
 				; Background set by Mnml/tcp_namebg.png, delete the file.
 				; The background color (0001) is basically transparent, but (0000) fails for some reason to be 100% transparent. We can't see it, so that's fine.
-				set tcp.label.color [255 255 255 255 0 0 0 1]
+				set tcp.label.color [track_label_color{0} track_label_color{0} track_label_color{0} 200 0 0 0 1]
 
 			; Fx parameter controls list
 				set tcp.fxparm [tcp_button_section main_section_last_visible_element{0} tcp_button_section tcp_button_section]
@@ -269,7 +274,8 @@
 			set envcp_button_section_width envcp_button_section_width{0}<0 0 .
 			; Width can't be above max
 			set envcp_button_section_width envcp_button_section_width{0}>envcp_button_max_width{0} envcp_button_max_width .
-			set envcp_button_section [0 0 envcp_button_section_width 20]
+			set envcp_button_section [0 0 envcp_button_section_width h]
+			set envcp_button_section h<20 [0] .
 
 		; Label section
 			set envcp_label_section_width - - w envcp_button_section_width envcp_value_width
@@ -282,6 +288,8 @@
 		endMacro
 
 		macro draw_envcp
+			set envcp.margin [0 0 0 0]
+
 			set envcp.label envcp_label_section
 			set envcp.label.color [184 184 184]
 			set envcp.label.margin [1 0 1 0 0 0.5 0]
@@ -568,9 +576,9 @@
 		then tcp.phase   20
 		then tcp.io      30
 		then fx_group    30
-		then input_group 100
 		then tcp.env     30
 		then tcp.recmode 30
+		then input_group 100
 
 	; Draw the layout
 	draw_tcp
