@@ -53,8 +53,8 @@
 		; macro for the color of text that is drawn over custom colors
 		set swapLuma 130 ; (0 to 255) custom color brightness to switch from 'light' to 'dark' text
 		set pushLuma 90 ; (0 to 255) very dim custom color brighness
-
-	; TCP
+	
+	; Track Control Panel
 		set tcp_folder_indent 1                                   ; Px to indent a folder by
 		set tcp_folder_width 20                                   ; Folder vertical width
 		set tcp_label_width 100                                   ; Label size for each tcp row
@@ -63,19 +63,24 @@
 		set tcp_meter_unlit_color [0]                             ; Unlit meter is transparent
 		set tcp_meter_width 19
 		set tcp_min_label_width 180                               ; Minimum size for the tcp label
+		set tcp_max_button_width 385                              ; Max size for the button section, 20 * 8 + 30 * 4 + 100 + 5 padding
 		set tcp_min_width tcp_row_height                          ; Min width of a row is its height
 		set tcp_row_height 20                                     ; Height of a TCP row
 		set tcp.margin [0]
+	; Envelope Control Panel
+		set envcp_button_max_width 155 ; 3 * 20 + 3 * 30 + 5 padding
+		set envcp_value_width 60 ; Tuned by eye, roughly enough for max frequence and various effects value.
+		set envcp_label_min_width envcp_value_width
 
 ; Macro
-	; Compute all the variables to draw the tcp later
-		macro compute_tcp_sections
+	; Track Control Panel
+		macro compute_tcp
 			; Dynamic elements
 				; tcp_supercollapsed is whether the parent height is too small for the tcp section
 				set tcp_supercollapsed h<10 1 0
 
 			; Default and minimal tcp size
-				set tcp.size + [300 100] [0 0 tcp_min_width{0}]
+				set tcp.size [300 100 tcp_min_width{0}]
 
 			; Indent
 				set tcp_row_indent * tcp_folder_indent folderdepth{0}
@@ -95,9 +100,15 @@
 
 			; Buttons section
 				set tcp_button_section_width - - - w tcp_folder_section{2} tcp_label_width tcp_meter_width
-				set tcp_button_section_hidden tcp_button_section_width{0}<25 1 0
+				; Width can't be lower than 0
+				set tcp_button_section_width tcp_button_section_width{0}<0 0 .
+				; Width can't be above max
+				set tcp_button_section_width tcp_button_section_width{0}>tcp_max_button_width{0} tcp_max_button_width .
 				set tcp_button_section [tcp_folder_section{2} 0 tcp_button_section_width h]
-				set tcp_button_section ?tcp_button_section_hidden [0] .
+			
+			; Label
+				set tcp_label_section_width - - w tcp_button_section_width tcp_meter_width
+				set tcp_label_section + [tcp_button_section{2} 0 tcp_label_section_width h] [tcp_folder_section{2}]
 
 			; Meter
 				; Meter section is the position/size of the meter: rightmost - tcp width
@@ -109,7 +120,6 @@
 				set previous_element [tcp_button_section]
 		endMacro
 
-	; Draw the tcp section
 		macro draw_tcp
 			; Track id
 				set tcp.trackidx + [0 0 tcp_row_indent] [0 0 20 100 0 0 0 1]
@@ -123,7 +133,6 @@
 				set tcp.trackidx.font [2]
 
 				; color
-				text_over_custom tcp.trackidx.color
 				set tcp.trackidx.color ?track_selected [50 50 50]
 
 			; Folders
@@ -133,7 +142,6 @@
 				; folder button
 					; If folder too small, hide modify button
 					set tcp.folder h<40 [0] tcp_folder_modify_button
-
 
 			; Meter view: the meter section wit
 				set tcp.meter meter_section  ; set size
@@ -167,7 +175,7 @@
 
 				; Volume
 					set tcp.volume [tcp.volume tcp.volume tcp.volume tcp_row_height]
-					set tcp.volume.fadermode 0
+					set tcp.volume.fadermode 1
 
 				; Pan
 					set tcp.pan [tcp.pan tcp.pan tcp.pan tcp_row_height]
@@ -179,9 +187,7 @@
 
 			; Label
 				; Default to all space
-				set tcp.label [tcp_button_section{0} 0 w h]
-				; If buttons are visible, shift by the button section width.
-				set tcp.label !tcp_button_section_hidden{0} + [tcp_button_section{2} 0 0 0]
+				set tcp.label tcp_label_section
 
 				; 1px of margin, vertically centered, horizontally left-centerd
 				set tcp.label.margin [5 1 5 1 0 0.5]
@@ -193,11 +199,10 @@
 				set tcp.fxparm [tcp_button_section main_section_last_visible_element{0} tcp_button_section tcp_button_section]
 				set tcp.fxparm.font [1]
 				set tcp.fxparm.margin [0]
-
 		endMacro
 
-	; Compute all the variables to draw the master tcp later
-		macro calc_master_tcp_sections
+	; Master Track Panel
+		macro compute_master_ctp
 			; Main section
 				set master_tcp_button_section - w meter_section{2}
 				set tcp_button_section [0 0 master_tcp_button_section h]
@@ -212,7 +217,6 @@
 			set previous_element tcpNullElement
 		endMacro
 
-	; Draw the master tcp
 		macro draw_master_tcp
 			; Default and Min Size
 				set master.tcp.size [300 20 100 20]
@@ -236,23 +240,65 @@
 			
 			; Volume
 				set master.tcp.volume !master.tcp.volume{2} [0 0 0 0] [master.tcp.volume master.tcp.volume master.tcp.volume tcp_row_height]
-				set master.tcp.volume.fadermode [1]
+				set master.tcp.volume.fadermode 1
 				set master.tcp.volume.label [0]
 
 			; Pan
 				set master.tcp.pan !master.tcp.pan{2} [0 0 0 0] [master.tcp.pan master.tcp.pan tcp_row_height tcp_row_height]
-				set master.tcp.pan.fadermode [1]
+				set master.tcp.pan.fadermode 1
 				set master.tcp.pan.label [0]
 
 			; Width
 				set master.tcp.width !master.tcp.width{2} [0 0 0 0] [master.tcp.width master.tcp.width master.tcp.width tcp_row_height]
-				set master.tcp.width.fadermode [1]
+				set master.tcp.width.fadermode 1
 				set master.tcp.width.label [0]
 
 			; Fx Param
 				set master.tcp.fxparm [tcp_button_section main_section_last_visible_element{0} tcp_button_section tcp_button_section]
 				set master.tcp.fxparm.margin [0]
 				set master.tcp.fxparm.font [1]
+		endMacro
+
+	; Envelope Control Panel
+		macro compute_envcp
+			set envcp.size tcp.size
+
+		; Buttons section
+			set envcp_button_section_width - - w envcp_label_min_width envcp_value_width
+			; Width can't be lower than 0
+			set envcp_button_section_width envcp_button_section_width{0}<0 0 .
+			; Width can't be above max
+			set envcp_button_section_width envcp_button_section_width{0}>envcp_button_max_width{0} envcp_button_max_width .
+			set envcp_button_section [0 0 envcp_button_section_width 20]
+
+		; Label section
+			set envcp_label_section_width - - w envcp_button_section_width envcp_value_width
+			set envcp_label_section [envcp_button_section{2} 0 envcp_label_section_width h]
+
+		; Value section
+			set envcp_value_section - [w 0 envcp_value_width h] [envcp_value_width]
+
+			set previous_element [envcp_button_section]
+		endMacro
+
+		macro draw_envcp
+			set envcp.label envcp_label_section
+			set envcp.label.color [184 184 184]
+			set envcp.label.margin [1 0 1 0 0 0.5 0]
+			set envcp.label.font [1]
+
+			; Value
+				set envcp.value envcp_value_section
+				set envcp.value.font [1]
+				set envcp.value.color [92 184 169]
+
+				set envcp_value_alignment_width * 2 envcp_value_width
+				set envcp_value_horizontal_alignment h>envcp_value_alignment_width{0} 0.5 1
+				set envcp.value.margin [0 0 0 0 envcp_value_horizontal_alignment 0.5]
+
+			; Fader
+				set envcp.fader.color [54 217 190] ; TODO
+				set envcp.fader.fadermode 1
 		endMacro
 
 	; Then macro to handle elements one after the other
@@ -268,7 +314,7 @@
 
 			; Compute current element rightmost point: it's position + width, minus
 			; the main section position.
-			set element_rightmost - + element{0} element{2} tcp_button_section{0}
+			set element_rightmost - + element{0} element{2} button_section{0}
 
 			; If collapsed, change the width and height to 0 0
 			set element ?tcp_button_section_hidden{0} [. . 0 0]
@@ -278,30 +324,30 @@
 
 			; If element overflows, move to next row. 5 here is a padding
 			; for preventing visual overflow;
-			set right_space_left - + element_rightmost{0} 5 tcp_button_section{2}
-			set element right_space_left{0}>0 [tcp_button_section next_row element element]
+			set right_space_left - + element_rightmost{0} 5 button_section{2}
+			set element right_space_left{0}>0 [button_section next_row element element]
 		
 			; Recalculate element_rightmost, now that the element is on a new row
-			set element_rightmost - + element{0} element{2} tcp_button_section{0}
-			set right_space_left - + element_rightmost{0} 5 tcp_button_section{2}
+			set element_rightmost - + element{0} element{2} button_section{0}
+			set right_space_left - + element_rightmost{0} 5 button_section{2}
 
 			; Remove if still not fitting
 			set element right_space_left{0}>0 [. . 0 0]
 			
 			; Find its bottom: top + height
-			set this_y_end + element{1} element{3}
+			set element_bottom + element{1} element{3}
 
 			; Cull if there's not enough height to fit, or if previous_element was culled;
-			set element this_y_end{0}>tcp_button_section{3} [. . 0 0] .
+			set element element_bottom{0}>button_section{3} [. . 0 0] .
 
 			; Save reference to previous element
 			set previous_element element
 
 			; save reference to main last visible element
-			set main_section_last_visible_element element{3}>0 this_y_end{0} .
+			set main_section_last_visible_element element{3}>0 element_bottom{0} .
 		endmacro
 
-	; Mixer
+	; Mixer Control Panel
 		macro drawMcp
 			; Define variables
 				set hide_inputFX_s      hide_inputFX
@@ -458,10 +504,9 @@
 				?mcp_control_align{0} * - mcp_maxfolderdepth folderdepth [0 0 0 mcp_indent_s{0}] [0]
 			set mcp.label.margin [4 0 4 3 0.5]
 			set mcp.label.font [3]
-			track_label_color mcp.label.color
+			set mcp.label.color tcp.label.color
 			set mcp.trackidx + + [0 bot_sec] [0 mcp.label{3}] - [0 0 mcp.size{0} bot_sec_height{0}] [0 0 0 mcp.label{3}]
 			set mcp.trackidx.margin + - [0 0 0 mcp.trackidx{3} 0.5] [0 0 0 20] folderstate==1 [12] [0]
-			text_over_custom mcp.trackidx.color
 			set mcp.trackidx.color ?track_selected [50 50 50] .
 			set mcp.trackidx.font [3]
 			set mcp.folder + + [0 bot_sec] [0 mcp.label{3}] folderstate<0 + + [mcp.size] [sidebar_sec{2}] [-21 -2 21 22] [0 -2 18 22]
@@ -470,44 +515,6 @@
 	; Create parameters
 		macro indexParams desc val min max idx
 			define_parameter param##idx desc val min max
-		endmacro
-
-	; Set custom color over background
-		macro text_over_custom element
-			set element \
-				?trackcolor_valid \
-					?track_selected \
-						+ custom_col \
-							luma{0}<swapLuma{0} \
-								luma{0}<pushLuma \
-									[220 220 220] \
-									[-100 -100 -100] \
-									[-120 -120 -120] \
-						+ custom_col \
-							luma{0}<swapLuma{0} \
-								luma{0}<pushLuma
-									[180 180 180] \
-									[100 100 100] \
-									[-120 -120 -120] \
-					?track_selected \
-						[66 67 67] \
-						[54 57 57]
-		endmacro
-
-	; macro for the color of track labels, with tweaked custom color inheritance if a custom color is too dark
-		; if record: red
-		; if selected: white
-		; if valid color:
-		; 	if luminosity < 120: brighten
-		; 	use default
-		macro track_label_color element
-			set element \
-				?recarm [255 255 255] \
-				?track_selected [255 255 255] \
-				?trackcolor_valid \
-					luma{0}<120 + custom_col [80 80 80] \
-						custom_col \
-					[168 172 172]
 		endmacro
 
 ; set 10 values to a scalar name
@@ -520,25 +527,6 @@
 
 	;           description             val min max idx
 	indexParams 'A_mcp_indent'          4   1   7   1
-	indexParams 'A_tcp_indent'          5   1   7   2
-	indexParams 'A_tcp_vol_size'        1   1   7   3
-	indexParams 'A_tcp_MeterSize'       3   1   7   4
-	indexParams 'A_tcp_Record_Arm'      0   0   15  5
-	indexParams 'A_tcp_Monitor'         4   0   15  6
-	indexParams 'A_tcp_Track_Name'      0   0   15  7
-	indexParams 'A_tcp_Volume'          0   0   15  8
-	indexParams 'A_tcp_Routing'         1   0   15  9
-	indexParams 'A_tcp_Effects'         0   0   15  10
-	indexParams 'A_tcp_Envelope'        0   0   15  11
-	indexParams 'A_tcp_Pan_&_Width'     1   0   15  12
-	indexParams 'A_tcp_Record_Mode'     4   0   15  13
-	indexParams 'A_tcp_Input'           4   0   15  14
-	indexParams 'A_tcp_Values'          2   0   15  15
-	indexParams 'A_tcp_Meter_Values'    4   0   15  16
-	indexParams 'A_tcp_MeterLoc'        2   1   3   17
-	indexParams 'A_tcp_LabelSize'       6   1   7   18
-	indexParams 'A_tcp_LabelMeasure'    100 1   200 19
-	indexParams 'A_tcp_InputSize'       5   1   7   20
 	indexParams 'A_envcp_labelSize'     6   1   7   21
 	indexParams 'A_envcp_LabelMeasure'  100 1   200 22
 	indexParams 'A_envcp_fader_size'    1   1   7   23
@@ -559,16 +547,15 @@
 	def gl_width_color   trackpanmode=5  [255 255 255 210] [63 84 63]
 	; Switch swaper ?
 	def gl_fader_swap    trackpanmode==6 [0]               [1]
-	;text_over_custom val_color 															; ERADICATE THIS
 
 ; Track control panels
 	clear tcp.*
 
 	; z-index
 	front tcp.label tcp.meter
+	compute_tcp
 
-	compute_tcp_sections
-
+	set button_section tcp_button_section
 	; Element ordering in the tcp
 		;    element     size
 		then tcp.recarm  20
@@ -607,19 +594,19 @@
 		;;EndLayout
 
 ; Master Track Control Panel
-	calc_master_tcp_sections
+	compute_master_ctp
 
 	;      element           size
 		then master.tcp.label  50
 		then master.tcp.volume 20
 		then master.tcp.pan    20
 		then master.tcp.width  20
-		then master.tcp.mono   50
+		then master.tcp.mono   20
 		then master.tcp.solo   20
 		then master.tcp.mute   20
-		then master.tcp.io     34
-		then master_fx_group   36
-		then master.tcp.env    41
+		then master.tcp.io     30
+		then master_fx_group   30
+		then master.tcp.env    30
 
 	draw_master_tcp
 
@@ -628,85 +615,29 @@
 	paramPair 	EnvcpVolSize 					23 20 40 70 100 130 160 190
 
 	set EnvLabelAutoMeasured 					param22
-	set EnvFolderIndent							param24
 
 	clear envcp.*
+
 	front envcp.fader
 
-	macro calcEnvSecs 
+	compute_envcp
 
-		set envcp.size							 [300 100]
-		set tcp_row_height 							 20
-		set envcp_padding						 [7 7]
-		set values_w							 60
-		set envcp_squash_height 					+ + 20 envcp_padding{1} envcp_padding{1}
-		set valuesFlipH								+ + envcp_squash_height 13 envcp_padding{1}
-		set h_less_border							- h 1
-		set envcp_padding							h_less_border{0}<envcp_squash_height{0} + [envcp_padding] * [0 1] / - h_less_border{0} tcp_row_height 2
-		set envLabelMin							 30
-		set Envcp_labelSize 						EnvcpLabelSize{0}==0 EnvLabelAutoMeasured{0}<envLabelMin{0} envLabelMin{0} + EnvLabelAutoMeasured{0} 10 EnvcpLabelSize
-		set this_envcp_indent						+ ?EnvFolderIndent{0} * tcp_folder_indent{0} folderdepth{0} [0] [-3 0 -6] ; subtracting 3px to match the lack of visible borders
-		set main_section								- + * [1 0 -1] this_envcp_indent [0 0 w h] h<valuesFlipH{0} [0 0 values_w 0] + [0 0 0 13] [0 0 0 envcp_padding{1}]
-		set envcpNullElement						+ + [main_section] [envcp_padding envcp_padding] [0 0 0 20]
-		set previous_element 						envcpNullElement		; Let's start at the very beginning. A very good place to start.
-		set addCont									envcp_type==4 [30 1] [0 0]
+	set button_section envcp_button_section
 
-	endMacro
+	; element size
+	then envcp.arm    20
+	then envcp.bypass 20
+	then envcp.fader  20
+	then envcp.mod    30
+	then envcp.learn  30
+	then envcp.hide   30
 
-	calcEnvSecs
+	draw_envcp
 
-	macro envThen element width use_padding
-		set s_width				 width 
-
-		set prev_end 			+ [previous_element] [previous_element{2}]									; find the end of the previous element
-		set element 			[prev_end previous_element s_width tcp_row_height]									; ...and place the element there
-
-		; x-axis
-		set element 			?use_padding + [envcp_padding] 												; if x-padding is required, add it
-		set this_end			- + + [element] [element{2}] [envcp_padding] [main_section]						; okay, and what does that make the x-end of this element, realtive to main_section?
-
-		; y-axis
-		set next_row			+ [0 element] [0 previous_element{3}] 										; find the y of the next row
-		set element 			this_end{0}>main_section{2} + [main_section next_row element element] envcp_padding	; move it to the next row
-		set this_end			- + + [element] [element{2}] [envcp_padding] [main_section]						; recalculate this_end, now that the element is on a new row
-		set element				this_end{0}>main_section{2} [. . 0 .]											; ... and cull if there's still not enough main_section width to fit
-		set this_y_end			+ + element{1} element{3} envcp_padding{1}									; find its bottom
-		set element				this_y_end{0}>main_section{3} [0] !previous_element{1} [0] .					; cull if there's not enough height to fit, or if previous_element was culled
-		set main_section_last_visible_element 		element{3}>0 this_y_end{0} .
-
-		; values readout control
-		set valuesRoom			- - main_section{3} this_y_end{0} envcp_padding{1}								; is the remaining height after this element enough for the values to fit?
-		set previous_element element
-	endmacro
-
-	;    element        		size  	padding?
-	envThen envcp.arm  			20 			0
-	envThen envcp.bypass  		15 			0
-	envThen envcp.label   envcp_labelSize 	0
-	envThen envcp.fader    EnvcpVolSize 	0
-	envThen envcp.mod 		addCont{0}  addCont{1}
-	envThen envcp.learn		addCont{0}  addCont{1}
-	envThen envcp.hide 			36 			1
-
-	macro drawEnvcp 
-		set envcp.label.color      					[184 184 184]
-			set envcp.label.margin     			 [2 0 2 0 0]
-			set envcp.label.font					[1]
-		set envcp.value								[0 0 0 4]
-			set envcp.value.font       				[1]
-			set envcp.value.color      				[92 184 169]
-			set envcp.value.margin     				* [0 0 1 0 1] [0 0 7 0 1]
-		set envcp.fader.color      					[54 217 190]
-			set env_fader_w							21
-			set envcp.fader.fadermode         		envcp.fader{w}>env_fader_w{0} [0] [1]
-	endMacro
-
-	drawEnvcp
-
-	Layout "A"
-		set envcp.label  .
-		drawEnvcp
-	endlayout
+	;Layout "A"
+	;	set envcp.label  .
+	;	draw_envcp
+	;endlayout
 
 ; Mixer
 	macro doModeLogic variable paramIdx
@@ -893,7 +824,6 @@
 			set master.mcp.fxparm.margin                mcp.fxparm.margin
 	endmacro
 	drawMasterMcp
-
 
 ; To comment
 ;[color theme]
