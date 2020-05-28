@@ -1,7 +1,15 @@
 ; vim: foldmethod=indent syntax=lisp
 
+; Notes
+; tcp_background color, can't set it up using colors+background images.
+; needs to be the same, can be 1px because it stretches in directions
+; tcp_bg.png        = 1px bgcolor
+; tcp_bgsel.png     = slightly lighter than tcp_bg.png
+; tcp_idxbg.png     = copy of tcp_bg.png
+; tcp_idxbg_sel.png = remove
+; tcp_namebg.png = remove
+
 ; Documentation
-	; front specify the z index of elements
 
 ; Global variables
 	; Reaper-defined
@@ -33,7 +41,7 @@
 		tcp_voltext_flags 12
 		tinttcp 298
 		peaksedges 0
-		no_meter_reclbl 1
+		no_meter_reclbl 0
 
 		tcp_heights 2 12 20 20   ; TPC heights presets: supercollapsed, collapsed, small(norecarm), recarm size
 		envcp_min_height 12
@@ -51,13 +59,18 @@
 		; font #4/9/14 - calibri 11
 
 	; Global text colors settings
-		set custom_col [trackcolor_r trackcolor_g trackcolor_b]
+		; If luminosity of track is too low, switch text to white
 		set luma + + * 0.299 [trackcolor_r] * 0.587 [trackcolor_g] * 0.114 [trackcolor_b]
-		set track_label_color luma{0}<130 255 0
+		set track_text_white luma{0}<180 1 0
+		; The background color (0001) is basically transparent, but (0000) fails for some reason to be 100% transparent. We can't see it, so that's fine.
+		set track_text_color [trackcolor_r trackcolor_g trackcolor_b 245 0 0 0 1]
+		; If the track color is too dark, just put white
+		set track_text_color ?track_text_white [255 255 255 245 0 0 0 1] .
+		set track_text_color ?track_selected + [0 0 0 55] track_text_color .
 	
 	; Track Control Panel
 		set tcp_folder_indent 2                                   ; Px to indent a folder by
-		set tcp_folder_width 20                                   ; Folder vertical width
+		set tcp_folder_width 30                                   ; Folder vertical width
 		set tcp_label_width 100                                   ; Label size for each tcp row
 		set tcp_meter_lit_color [100 100 100 255]                 ; Lit meter is light grey
 		set tcp_meter_readout_color [100 100 100 255 255 0 0 255] ; Top value, always visible, non clipped and clipped.
@@ -67,7 +80,6 @@
 		set tcp_max_button_width 385                              ; Max size for the button section, 20 * 8 + 30 * 4 + 100 + 5 padding
 		set tcp_row_height 20                                     ; Height of a TCP row
 		set tcp_min_width tcp_row_height                          ; Min width of a row is its height
-		set tcp.margin [0]
 	; Envelope Control Panel
 		set envcp_button_max_width 155 ; 3 * 20 + 3 * 30 + 5 padding
 		set envcp_value_width 60 ; Tuned by eye, roughly enough for max frequence and various effects value.
@@ -81,7 +93,7 @@
 				set tcp_supercollapsed h<10 1 0
 
 			; Default and minimal tcp size
-				set tcp.size [300 100 tcp_min_width{0}]
+				set tcp.size [300 100 tcp_min_width]
 
 			; Indent
 				set tcp_row_indent * tcp_folder_indent folderdepth{0}
@@ -125,7 +137,6 @@
 		endMacro
 
 		macro draw_tcp
-
 			; Track id
 				set tcp.trackidx + [0 0 tcp_row_indent] [0 0 20 100 0 0 0 1]
 				; if collapsed, add to the current track some height to hide the text
@@ -138,7 +149,7 @@
 				set tcp.trackidx.font [2]
 
 				; color
-				set tcp.trackidx.color ?track_selected [50 50 50]
+				set tcp.trackidx.color track_text_color
 
 			; Folders
 				; folder compact button
@@ -196,9 +207,7 @@
 
 				; 1px of margin, vertically centered, horizontally left-centerd
 				set tcp.label.margin [0 -2 0 0 0 0.5]
-				; Background set by Mnml/tcp_namebg.png, delete the file.
-				; The background color (0001) is basically transparent, but (0000) fails for some reason to be 100% transparent. We can't see it, so that's fine.
-				set tcp.label.color [track_label_color{0} track_label_color{0} track_label_color{0} 200 0 0 0 1]
+				set tcp.label.color track_text_color
 
 			; Fx parameter controls list
 				set tcp.fxparm [tcp_button_section main_section_last_visible_element{0} tcp_button_section tcp_button_section]
@@ -236,7 +245,7 @@
 				set master.tcp.meter.scale.color.lit.top tcp_meter_lit_color
 
 			; Label
-				set master.tcp.label.color tcp.label.color
+				set master.tcp.label.color [255 255 255 255]
 				set master.tcp.label.font [1]
 
 			; FX
