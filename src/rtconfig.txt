@@ -6,8 +6,13 @@
 ; tcp_bg.png        = 1px bgcolor
 ; tcp_bgsel.png     = slightly lighter than tcp_bg.png
 ; tcp_idxbg.png     = copy of tcp_bg.png
-; tcp_idxbg_sel.png = remove
-; tcp_namebg.png = remove
+; tcp_idxbg_sel.png = 1px transparent
+; tcp_namebg*.png   = remove
+; tcp_iconbg*       = remove
+; X = {pan, width*, volume}
+; tcp_X_knob_small = 1px transparent
+; tcp_X_knob_stack = all the tcp steps
+; *: width take the volume stack, no need for tcp_width_knob_stack
 
 ; Documentation
 
@@ -16,7 +21,7 @@
 		version 6.0
 
 		use_pngs 1
-		use_overlays 1
+		use_overlays 0
 
 		; Don't show borders
 		tcp_showborders 0
@@ -65,8 +70,7 @@
 		; The background color (0001) is basically transparent, but (0000) fails for some reason to be 100% transparent. We can't see it, so that's fine.
 		set track_text_color [trackcolor_r trackcolor_g trackcolor_b 245 0 0 0 1]
 		; If the track color is too dark, just put white
-		set track_text_color ?track_text_white [255 255 255 245 0 0 0 1] .
-		set track_text_color ?track_selected + [0 0 0 55] track_text_color .
+		set track_text_color ?track_text_white{0} [255 255 255 245 0 0 0 1] .
 	
 	; Track Control Panel
 		set tcp_folder_indent 2                                   ; Px to indent a folder by
@@ -194,8 +198,8 @@
 					set tcp.volume.fadermode 1
 
 				; Pan
-					set tcp.pan [tcp.pan tcp.pan tcp.pan tcp_row_height]
-					set tcp.pan.fadermode 1
+					set tcp.pan [tcp.pan tcp.pan tcp.pan tcp.pan]
+					set tcp.pan.fadermode [1]
 
 				; Width
 					set tcp.width [tcp.width tcp.width tcp.width tcp_row_height]
