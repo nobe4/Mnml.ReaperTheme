@@ -34,15 +34,6 @@
 		mcp_vupeakheight 2
 		mcp_mastervupeakheight 4
 		mcp_altmeterpos 0
-		tcp_vol_zeroline FF666666
-		tcp_pan_zeroline 66000000
-		mcp_vol_zeroline FF666666
-		mcp_pan_zeroline 85000000
-		trans_speed_zeroline 85000000
-		gen_vol_zeroline FF000000
-		gen_pan_zeroline FF000000
-		item_volknobfg 85000000 FF778485 00474F4F
-		mcp_min_height 240
 		mcp_voltext_flags 5 5
 		tcp_voltext_flags 12
 		tinttcp 298
@@ -50,10 +41,12 @@
 		no_meter_reclbl 0
 
 		tcp_heights 2 12 20 20   ; TPC heights presets: supercollapsed, collapsed, small(norecarm), recarm size
+		tcp_master_minheight 10
 		envcp_min_height 12
+		mcp_min_height 100
 
-		tcp_folderindent 0 ; control the indent with tcp_folder_indent
 		; Envcp min height
+		tcp_folderindent 0 ; control the indent with tcp_folder_indent
 
 		misc_dpi_translate 134 150
 		misc_dpi_translate 174 200
@@ -86,10 +79,22 @@
 		set tcp_row_height 20                                     ; Height of a TCP row
 		set tcp_min_width tcp_row_height                          ; Min width of a row is its height
 		set tcp_track_id_width 30                                 ; Width of the track id, enough for 999
+
 	; Envelope Control Panel
 		set envcp_button_max_width 155                            ; 3 * 20 + 3 * 30 + 5 padding
 		set envcp_value_width 60                                  ; Tuned by eye, roughly enough for max frequence and various effects value.
 		set envcp_label_min_width envcp_value_width
+
+	; Mixer control panel
+		set mcp_column_width 20
+		set mcp_margin_h 5
+		set mcp_width + * mcp_column_width 2 * mcp_margin_h 3
+		set mcp_master_width + * mcp_column_width 4 * mcp_margin_h 3
+		set mcp_label_height 15
+		set mcp_label_margin 8
+		set mcp_meter_unlit_color [255 255 255 120 0 0 0 0]
+		set mcp_meter_lit_color [0 0 0 200 0 0 0 0]
+		set mcp_meter_readout_color [255 255 255 255 0 0 0 0]
 
 ; Macro
 	; Track Control Panel
@@ -139,7 +144,8 @@
 				set meter_section ?tcp_supercollapsed{0} [0] .
 
 			; First element to build from is the main section
-				set previous_element [tcp_button_section]
+			set previous_element [tcp_button_section]
+
 		endMacro
 
 		macro draw_tcp
@@ -371,30 +377,23 @@
 		endmacro
 
 	; Mixer Control Panel
-		macro drawMcp
+		macro draw_mcp
 			clear mcp.*
 
 			; Hide unused elements
-				set mcp.fxin [0]
-				set mcp.recmode [0]
+				set mcp.env [0]
 				set mcp.extmixer.mode [0]
-				set mcp.fxlist [0]
 				set mcp.fx [0]
 				set mcp.fxbyp [0]
+				set mcp.fxin [0]
 				set mcp.io [0]
-				set mcp.env [0]
 				set mcp.recarm [0]
-				set mcp.recmon [0]
 				set mcp.recinput [0]
-
-			set mcp_column_width 20
-			set mcp_margin_h 5
-			set mcp_width + * mcp_column_width 2 * mcp_margin_h 3
-			set mcp_label_height 15
-			set mcp_label_margin 8
+				set mcp.recmode [0]
+				set mcp.recmon [0]
 
 			; Main section
-				set mcp.size [mcp_width h]
+				set mcp.size [mcp_width]
 				set mcp.margin [mcp_margin_h 0 mcp_margin_h 4]
 
 			; Track ID
@@ -436,55 +435,90 @@
 					set mcp.width + [mcp_right_column_section{0} mcp.pan{1} 20 20] [0 mcp.pan{3}]
 					set mcp.width.fadermode 1
 
+				; Phase
+					set mcp.phase + [mcp_right_column_section{0} mcp.width{1} 20 20] [0 mcp.width{3}]
+
 				; Mute
-					set mcp.mute + [mcp_right_column_section{0} mcp.width{1} 20 20] [0 mcp.width{3}]
+					set mcp.mute + [mcp_right_column_section{0} mcp.phase{1} 20 20] [0 mcp.phase{3}]
 
 				; Solo
 					set mcp.solo + [mcp_right_column_section{0} mcp.mute{1} 20 20] [0 mcp.mute{3}]
 
-				; Phase
-					set mcp.phase + [mcp_right_column_section{0} mcp.solo{1} 20 20] [0 mcp.solo{3}]
-
 				; Folder
 					set mcp.folder + + [mcp_right_column_section{0} mcp_right_column_section{1} 20 20] [0 mcp_right_column_section{3}] [0 -20]
-
 		endMacro
 
-	; Create parameters
-		macro indexParams desc val min max idx
-			define_parameter param##idx desc val min max
+		macro draw_master_mcp
+			clear master.mcp.*
+
+			; Hide unused
+				set master.mcp.env [0]
+				set master.mcp.extmixer.mode [0]
+				set master.mcp.fx [0]
+				set master.mcp.fxbyp [0]
+				set master.mcp.fxin [0]
+				set master.mcp.io [0]
+				set master.mcp.recarm [0]
+				set master.mcp.recinput [0]
+				set master.mcp.recmode [0]
+				set master.mcp.recmon [0]
+				set master.mcp.menubutton [0]
+
+			; Set size
+				set master.mcp.size [mcp_master_width]
+				set master.mcp.margin [mcp_margin_h 0 mcp_margin_h 4]
+
+			; TODO
+				set master.mcp.fxlist.margin mcp.fxlist.margin
+				set master.mcp.sendlist.margin mcp.sendlist.margin
+				set master.mcp.fxparm.margin mcp.fxparm.margin
+
+			; Label
+				; Double the size of the mcp_label_height to align with normal mcp columns
+				set master.mcp.label * [0 0 w mcp_label_height] [1 1 1 2]
+				set master.mcp.label.color [255 255 255]
+				set master.mcp.label.margin [0 0 0 0 0.5 0.5]
+
+			; Column definition
+				set mcp_column_section_height - - h * mcp_label_height 2 mcp_label_margin
+				set mcp_master_column_section_x + master.mcp.label{3} mcp_label_margin
+				set mcp_master_left_column_width * mcp_column_width 3
+				set mcp_master_left_column_section [0 mcp_column_section_x mcp_master_left_column_width mcp_column_section_height]
+				set mcp_master_right_column_section + + mcp_left_column_section [mcp_margin_h] [mcp_master_left_column_section{2}]
+
+			; Righ column: Meter
+				set master.mcp.meter mcp_master_left_column_section
+				set master.mcp.meter.vu.div [1]
+				set master.mcp.meter.vu.rmsdiv [3]
+				set master.mcp.meter.readout.color mcp_meter_readout_color
+				set master.mcp.meter.scale.color.lit.bottom mcp_meter_lit_color
+				set master.mcp.meter.scale.color.lit.top mcp_meter_lit_color
+				set master.mcp.meter.scale.color.unlit.bottom mcp_meter_unlit_color
+				set master.mcp.meter.scale.color.unlit.top mcp_meter_unlit_color
+
+			; Righ column: buttons
+				; Volume
+					set master.mcp.volume [mcp_master_right_column_section{0} mcp_master_right_column_section{1} 20 20]
+					set master.mcp.volume.label [0]
+
+				; Pan
+					set master.mcp.pan + [mcp_master_right_column_section{0} master.mcp.volume{1} 20 20] [0 master.mcp.volume{3}]
+					set master.mcp.pan.fadermode 1
+
+				; Width
+					set master.mcp.width + [mcp_master_right_column_section{0} master.mcp.pan{1} 20 20] [0 master.mcp.pan{3}]
+					set master.mcp.width.fadermode 1
+
+				; Mono
+					set master.mcp.mono + [mcp_master_right_column_section{0} master.mcp.width{1} 20 20] [0 master.mcp.width{3}]
+					set master.mcp.mono.fadermode 1
+
+				; Mute
+					set master.mcp.mute + [mcp_master_right_column_section{0} master.mcp.mono{1} 20 20] [0 master.mcp.mono{3}]
+
+				; Solo
+					set master.mcp.solo + [mcp_master_right_column_section{0} master.mcp.mute{1} 20 20] [0 master.mcp.mute{3}]
 		endmacro
-
-; set 10 values to a scalar name
-	macro paramPair scalar Idx n1 n2 n3 n4 n5 n6 n7 n8 n9 n10
-		set scalar param##Idx<=1 n1 param##Idx==2 n2 param##Idx==3 n3 param##Idx==4 n4 param##Idx==5 n5 param##Idx==6 n6 param##Idx==7 n7 param##Idx==8 n8 param##Idx==9 n9 param##Idx>=10 n10
-	endmacro
-
-; Theme variables and parameters
-	define_parameter 'defaultV6' 'defaultV6_version' 1
-
-	;           description             val min max idx
-	indexParams 'A_mcp_indent'          4   1   7   1
-	indexParams 'A_envcp_labelSize'     6   1   7   21
-	indexParams 'A_envcp_LabelMeasure'  100 1   200 22
-	indexParams 'A_envcp_fader_size'    1   1   7   23
-	indexParams 'A_envcp_folder_indent' 1   0   1   24
-	indexParams 'A_mcp_Sidebar'         0   1   5   25
-	indexParams 'A_mcp_Narrow'          0   1   5   26
-	indexParams 'A_mcp_Meter_Expansion' 3   1   5   27
-	indexParams 'A_mcp_Labels'          3   1   5   28
-	indexParams 'A_mcp_meterExpSize'    3   1   4   29
-	indexParams 'A_mcp_border'          1   1   5   30
-
-	indexParams 'A_trans_rate_size'     1   1   7   77
-	indexParams 'A_mcp_control_align'   2   1   2   78
-	indexParams 'A_tcp_control_align'   1   1   2   79
-
-; global color and other custom parameters
-	def gl_pan_color     trackpanmode<=5 [0 0 0 120]       [84 63 63]
-	def gl_width_color   trackpanmode=5  [255 255 255 210] [63 84 63]
-	; Switch swaper ?
-	def gl_fader_swap    trackpanmode==6 [0]               [1]
 
 ; Track control panels
 	clear tcp.*
@@ -493,76 +527,47 @@
 	front tcp.label tcp.meter
 	compute_tcp
 
+	; Save button section for current track
 	set button_section tcp_button_section
-	; Element ordering in the tcp
-		;    element     size
-		then tcp.recarm  20
-		then tcp.recmon  20
-		then tcp.volume  20
-		then tcp.pan     20
-		then tcp.width   20
-		then tcp.mute    20
-		then tcp.solo    20
-		then tcp.phase   20
-		then tcp.io      30
-		then fx_group    30
-		then tcp.env     30
-		then tcp.recmode 30
-		then input_group 100
 
-	; Draw the layout
+	then tcp.recarm  20
+	then tcp.recmon  20
+	then tcp.volume  20
+	then tcp.pan     20
+	then tcp.width   20
+	then tcp.mute    20
+	then tcp.solo    20
+	then tcp.phase   20
+	then tcp.io      30
+	then fx_group    30
+	then tcp.env     30
+	then tcp.recmode 30
+	then input_group 100
+
 	draw_tcp
-
-	; Custom layouts
-	;;Layout "A"
-
-		;;	compute_tcp_sections
-
-		;;	then tcp.recarm  20            0
-		;;	then tcp.recmon  15            0
-		;;	then tcp.label   tcp_label_width 0
-		;;	then pan_group   tcp_PanSize   1
-		;;	then fx_group    36            1
-		;;	then tcp.io      34            1
-		;;	then tcp.env     41            1
-		;;	then tcp.recmode 39            1
-
-		;;	set tcp.label  .
-		;; draw_tcp
-		;;EndLayout
 
 ; Master Track Control Panel
 	compute_master_ctp
 
-	;      element           size
-		then master.tcp.label  50
-		then master.tcp.volume 20
-		then master.tcp.pan    20
-		then master.tcp.width  20
-		then master.tcp.mono   20
-		then master.tcp.solo   20
-		then master.tcp.mute   20
-		then master.tcp.io     30
-		then master_fx_group   30
-		then master.tcp.env    30
+	then master.tcp.label  50
+	then master.tcp.volume 20
+	then master.tcp.pan    20
+	then master.tcp.width  20
+	then master.tcp.mono   20
+	then master.tcp.solo   20
+	then master.tcp.mute   20
+	then master.tcp.io     30
+	then master_fx_group   30
+	then master.tcp.env    30
 
 	draw_master_tcp
 
 ; Envelope Control Panels
-	paramPair 	EnvcpLabelSize 					21 0 20 50 80 110 140 170
-	paramPair 	EnvcpVolSize 					23 20 40 70 100 130 160 190
-
-	set EnvLabelAutoMeasured 					param22
-
 	clear envcp.*
 
-	front envcp.fader
-
 	compute_envcp
-
 	set button_section envcp_button_section
 
-	; element size
 	then envcp.arm    20
 	then envcp.bypass 20
 	then envcp.fader  20
@@ -573,126 +578,18 @@
 	draw_envcp
 
 ; Mixer
-	macro doModeLogic variable paramIdx
-		set variable param##paramIdx##&1 ?track_selected 1 0
-		set variable param##paramIdx##&2 !track_selected 1 variable
-		set variable param##paramIdx##&4 ?recarm 1 variable
-		set variable param##paramIdx##&8 !recarm 1 variable
-	endmacro
-
-
-	set hide_inputFX				[400] 	; height below which input effects is hidden.
-	set hide_input              	[350] 	; height below which input dropdown is hidden.
-	set hide_pan_labels          	[320] 	; height below which pan labels are hidden.
-	set hide_pan					[260] 	; height below which pan controls are hidden.
-	set hide_volume_label        	[250] 	; height below which volume label is hidden.
-	set extmixer_w					[86] 	; width of the extmixer when set as a sidebar
-
-	; sidebar (pushes other secs right)
-	; fx section (background is baked into mcp_bg)
-	; pan section
-	; input section (show/hide inputFX on resize / recarm, with user override)
-	; stretch section (recarm pokes above)
-
-	set mcp_control_align 1
-
-	doModeLogic sidebarMode 	25
-	doModeLogic narrowMode 		26
-	doModeLogic meterExpMode 	27
-	doModeLogic labelsMode 		28
-	paramPair mcp_meterExp 		29 0 2 4 8
-	paramPair mcp_border 		30 0 1 2 3 4
-	drawMcp 1
-
-; Master Mixer
-	  ; --------------- User adjustable values. Edit without fear. -----------------
-
-	set hide_inputFX				[400] ; height below which input effects is hidden.
-	set hide_pan_labels          	[320] ; height below which pan labels are hidden.
-	set hide_pan					[260] ; height below which pan controls are hidden.
-	set hide_volume_label        	[200] ; height below which volume label is hidden.
-
-	  ; ------- End of user adjustable values. From here on may be dragons. ---------
-
-	macro drawMasterMcp
-		clear master.mcp.*
-		front                							master.mcp.menubutton master.mcp.io master.mcp.env master.mcp.mute master.mcp.solo
-		set master.mcp.size         					+ [125 370] [0 0 0 mcp.size]
-		set hide_pan_sm 							 hide_pan
-		set hide_pan_labels_sm						 hide_pan_labels
-		set fx_sec								 		+ [0 0 master.mcp.size{0}] [0 0 0 27]
-		set pan_sec 						     		+ [0 fx_sec{3} master.mcp.size{0}] h<hide_pan_labels_sm{0} h<hide_pan_sm{0} [0 0 0 6] [0 0 0 28] [0 0 0 48]
-		set bot_sec								 		+ [0 h master.mcp.size{0}] [0 -23 0 23]
-		set stretch_sec_start					 		+ fx_sec{3} pan_sec{3}
-		set stretch_sec_height					 		- - - h fx_sec{3} pan_sec{3} bot_sec{3}
-		set stretch_sec 						 		[0 stretch_sec_start{0} master.mcp.size{0} stretch_sec_height{0}]
-		set padding_reduction_h						 [300 200]
-		set padding 							 	 stretch_sec_height{0}<padding_reduction_h{0} stretch_sec_height{0}<padding_reduction_h{1} [0 2] [0 3] [0 4]
-		set master.mcp.fx                               [7 7 82 20]
-		set master.mcp.fxbyp                            [89 7 29 20]
-		set master.mcp.pan   							+ [0 pan_sec] h<hide_pan_sm{0} [0]  	trackpanmode==6 	h<hide_pan_labels_sm{0} [7 5 67 9] [7 15 67 9] \
-																									trackpanmode>=4		h<hide_pan_labels_sm{0} [20 4 20 20] [20 7 20 20] \
-																														h<hide_pan_labels_sm{0} [31 4 20 20] [31 7 20 20]
-		  set master.mcp.pan.fadermode              	gl_fader_swap
-		  set master.mcp.pan.color                  	gl_pan_color
-		  set master.mcp.pan.label                  	h<hide_pan_labels_sm{x} [0] + [0 master.mcp.pan] trackpanmode>=4 trackpanmode==6 [23 -11 35 9] [6 25 35 10] [23 25 35 10]
-		  set master.mcp.pan.label.color				[140 140 140]
-		  set master.mcp.pan.label.margin           	[0 0 0 0 0.5]
-		  set master.mcp.pan.label.font					[1]
-		set master.mcp.width  							+ [0 pan_sec] h<hide_pan_sm{0} [0]  	trackpanmode==6 	h<hide_pan_labels_sm{0} [7 13 67 9] [7 23 67 9] \
-																									trackpanmode>=4		h<hide_pan_labels_sm{0} [48 4 20 20] [48 7 20 20] [0]
-		  set master.mcp.width.fadermode            	gl_fader_swap
-		  set master.mcp.width.color                	gl_width_color
-		  set master.mcp.width.label                	h<hide_pan_labels_sm{x} [0] + [0 master.mcp.width] trackpanmode>=4 trackpanmode==6 [23 11 35 9] [41 25 35 10] [0]
-		  set master.mcp.width.label.color				[140 140 140]
-		  set master.mcp.width.label.margin         	[0 0 0 0 0.5]
-		  set master.mcp.width.label.font				[1]
-		set master.mcp.mono                             + [0 pan_sec] h<hide_pan_labels_sm{0} h<hide_pan_sm{0} [0] [93 4 25 22] [93 8 25 33]
-		set master.mcp.volume.label                     h<hide_volume_label{0} [0 0 0 0] + [0 stretch_sec] [1 0 89 23]
-		  set master.mcp.volume                         - + + [69 0 21] [0 stretch_sec 0 stretch_sec] [0 master.mcp.volume.label{3}] [0 0 0 master.mcp.volume.label{3}]
-		  set master.mcp.volume.label.color             master.mcp.volume.label{h}>2 [100 100 100] [38 38 38]
-		  set master.mcp.volume.label.margin            + [0 0 0 0 0.5] [0 4]
-		  set master.mcp.volume.label.font				[1]
-		set master.mcp.meter                            + [0 master.mcp.volume 0 master.mcp.volume] [4 0 59 -6]
-		  set master.mcp.meter.vu.div                   [1]
-		  set master.mcp.meter.vu.rmsdiv                [2]
-		  set master.mcp.meter.readout.color            [255 255 255 200 0 0 0 0]
-		  set master.mcp.meter.rmsreadout.color         [255 255 255 255 0 0 0 0]
-		  set master.mcp.meter.scale.color.lit.bottom   [0 0 0 200 0 0 0 0]
-		  set master.mcp.meter.scale.color.lit.top      [0 0 0 200 0 0 0 0]
-		  set master.mcp.meter.scale.color.unlit.bottom [255 255 255 120 0 0 0 0]
-		  set master.mcp.meter.scale.color.unlit.top    [255 255 255 120 0 0 0 0]
-		set master.mcp.label                            bot_sec
-		  set master.mcp.label.color                    [184 184 184]
-		  set master.mcp.label.margin                   + [20 1] [0 0 0 0 0.5]
-		  set master.mcp.label.font						[3]
-		set master.mcp.mute                             + [0 stretch_sec] [95 6 21 20]
-		set master.mcp.solo                             + + [0 padding] [master.mcp.mute master.mcp.mute] [0 21 21 20]
-		set master_mcp_env_hide_h					 141
-		set master.mcp.env                              stretch_sec_height{0}<master_mcp_env_hide_h{0} [0] + + [0 stretch_sec] [0 stretch_sec{3}] [95 -37 21 30]
-		set master_mcp_io_hide_h					 106
-		set master.mcp.io                               stretch_sec_height{0}<master_mcp_io_hide_h{0} [0] + + [0 padding] [master.mcp.solo master.mcp.solo] [0 23 23 30]
-		set master.mcp.menubutton                       + [0 2 20 20] [bot_sec bot_sec]
-		set master.mcp.extmixer.mode                    [0]
-			set master.mcp.fxlist.font                  [1 16]
-			set master.mcp.fxlist.margin                mcp.fxlist.margin 
-			set master.mcp.sendlist.font                [1 16]
-			set master.mcp.sendlist.margin              mcp.sendlist.margin
-			set master.mcp.fxparm.font                  [1 24 0 0 -1]
-			set master.mcp.fxparm.margin                mcp.fxparm.margin
-	endmacro
-	drawMasterMcp
+	draw_mcp
+	draw_master_mcp
 
 ; Transport
+	; Hide some buttons
+	set trans.automode [0] ; automation mode
+	set trans.pause [0]    ; pause
+	set trans.stop [0]     ; stop
+	set trans.fwd [0]      ; go to end of project
 
-; Hide some buttons
-set trans.automode [0] ; automation mode
-set trans.pause [0]    ; pause
-set trans.stop [0]     ; stop
-set trans.fwd [0]      ; go to end of project
-
-;set trans.rate [0 0 200 h]
-set trans.rate.fader.fadermode [1]
+	;set trans.rate [0 0 200 h]
+	set trans.rate.fader.fadermode [1]
 
 ; To comment
 	;[color theme]
