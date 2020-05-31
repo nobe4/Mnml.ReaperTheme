@@ -5,14 +5,14 @@
 ; needs to be the same, can be 1px because it stretches in directions
 ; tcp_bg.png        = 1px bgcolor
 ; tcp_bgsel.png     = slightly lighter than tcp_bg.png
-; tcp_idxbg.png     = copy of tcp_bg.png
-; tcp_idxbg_sel.png = 1px transparent
+; tcp_idxbg*.png    = remove
 ; tcp_namebg*.png   = remove
 ; tcp_iconbg*       = remove
 ; X = {pan, width*, volume}
-; tcp_X_knob_small = 1px transparent
-; tcp_X_knob_stack = all the tcp steps
-; *: width take the volume stack, no need for tcp_width_knob_stack
+; 	tcp_X_knob_small = 1px transparent
+; 	tcp_X_knob_stack = all the tcp steps
+; 	*: width take the volume stack, no need for tcp_width_knob_stack
+; transport_bg.png = 1px bgcolor
 
 ; Documentation
 
@@ -84,9 +84,10 @@
 		set tcp_max_button_width 385                              ; Max size for the button section, 20 * 8 + 30 * 4 + 100 + 5 padding
 		set tcp_row_height 20                                     ; Height of a TCP row
 		set tcp_min_width tcp_row_height                          ; Min width of a row is its height
+		set tcp_track_id_width 30                                 ; Width of the track id, enough for 999
 	; Envelope Control Panel
-		set envcp_button_max_width 155 ; 3 * 20 + 3 * 30 + 5 padding
-		set envcp_value_width 60 ; Tuned by eye, roughly enough for max frequence and various effects value.
+		set envcp_button_max_width 155                            ; 3 * 20 + 3 * 30 + 5 padding
+		set envcp_value_width 60                                  ; Tuned by eye, roughly enough for max frequence and various effects value.
 		set envcp_label_min_width envcp_value_width
 
 ; Macro
@@ -142,7 +143,7 @@
 
 		macro draw_tcp
 			; Track id
-				set tcp.trackidx + [0 0 tcp_row_indent] [0 0 20 100 0 0 0 1]
+				set tcp.trackidx + [0 0 tcp_row_indent] [0 0 tcp_track_id_width 100 0 0 0 1]
 				; if collapsed, add to the current track some height to hide the text
 				set tcp.trackidx ?tcp_supercollapsed{0} + tcp.trackidx [0 0 0 40]
 
@@ -237,7 +238,7 @@
 
 		macro draw_master_tcp
 			; Default and Min Size
-				set master.tcp.size [300 20 100 20]
+				set master.tcp.size tcp.size
 				set master.tcp.margin [0]
 
 				set master.tcp.meter meter_section
