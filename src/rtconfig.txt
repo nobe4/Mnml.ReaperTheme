@@ -1,4 +1,4 @@
-; vim: foldmethod=indent syntax=lisp
+; vim: foldmethod=indent syntax=lisp tabstop=2
 
 ; Notes
 ; tcp_background color, can't set it up using colors+background images.
@@ -13,6 +13,7 @@
 ; 	tcp_X_knob_stack = all the tcp steps
 ; 	*: width take the volume stack, no need for tcp_width_knob_stack
 ; transport_bg.png = 1px bgcolor
+; meter
 
 ; Documentation
 
@@ -371,167 +372,82 @@
 
 	; Mixer Control Panel
 		macro drawMcp
-			; Define variables
-				set hide_inputFX_s      hide_inputFX
-				set hide_input_s        hide_input
-				set hide_pan_labels_s   hide_pan_labels
-				set hide_pan_s          hide_pan
-				set hide_volume_label_s hide_volume_label
-				set extmixer_w_s        extmixer_w
-
-				set mcp_indent_s   mcp_indent
-				set mcp_meterExp_s mcp_meterExp
-
-				set mcp_meterExp_s ?meterExpMode{0} . 1
-				set panLabelsMode h<hide_pan_labels_s{x} 0 labelsMode
-				; burp
-				set gapmode \
-					mcp_border{0}<1 \
-						0 \
-						mcp_border{0}==1 \
-							1 \
-							mcp_border{0}==2 \
-								2 \
-								mcp_border{0}==3 \
-									folderstate==1 \
-										folderdepth==0 \
-											1 \
-											0 \
-										folderstate<0 \
-											folderdepth==1 \
-												2 \
-												0 \
-											0 \
-											folderstate==1 \
-												1 \
-												folderstate<0 \
-													2 \
-													0
-
-			set nchan_offs ?meterExpMode{0} * - tracknch 2 mcp_meterExp_s [0]
-			set nchan_offs_half / nchan_offs 2
-			set nchan_offs_third / nchan_offs 3
-			set nchan_offs_twothird * nchan_offs_third 2
-
 			clear mcp.*
 
-			; Put some elements to the front
-			front mcp.label mcp.volume.label mcp.volume mcp.recarm mcp.recmon mcp.mute mcp.solo mcp.env mcp.io mcp.phase mcp.width mcp.trackidx mcp.folder
+			; Hide unused elements
+				set mcp.fxin [0]
+				set mcp.recmode [0]
+				set mcp.extmixer.mode [0]
+				set mcp.fxlist [0]
+				set mcp.fx [0]
+				set mcp.fxbyp [0]
+				set mcp.io [0]
+				set mcp.env [0]
+				set mcp.recarm [0]
+				set mcp.recmon [0]
+				set mcp.recinput [0]
 
-			; Burp: TODO
-				set mcp.size + + \
-					+ ?narrowMode{0} \
-				 [54 371] \
-				 [86 371] \
-					mcp_meterExp_s{0}>0 [nchan_offs{0}] [0] \
-					+ gapmode{0}>=1 [14] [0] \
-					!sidebarMode{0} [0] [extmixer_w_s] \
-					* [0 0 0 1] + 180 * mcp_maxfolderdepth mcp_indent_s ; set the min height
+			set mcp_column_width 20
+			set mcp_margin_h 5
+			set mcp_width + * mcp_column_width 2 * mcp_margin_h 3
+			set mcp_label_height 15
+			set mcp_label_margin 8
 
-			; More variables, depending on the mcp size
-				set sidebar_sec + gapmode{0}>=1 gapmode{0}!=2 [0 0 14] [0] [0] !sidebarMode{0} [0] [0 0 extmixer_w_s{0}]
-				set fx_sec + [sidebar_sec{2} 0 mcp.size{0}] [0 0 0 33]
-				set pan_sec + [sidebar_sec{2} fx_sec{3} mcp.size{0}] !panLabelsMode{0} h<hide_pan_s{0} [0 0 0 6] [0 0 0 28] [0 0 0 48]
-				set in_sec + + [sidebar_sec{2} pan_sec{1}] [0 pan_sec{3} mcp.size{0}] h<hide_input_s{0} [0 0 0 22] h<hide_inputFX_s{0} [0 0 0 42] [0 0 0 54]
-				set bot_sec_height ?mcp_control_align{0} \
-					+ 47 * mcp_maxfolderdepth mcp_indent_s \
-					+ 47 * folderdepth mcp_indent_s
-				set bot_sec - [0 h mcp.size{0} bot_sec_height{0}] [0 bot_sec_height{0}]
-				set stretch_sec_start + + fx_sec{3} pan_sec{3} in_sec{3}
-				set stretch_sec_height - - - - h fx_sec{3} pan_sec{3} in_sec{3} bot_sec{3}
-				set stretch_sec [sidebar_sec{2} stretch_sec_start{0} mcp.size{0} stretch_sec_height{0}]
-				set sidebar_sec + + + sidebar_sec [0 0 0 stretch_sec{1}] [0 0 0 stretch_sec{3}] [0 0 0 1]
-				set padding_reduction_h [300 200]
-				set padding stretch_sec_height{0}<padding_reduction_h{0} stretch_sec_height{0}<padding_reduction_h{1} [0 2] [0 3] [0 4]
+			; Main section
+				set mcp.size [mcp_width h]
+				set mcp.margin [mcp_margin_h 0 mcp_margin_h 4]
 
-			set mcp.extmixer.mode !sidebarMode{0} [0] [1]
-			set mcp.extmixer.position + + sidebar_sec + [1 0 1] [0 2 0 -2] gapmode{0}>=1 gapmode{0}!=2 [13 0 -13] [0] [0]
-			set mcp.fxlist.font [1 16]
-			set mcp.fxlist.margin  [4 0 4 0 0.5 14]
-			set mcp.sendlist.font [1 16]
-			set mcp.sendlist.margin [4 0 4 0 0 0 14]
-			set mcp.fxparm.font [1 24 0 0 -1]
-			set mcp.fxparm.margin [2 0 4 0 0 14]
-			set mcp.fx + [fx_sec 0 nchan_offs_twothird{0}] ?narrowMode{0} [4 7 28 20] [7 7 43 20]
-			set mcp.fxbyp + + [mcp.fx mcp.fx nchan_offs_third{0}] [mcp.fx{2}] ?narrowMode{0} [0 0 19 20] [0 0 29 20]
+			; Track ID
+				set mcp.trackidx [0 0 w mcp_label_height]
+				set mcp.trackidx.margin [0 0 0 0 0.5 0.5]
+				set mcp.trackidx.color track_text_color
 
-			set mcp.pan ?narrowMode{0} \
-				h<hide_pan_s{0} [0] + [pan_sec pan_sec] trackpanmode==6 + [0 0 nchan_offs{0}] !panLabelsMode{0} [3 6 48 9] [3 15 48 9] \
-				trackpanmode>=4 + [nchan_offs_third{0}] !panLabelsMode{0} [28 4 20 20] [26 7 20 20] \
-				+ [nchan_offs_half{0}] !panLabelsMode{0} [18 4 20 20] [18 7 20 20] \
-				h<hide_pan_s{0} [0] + [pan_sec pan_sec] trackpanmode==6 + [0 0 nchan_offs{0}] !panLabelsMode{0} [7 6 73 9] [7 15 73 9] \
-				trackpanmode>=4 + [nchan_offs_third{0}] !panLabelsMode{0} [20 4 20 20] [20 7 20 20] \
-				+ [nchan_offs_half{0}] !panLabelsMode{0} [33 4 20 20] [33 7 20 20]
-			set mcp.pan.fadermode gl_fader_swap
-			set mcp.pan.color gl_pan_color
-			set mcp.pan.label ?narrowMode{0} \
-				!panLabelsMode{0} [0] + [pan_sec mcp.pan] trackpanmode>=4 trackpanmode==6 + [nchan_offs_half{0}] [11 -11 35 9] + [nchan_offs_half{0}] h<hide_input_s{0} [0] [17 25 35 10] + [nchan_offs_half{0}] [10 25 35 10] \
-				!panLabelsMode{0} [0] + [pan_sec mcp.pan] trackpanmode>=4 trackpanmode==6 + [nchan_offs_half{0}] [23 -11 40 9] + [nchan_offs_third{0}] [8 25 35 10] + [nchan_offs_half{0}] [26 25 35 10]
-			set mcp.pan.label.color val_color
-			set mcp.pan.label.font [1]
-			set mcp.pan.label.margin [0 0 0 0 0.5]
-			set mcp.width ?narrowMode{0} \
-				h<hide_pan_s{0} [0] + [pan_sec pan_sec] trackpanmode==6 + [0 0 nchan_offs{0}] !panLabelsMode{0} [3 14 48 9] [3 23 48 9] \
-				trackpanmode>=4 + [nchan_offs_third{0}] + [nchan_offs_third{0}] !panLabelsMode{0} [7 20 20 20] h<hide_input{0} [9 31 20 20] [9 46 20 20] [0] \
-				h<hide_pan_s{0} [0] + [pan_sec pan_sec] trackpanmode==6 + [0 0 nchan_offs{0}] !panLabelsMode{0} [7 14 73 9] [7 23 73 9] \
-				trackpanmode>=4 + [nchan_offs_third{0}] + [nchan_offs_third{0}] !panLabelsMode{0} [48 4 20 20] [48 7 20 20] [0]
-			set mcp.width.fadermode gl_fader_swap
-			set mcp.width.color gl_width_color
-			set mcp.width.label ?narrowMode{0} \
-				!panLabelsMode{0} [0] + [0 mcp.width] trackpanmode>=4 trackpanmode==6 + [mcp.pan.label] [0 11 35 9] h<hide_inputFX_s{0} [0] [3 25 35 9] [0] \
-				!panLabelsMode{0} [0] + [0 mcp.width] trackpanmode>=4 trackpanmode==6 + [mcp.pan.label] [0 11 40 9] + [nchan_offs_third{0}] + [-5 25 35 10] [mcp.width] [0]
-			set mcp.width.label.color val_color
-			set mcp.width.label.font [1]
-			set mcp.width.label.margin [0 0 0 0 0.5]
-			set mcp.recinput h<hide_input_s{0} [0] + [in_sec in_sec nchan_offs{0}] ?narrowMode{0} trackpanmode==5 [0] [6 0 43 16] [6 0 75 16]
-			set mcp.recinput.color ?track_selected [225 225 225] [200 200 200]
-			set mcp.recinput.font [1]
-			set mcp.recinput.margin [4 0 15 0 0]
-			set mcp.fxin ?narrowMode{0} [0] h<hide_inputFX_s{0} [0] + [mcp.recinput mcp.recinput] + [nchan_offs{0}] [0 16 75 12]
-			set mcp.recmode ?narrowMode{0} [0] + + [in_sec in_sec nchan_offs{0}] [0 mcp.fxin{3}] + [6 4 41 16] mcp.recinput{3}>0 [0 16] [0 -4]
-			set mcp.meter ?narrowMode{0} + [4 4 20 -31] [stretch_sec stretch_sec nchan_offs{0} stretch_sec] \
-				+ [stretch_sec stretch_sec nchan_offs{0} stretch_sec] h<hide_volume_label_s{0} [4 4 20 -4] !labelsMode{0} [4 4 20 -4] [4 23 20 -23]
-			set mcp.meter.vu.div [1 1]
-			set mcp.meter.readout.color !labelsMode{0} [0 0 0 0 0 0 0 0] [100 100 100 255 255 183 171 255]
-			set mcp.meter.scale.color.lit.bottom !labelsMode{0} [0 0 0 0 0 0 0 0] [0 0 0 170 0 0 0 0]
-			set mcp.meter.scale.color.lit.top !labelsMode{0} [0 0 0 0 0 0 0 0] [0 0 0 170 0 0 0 0]
-			set mcp.meter.scale.color.unlit.bottom !labelsMode{0} [0 0 0 0 0 0 0 0] ?recarm [255 64 0 255 0 0 0 0] [255 255 255 60 0 0 0 0]
-			set mcp.meter.scale.color.unlit.top !labelsMode{0} [0 0 0 0 0 0 0 0] ?recarm [255 64 0 255 0 0 0 0] [255 255 255 60 0 0 0 0]
-			set mcp.volume.label ?narrowMode{0} [0] \
-				+ [stretch_sec stretch_sec mcp.meter{2}] h<hide_volume_label_s{0} [1 0 28 4] !labelsMode{0} [1 0 28 4] [1 0 28 23]
-				; + h<hide_volume_label_s{0} [1 0 28 4] !labelsMode{0} [1 0 28 4] [1 0 28 23] [stretch_sec stretch_sec mcp.meter{2}]
-			set mcp.volume ?narrowMode{0} + - + [stretch_sec stretch_sec] [nchan_offs_half stretch_sec{3}] [-4 21] [0 0 21 21] \
-				- + [mcp.meter stretch_sec 21 stretch_sec] [mcp.meter{2} mcp.volume.label{3}] [-4 0 0 mcp.volume.label{3}]
-			set mcp.volume.label.color mcp.volume.label{h}>2 [100 100 100] [38 38 38]
-			set mcp.volume.label.font [1]
-			set mcp.volume.label.margin ?narrowMode{0} [0 80 0 0 0.5] [0 4 0 0 0.5]
-			set mcp.recarm + [0 0 36 24] ?narrowMode{0} - + [mcp.meter{2}] [stretch_sec stretch_sec] [-1 17] \
-				+ - [stretch_sec stretch_sec] [-29 17] [mcp.meter{2}]
-			set mcp.recmon + + [0 padding] [mcp.recarm mcp.recarm] [7 20 21 20]
-			set mcp.mute + + [0 padding] [mcp.recmon mcp.recmon] [0 19 21 20]
-			set mcp.solo + + [0 padding] [mcp.mute mcp.mute] [0 21 21 20]
-			set mcp_io_hide_h 106
-			set mcp.io stretch_sec_height{0}<mcp_io_hide_h{0} [0] + + [0 padding] [mcp.solo mcp.solo] !labelsMode{0} [-1 23 23 22] [-1 23 23 30]
-			set mcp_env_hide_h [125 141]
-			set mcpHideEnv !labelsMode{0} stretch_sec_height{0}<mcp_env_hide_h{0} 1 0 stretch_sec_height{0}<mcp_env_hide_h{1} 1 0
-			set mcp.env ?mcpHideEnv{0} [0 0 0 0] + [0 stretch_sec{3}] + [mcp.io stretch_sec] !labelsMode{0} [1 -22 21 22] [1 -30 21 30]
-			set mcp_phase_hide_h [144 162]
-			set mcpHidePhase !labelsMode{0} stretch_sec_height{0}<mcp_phase_hide_h{0} 1 0 stretch_sec_height{0}<mcp_phase_hide_h{1} 1 0
-			set mcp.phase ?mcpHidePhase{0} [0] + [mcp.env mcp.env] - [3 -18 16 18] padding
-			set mcp.label + + + \
-				gapmode{0}==1 !sidebarMode{0} [14 0 -14 27] [13 0 -13 27] \
-				gapmode{0}==2 [0 0 -14 27] \
-				[0 0 0 27] \
-				[0 bot_sec mcp.size{0}] \
-				?mcp_control_align{0} * - mcp_maxfolderdepth folderdepth [0 0 0 mcp_indent_s{0}] [0]
-			set mcp.label.margin [4 0 4 3 0.5]
-			set mcp.label.font [3]
-			set mcp.label.color tcp.label.color
-			set mcp.trackidx + + [0 bot_sec] [0 mcp.label{3}] - [0 0 mcp.size{0} bot_sec_height{0}] [0 0 0 mcp.label{3}]
-			set mcp.trackidx.margin + - [0 0 0 mcp.trackidx{3} 0.5] [0 0 0 20] folderstate==1 [12] [0]
-			set mcp.trackidx.color ?track_selected [50 50 50] .
-			set mcp.trackidx.font [3]
-			set mcp.folder + + [0 bot_sec] [0 mcp.label{3}] folderstate<0 + + [mcp.size] [sidebar_sec{2}] [-21 -2 21 22] [0 -2 18 22]
+			; Label
+				set mcp.label + [0 mcp.trackidx{1} w mcp_label_height] [0 mcp.trackidx{3}]
+				set mcp.label.margin mcp.trackidx.margin
+				set mcp.label.color mcp.trackidx.color
+
+			; Columns definition
+				set mcp_column_section_height - - h * mcp_label_height 2 mcp_label_margin
+				set mcp_column_section_x + + mcp.label{1} mcp.label{3} mcp_label_margin
+				set mcp_left_column_section [0 mcp_column_section_x mcp_column_width mcp_column_section_height]
+				set mcp_right_column_section + + mcp_left_column_section [mcp_margin_h] [mcp_column_width]
+
+			; Left column
+				; Meter
+					set mcp.meter mcp_left_column_section
+					set mcp.meter.vu.div [1]
+					set mcp.meter.readout.color tcp_meter_readout_color
+					set mcp.meter.scale.color.unlit.bottom tcp_meter_unlit_color
+					set mcp.meter.scale.color.unlit.top tcp_meter_unlit_color
+					set mcp.meter.scale.color.lit.bottom tcp_meter_lit_color
+					set mcp.meter.scale.color.lit.top tcp_meter_lit_color
+
+			; Right column: buttons
+				; Volume
+					set mcp.volume [mcp_right_column_section{0} mcp_right_column_section{1} 20 20]
+					set mcp.volume.label [0]
+
+				; Pan
+					set mcp.pan + [mcp_right_column_section{0} mcp.volume{1} 20 20] [0 mcp.volume{3}]
+					set mcp.pan.fadermode 1
+
+				; Width
+					set mcp.width + [mcp_right_column_section{0} mcp.pan{1} 20 20] [0 mcp.pan{3}]
+					set mcp.width.fadermode 1
+
+				; Mute
+					set mcp.mute + [mcp_right_column_section{0} mcp.width{1} 20 20] [0 mcp.width{3}]
+
+				; Solo
+					set mcp.solo + [mcp_right_column_section{0} mcp.mute{1} 20 20] [0 mcp.mute{3}]
+
+				; Phase
+					set mcp.phase + [mcp_right_column_section{0} mcp.solo{1} 20 20] [0 mcp.solo{3}]
+
+				; Folder
+					set mcp.folder + + [mcp_right_column_section{0} mcp_right_column_section{1} 20 20] [0 mcp_right_column_section{3}] [0 -20]
+
 		endMacro
 
 	; Create parameters
@@ -656,11 +572,6 @@
 
 	draw_envcp
 
-	;Layout "A"
-	;	set envcp.label  .
-	;	draw_envcp
-	;endlayout
-
 ; Mixer
 	macro doModeLogic variable paramIdx
 		set variable param##paramIdx##&1 ?track_selected 1 0
@@ -677,14 +588,13 @@
 	set hide_volume_label        	[250] 	; height below which volume label is hidden.
 	set extmixer_w					[86] 	; width of the extmixer when set as a sidebar
 
-	  ; sidebar (pushes other secs right)
-	  ; fx section (background is baked into mcp_bg)
-	  ; pan section
-	  ; input section (show/hide inputFX on resize / recarm, with user override)
-	  ; stretch section (recarm pokes above)
+	; sidebar (pushes other secs right)
+	; fx section (background is baked into mcp_bg)
+	; pan section
+	; input section (show/hide inputFX on resize / recarm, with user override)
+	; stretch section (recarm pokes above)
 
-	paramPair mcp_indent 			1 0 5 10 15 20 25 30
-	paramPair mcp_control_align 	78 0 1
+	set mcp_control_align 1
 
 	doModeLogic sidebarMode 	25
 	doModeLogic narrowMode 		26
@@ -693,80 +603,6 @@
 	paramPair mcp_meterExp 		29 0 2 4 8
 	paramPair mcp_border 		30 0 1 2 3 4
 	drawMcp 1
-
-	Layout "A"
-		set mcp.label  .
-		drawMcp 1
-
-		Layout "150%_A" "150"
-			set mcp.label  .
-			drawMcp 1.5
-			; ---- scaling error cleanup ----
-			set mcp.volume.label 		+ mcp.volume.label [-1]
-			; -------------------------------
-		EndLayout
-
-		Layout "200%_A" "200"
-			set mcp.label  .
-			drawMcp 2.0
-		EndLayout
-
-	EndLayout
-
-	Layout "B"
-		set sidebarMode 			0
-		set narrowMode 				0
-		set meterExpMode 			0
-		set labelsMode 				0
-		doModeLogic sidebarMode 	48
-		doModeLogic narrowMode 		49
-		doModeLogic meterExpMode 	50
-		doModeLogic labelsMode 		51
-		paramPair mcp_meterExp 		52 0 2 4 8
-		paramPair mcp_border 		53 0 1 2 3 4
-		drawMcp 1
-
-		Layout "150%_B" "150"
-			set mcp.label  .
-			drawMcp 1.5
-			; ---- scaling error cleanup ----
-			set mcp.volume.label 		+ mcp.volume.label [-1]
-		EndLayout
-
-		Layout "200%_B" "200"
-			set mcp.label  .
-			drawMcp 2.0
-		EndLayout
-
-	EndLayout
-
-	Layout "C"
-		set sidebarMode 			0
-		set narrowMode 				0
-		set meterExpMode 			0
-		set labelsMode 				0
-		doModeLogic sidebarMode 	71
-		doModeLogic narrowMode 		72
-		doModeLogic meterExpMode 	73
-		doModeLogic labelsMode 		74
-		paramPair mcp_meterExp 		75 0 2 4 8
-		paramPair mcp_border 		76 0 1 2 3 4
-		drawMcp 1
-
-
-		Layout "150%_C" "150"
-			set mcp.label  .
-			drawMcp 1.5
-			; ---- scaling error cleanup ----
-			set mcp.volume.label 		+ mcp.volume.label [-1]
-		EndLayout
-
-		Layout "200%_C" "200"
-			set mcp.label  .
-			drawMcp 2.0
-		EndLayout
-
-	EndLayout
 
 ; Master Mixer
 	  ; --------------- User adjustable values. Edit without fear. -----------------
@@ -847,355 +683,366 @@
 	endmacro
 	drawMasterMcp
 
+; Transport
+
+; Hide some buttons
+set trans.automode [0] ; automation mode
+set trans.pause [0]    ; pause
+set trans.stop [0]     ; stop
+set trans.fwd [0]      ; go to end of project
+
+;set trans.rate [0 0 200 h]
+set trans.rate.fader.fadermode [1]
+
 ; To comment
-;[color theme]
-; Colors are decimal
-;col_mi_label=16711680
-;col_mi_label_sel=16711680
-;col_mi_label_float=16711680
-;col_mi_label_float_sel=16711680
-;col_mi_bg2=16711680
-;col_mi_bg=16711680
-;col_mi_fades=16711680
-;col_mi_fade2=16711680
-;col_tl_fg=7631988
-;col_tl_bg=3355443
-;col_tl_bgsel=16777215
-;col_tl_bgsel2=8947842
-;col_env1=8444928
-;col_env2=4227136
-;col_env3=255
-;col_env4=38655
-;col_env5=0
-;col_env6=16776960
-;col_env7=128
-;col_env8=8421376
-;col_env9=12615680
-;col_env10=16384
-;col_env11=16776960
-;col_env12=65535
-;col_env13=16711808
-;col_env14=8421440
-;col_env15=16711680
-;col_env16=8388863
-;col_tr1_bg=4342338
-;col_tr2_bg=4539717
-;col_tr1_itembgsel=11842737
-;col_tr2_itembgsel=11842737
-;col_offlinetext=4670000
-;col_seltrack=9013633
-;col_seltrack2=-2138470015
-;col_cursor=8886323
-;col_cursor2=8886323
-;col_gridlines=0
-;col_gridlines2=0
-;col_gridlines3=0
-;marker=160
-;region=7500374
-;col_tr1_peaks=1710618
-;col_tr2_peaks=1644825
-;col_tr1_ps2=-11316397
-;col_tr2_ps2=5460819
-;col_peaksedge=3881787
-;col_peaksedge2=3881787
-;col_peaksedgesel=14803425
-;col_peaksedgesel2=14803425
-;item_grouphl=3192883
-;col_main_bg=-2135838293
-;col_tcp_text=1907218
-;col_tcp_textsel=1907218
-;col_main_text=2236958
-;col_main_textshadow=3355443
-;col_main_3dhl=3355443
-;col_main_3dsh=3355443
-;col_main_editbk=14737630
-;col_tsigmark=1118734
-;col_vudoint=0
-;col_vubot=12566272
-;col_vumid=11393536
-;col_vutop=9829888
-;col_vuclip=9659
-;col_vuintcol=2105376
-;col_vumidi=50431
-;col_buttonbg=0
-;col_fadearm=3936710
-;col_fadearm2=8890385
-;col_fadearm3=1143208
-;col_mixerbg=3355443
-;col_tracklistbg=3355443
-;midi_rulerbg=4473924
-;midi_rulerfg=10132122
-;midi_grid1=0
-;midi_grid2=16777215
-;midi_grid3=0
-;midi_trackbg1=4605510
-;midi_trackbg2=4079166
-;midi_inline_trackbg1=4605510
-;midi_inline_trackbg2=4079166
-;midioct=3026478
-;midioct_inline=3026478
-;midi_endpt=10075411
-;midi_notebg=0
-;midi_notefg=16777215
-;midi_notemute=128
-;midi_notemute_sel=255
-;midi_itemctl=0
-;midi_editcurs=8886323
-;midi_ofsn=4802889
-;midi_ofsnsel=10075411
-;midi_pkey1=16777215
-;midi_pkey2=0
-;midi_pkey3=6118749
-;docker_shadow=3355443
-;docker_selface=9013633
-;docker_unselface=2763306
-;docker_text=9013633
-;docker_bg=3947580
-;mcp_fx_normal=12566463
-;mcp_fx_bypassed=4295379
-;mcp_fx_offlined=4013528
-;mcp_sends_normal=12566463
-;mcp_sends_muted=4013528
-;mcp_sends_levels=4670000
-;env_track_mute=192
-;env_sends_mute=49344
-;env_item_vol=128
-;env_item_pan=8421376
-;env_item_mute=49344
-;marquee_fill=7241856
-;marquee_outline=16777215
-;marquee_drawmode=170495
-;timesel_drawmode=135424
-;itembg_drawmode=196608
-;fadezone_drawmode=140800
-;playcursor_drawmode=163840
-;fadezone_color=72
-;playcursor_color=5425391
-;region_lane_bg=3355443
-;marker_lane_bg=3947580
-;ts_lane_bg=3355443
-;region_lane_text=12895417
-;marker_lane_text=10790052
-;ts_lane_text=10855845
-;group_0=255
-;group_1=65280
-;group_2=16711680
-;group_3=65535
-;group_4=16711935
-;group_5=16776960
-;group_6=192
-;group_7=49152
-;group_8=12582912
-;group_9=49344
-;group_10=12583104
-;group_11=12632064
-;group_12=128
-;group_13=32768
-;group_14=8388608
-;group_15=32896
-;group_16=8388736
-;group_17=8421376
-;group_18=32960
-;group_19=8437760
-;group_20=12615680
-;group_21=32960
-;group_22=12583040
-;group_23=49280
-;group_24=64
-;group_25=16384
-;group_26=4194304
-;group_27=16448
-;group_28=4194368
-;group_29=4210688
-;group_30=4194368
-;group_31=4210688
-;col_mi_fade2_drawmode=150528
-;guideline_drawmode=180224
-;guideline_color=10067200
-;fadearea_drawmode=131072
-;fadearea_color=6291456
-;midi_selbg=16777215
-;col_tr1_divline=4342338
-;col_tr2_divline=4539717
-;col_envlane1_divline=7895154
-;col_envlane2_divline=7895154
-;col_main_resize=3355443
-;col_toolbar_text=10461087
-;col_arrangebg=4539717
-;midi_noteon_flash=64
-;mcp_fxparm_normal=10724259
-;mcp_fxparm_bypassed=4290771
-;mcp_fxparm_offlined=4013528
-;mcp_send_midihw=11590912
-;env_item_pitch=16776960
-;midi_selbg_drawmode=135169
-;toolbararmed_drawmode=196863
-;tcplocked_drawmode=180224
-;toolbararmed_color=9216020
-;tcplocked_color=3355443
-;selitem_tag=0
-;activetake_tag=0
-;midifont_col_dark=0
-;midifont_col_light=16777215
-;col_trans_fg=8553090
-;col_trans_bg=4802889
-;col_main_text2=7105644
-;col_main_bg2=3355443
-;col_transport_editbk=3355443
-;col_toolbar_text_on=10009626
-;col_toolbar_frame=5131847
-;col_vuind1=2105376
-;col_vuind2=10240
-;col_vuind3=65312
-;col_vuind4=65535
-;io_text=4671299
-;io_3dhl=8882049
-;io_3dsh=13487563
-;marqueezoom_fill=16777215
-;marqueezoom_outline=65280
-;marqueezoom_drawmode=147458
-;midieditorlist_bg=5526612
-;midieditorlist_fg=14737632
-;midieditorlist_grid=11645355
-;genlist_bg=14606044
-;genlist_fg=2829092
-;genlist_grid=11974319
-;windowtab_bg=3947580
-;genlist_selbg=6840646
-;genlist_selfg=16777215
-;genlist_seliabg=15790320
-;genlist_seliafg=0
-;midieditorlist_selbg=15790318
-;midieditorlist_selfg=2894890
-;midieditorlist_seliabg=15790320
-;midieditorlist_seliafg=0
-;col_peaksfade1=65280
-;col_peaksfade2=255
-;midieditorlist_bg2=11579562
-;midieditorlist_fg2=4605508
-;midieditorlist_selbg2=14277078
-;midieditorlist_selfg2=5066059
-;col_routinghl1=12648447
-;col_routinghl2=16744576
-;col_stretchmarker_h0=12829635
-;col_stretchmarker_h1=15505664
-;col_stretchmarker_h2=223
-;col_stretchmarker=12961221
-;col_stretchmarkerm=174080
-;col_stretchmarker_text=13882323
-;col_tl_fg2=6052956
-;col_stretchmarker_b=16777215
-;midi_selpitch1=6186050
-;midi_selpitch2=6515015
-;midi_trackbg_outer1=3355443
-;midi_trackbg_outer2=3552822
-;playrate_edited=11337472
-;docker_text_sel=1710618
-;col_stretchmarker_tm=59904
-;auto_item_unsel=6316128
-;timesig_sel_bg=160
-;arrange_vgrid=4605510
-;score_bg=16777215
-;score_fg=0
-;score_sel=16711680
-;score_timesel=14745599
-;score_loop=49407
-;group_32=16777088
-;group_33=8388736
-;group_34=8453889
-;group_35=16711808
-;group_36=16776961
-;group_37=8388609
-;group_38=14745472
-;group_39=8404864
-;group_40=8453920
-;group_41=14696320
-;group_42=14745376
-;group_43=8404768
-;group_44=12648320
-;group_45=8421248
-;group_46=8453952
-;group_47=12615552
-;group_48=12648256
-;group_49=8421184
-;group_50=14712704
-;group_51=8404800
-;group_52=8421152
-;group_53=14712704
-;group_54=12648224
-;group_55=12599168
-;group_56=10551168
-;group_57=8437632
-;group_58=8453984
-;group_59=10534784
-;group_60=10551136
-;group_61=8437600
-;group_62=10551136
-;group_63=8437600
-;cc_chase_drawmode=147456
-;wiring_grid=3355443
-;wiring_grid2=3026478
-;wiring_border=10066329
-;wiring_tbg=2500134
-;wiring_ticon=13421772
-;wiring_recbg=5066085
-;wiring_recitem=2171199
-;wiring_media=2113568
-;wiring_recv=6052956
-;wiring_send=6052956
-;wiring_hwout=4210752
-;wiring_recinput=4210816
-;wiring_horz_col=4737096
-;wiring_pin_normal=12632256
-;wiring_pin_connected=6328416
-;wiring_pin_disconnected=2105408
-;wiring_fader=12615808
-;wiring_parent=8421440
-;wiring_parentwire_border=6579300
-;wiring_parentwire_master=12632256
-;wiring_parentwire_folder=8421504
-;wiring_sendwire=8421504
-;wiring_hwoutwire=8421504
-;wiring_recinputwire=8421631
-;col_gridlines1dm=153856
-;col_gridlines2dm=180224
-;col_gridlines3dm=152576
-;midi_leftbg=11645355
-;midi_griddm1=138752
-;midi_griddm2=138752
-;midi_griddm3=144128
-;midi_gridh=0
-;midi_gridhc=0
-;midi_gridhdm=163840
-;midi_gridhcdm=196608
-;midi_ccbut=7303023
-;midi_itemctl2=0
-;midi_itemctl_mode=170240
-;midi_itemctl2_mode=163840
-;col_main_resize2=9216020
-;midifont_col_dark_unsel=0
-;midifont_col_light_unsel=16777215
-;midifont_mode=180224
-;midifont_mode_unsel=163840
-;col_explorer_seldm=157184
-;col_explorer_seledge=13224393
-;col_explorer_sel=16777215
-;[REAPER]
-;ui_img=Mnml
-;tl_font=F3FFFFFF00000000000000000000000090010000000000000302012243616C6962726900742053616E73205365726966000000000000000000000000A1
-;mi_font=F5FFFFFF00000000000000000000000090010000000000000302012243616C6962726900742053616E73205365726966000000000000000000000000A3
-;lb_font=F5FFFFFF00000000000000000000000090010000000000000302012243616C6962726900742053616E73205365726966000000000000000000000000A3
-;lb_font2=F3FFFFFF00000000000000000000000090010000000000000302012243616C696272690020446C67000000000000000000000000000000000000000096
-;trans_font=F3FFFFFF00000000000000000000000090010000000000000302012243616C69627269004C696768740000000000000000000000000000000000000057
-;user_font2=F3FFFFFF00000000000000000000000090010000000000000302012243616C69627269000000000000000000000000000000000000000000000000005F
-;user_font4=F3FFFFFF00000000000000000000000090010000000000000302012243616C696272690030365F3635000000000000000000000000000000000000008F
-;user_font5=F0FFFFFF00000000000000000000000090010000000000000302012243616C69627269000000000000000000000000000000000000000000000000005C
-;user_font6=EFFFFFFF00000000000000000000000090010000000000000302012243616C69627269000000000000000000000000000000000000000000000000005B
-;user_font7=ECFFFFFF00000000000000000000000090010000000000000302012243616C696272690000000000000000000000000000000000000000000000000058
-;user_font10=EBFFFFFF00000000000000000000000090010000000000000302012243616C6962726900742053616E7320536572696600000000000000000000000099
-;user_font1=F4FFFFFF00000000000000000000000090010000000000000302012243616C696272690000000000000000000000000000000000000000000000000060
-;user_font3=F1FFFFFF00000000000000000000000090010000000000000302012243616C69627269004C696768740000000000000000000000000000000000000055
-;user_font12=E5FFFFFF00000000000000000000000090010000000000000302012243616C6962726900742053616E7320536572696600000000000000000000000093
-;user_font11=E8FFFFFF00000000000000000000000090010000000000000302012243616C6962726900742053616E7320536572696600000000000000000000000096
-;user_font8=FBFFFFFF00000000000000000000000090010000000000000302012243616C6962726900742053616E73205365726966000000000000000000000000A9
-;user_font13=E3FFFFFF00000000000000000000000090010000000000000302012243616C6962726900742053616E7320536572696600000000000000000000000091
+	;[color theme]
+	; Colors are decimal
+	;col_mi_label=16711680
+	;col_mi_label_sel=16711680
+	;col_mi_label_float=16711680
+	;col_mi_label_float_sel=16711680
+	;col_mi_bg2=16711680
+	;col_mi_bg=16711680
+	;col_mi_fades=16711680
+	;col_mi_fade2=16711680
+	;col_tl_fg=7631988
+	;col_tl_bg=3355443
+	;col_tl_bgsel=16777215
+	;col_tl_bgsel2=8947842
+	;col_env1=8444928
+	;col_env2=4227136
+	;col_env3=255
+	;col_env4=38655
+	;col_env5=0
+	;col_env6=16776960
+	;col_env7=128
+	;col_env8=8421376
+	;col_env9=12615680
+	;col_env10=16384
+	;col_env11=16776960
+	;col_env12=65535
+	;col_env13=16711808
+	;col_env14=8421440
+	;col_env15=16711680
+	;col_env16=8388863
+	;col_tr1_bg=4342338
+	;col_tr2_bg=4539717
+	;col_tr1_itembgsel=11842737
+	;col_tr2_itembgsel=11842737
+	;col_offlinetext=4670000
+	;col_seltrack=9013633
+	;col_seltrack2=-2138470015
+	;col_cursor=8886323
+	;col_cursor2=8886323
+	;col_gridlines=0
+	;col_gridlines2=0
+	;col_gridlines3=0
+	;marker=160
+	;region=7500374
+	;col_tr1_peaks=1710618
+	;col_tr2_peaks=1644825
+	;col_tr1_ps2=-11316397
+	;col_tr2_ps2=5460819
+	;col_peaksedge=3881787
+	;col_peaksedge2=3881787
+	;col_peaksedgesel=14803425
+	;col_peaksedgesel2=14803425
+	;item_grouphl=3192883
+	;col_main_bg=-2135838293
+	;col_tcp_text=1907218
+	;col_tcp_textsel=1907218
+	;col_main_text=2236958
+	;col_main_textshadow=3355443
+	;col_main_3dhl=3355443
+	;col_main_3dsh=3355443
+	;col_main_editbk=14737630
+	;col_tsigmark=1118734
+	;col_vudoint=0
+	;col_vubot=12566272
+	;col_vumid=11393536
+	;col_vutop=9829888
+	;col_vuclip=9659
+	;col_vuintcol=2105376
+	;col_vumidi=50431
+	;col_buttonbg=0
+	;col_fadearm=3936710
+	;col_fadearm2=8890385
+	;col_fadearm3=1143208
+	;col_mixerbg=3355443
+	;col_tracklistbg=3355443
+	;midi_rulerbg=4473924
+	;midi_rulerfg=10132122
+	;midi_grid1=0
+	;midi_grid2=16777215
+	;midi_grid3=0
+	;midi_trackbg1=4605510
+	;midi_trackbg2=4079166
+	;midi_inline_trackbg1=4605510
+	;midi_inline_trackbg2=4079166
+	;midioct=3026478
+	;midioct_inline=3026478
+	;midi_endpt=10075411
+	;midi_notebg=0
+	;midi_notefg=16777215
+	;midi_notemute=128
+	;midi_notemute_sel=255
+	;midi_itemctl=0
+	;midi_editcurs=8886323
+	;midi_ofsn=4802889
+	;midi_ofsnsel=10075411
+	;midi_pkey1=16777215
+	;midi_pkey2=0
+	;midi_pkey3=6118749
+	;docker_shadow=3355443
+	;docker_selface=9013633
+	;docker_unselface=2763306
+	;docker_text=9013633
+	;docker_bg=3947580
+	;mcp_fx_normal=12566463
+	;mcp_fx_bypassed=4295379
+	;mcp_fx_offlined=4013528
+	;mcp_sends_normal=12566463
+	;mcp_sends_muted=4013528
+	;mcp_sends_levels=4670000
+	;env_track_mute=192
+	;env_sends_mute=49344
+	;env_item_vol=128
+	;env_item_pan=8421376
+	;env_item_mute=49344
+	;marquee_fill=7241856
+	;marquee_outline=16777215
+	;marquee_drawmode=170495
+	;timesel_drawmode=135424
+	;itembg_drawmode=196608
+	;fadezone_drawmode=140800
+	;playcursor_drawmode=163840
+	;fadezone_color=72
+	;playcursor_color=5425391
+	;region_lane_bg=3355443
+	;marker_lane_bg=3947580
+	;ts_lane_bg=3355443
+	;region_lane_text=12895417
+	;marker_lane_text=10790052
+	;ts_lane_text=10855845
+	;group_0=255
+	;group_1=65280
+	;group_2=16711680
+	;group_3=65535
+	;group_4=16711935
+	;group_5=16776960
+	;group_6=192
+	;group_7=49152
+	;group_8=12582912
+	;group_9=49344
+	;group_10=12583104
+	;group_11=12632064
+	;group_12=128
+	;group_13=32768
+	;group_14=8388608
+	;group_15=32896
+	;group_16=8388736
+	;group_17=8421376
+	;group_18=32960
+	;group_19=8437760
+	;group_20=12615680
+	;group_21=32960
+	;group_22=12583040
+	;group_23=49280
+	;group_24=64
+	;group_25=16384
+	;group_26=4194304
+	;group_27=16448
+	;group_28=4194368
+	;group_29=4210688
+	;group_30=4194368
+	;group_31=4210688
+	;col_mi_fade2_drawmode=150528
+	;guideline_drawmode=180224
+	;guideline_color=10067200
+	;fadearea_drawmode=131072
+	;fadearea_color=6291456
+	;midi_selbg=16777215
+	;col_tr1_divline=4342338
+	;col_tr2_divline=4539717
+	;col_envlane1_divline=7895154
+	;col_envlane2_divline=7895154
+	;col_main_resize=3355443
+	;col_toolbar_text=10461087
+	;col_arrangebg=4539717
+	;midi_noteon_flash=64
+	;mcp_fxparm_normal=10724259
+	;mcp_fxparm_bypassed=4290771
+	;mcp_fxparm_offlined=4013528
+	;mcp_send_midihw=11590912
+	;env_item_pitch=16776960
+	;midi_selbg_drawmode=135169
+	;toolbararmed_drawmode=196863
+	;tcplocked_drawmode=180224
+	;toolbararmed_color=9216020
+	;tcplocked_color=3355443
+	;selitem_tag=0
+	;activetake_tag=0
+	;midifont_col_dark=0
+	;midifont_col_light=16777215
+	;col_trans_fg=8553090
+	;col_trans_bg=4802889
+	;col_main_text2=7105644
+	;col_main_bg2=3355443
+	;col_transport_editbk=3355443
+	;col_toolbar_text_on=10009626
+	;col_toolbar_frame=5131847
+	;col_vuind1=2105376
+	;col_vuind2=10240
+	;col_vuind3=65312
+	;col_vuind4=65535
+	;io_text=4671299
+	;io_3dhl=8882049
+	;io_3dsh=13487563
+	;marqueezoom_fill=16777215
+	;marqueezoom_outline=65280
+	;marqueezoom_drawmode=147458
+	;midieditorlist_bg=5526612
+	;midieditorlist_fg=14737632
+	;midieditorlist_grid=11645355
+	;genlist_bg=14606044
+	;genlist_fg=2829092
+	;genlist_grid=11974319
+	;windowtab_bg=3947580
+	;genlist_selbg=6840646
+	;genlist_selfg=16777215
+	;genlist_seliabg=15790320
+	;genlist_seliafg=0
+	;midieditorlist_selbg=15790318
+	;midieditorlist_selfg=2894890
+	;midieditorlist_seliabg=15790320
+	;midieditorlist_seliafg=0
+	;col_peaksfade1=65280
+	;col_peaksfade2=255
+	;midieditorlist_bg2=11579562
+	;midieditorlist_fg2=4605508
+	;midieditorlist_selbg2=14277078
+	;midieditorlist_selfg2=5066059
+	;col_routinghl1=12648447
+	;col_routinghl2=16744576
+	;col_stretchmarker_h0=12829635
+	;col_stretchmarker_h1=15505664
+	;col_stretchmarker_h2=223
+	;col_stretchmarker=12961221
+	;col_stretchmarkerm=174080
+	;col_stretchmarker_text=13882323
+	;col_tl_fg2=6052956
+	;col_stretchmarker_b=16777215
+	;midi_selpitch1=6186050
+	;midi_selpitch2=6515015
+	;midi_trackbg_outer1=3355443
+	;midi_trackbg_outer2=3552822
+	;playrate_edited=11337472
+	;docker_text_sel=1710618
+	;col_stretchmarker_tm=59904
+	;auto_item_unsel=6316128
+	;timesig_sel_bg=160
+	;arrange_vgrid=4605510
+	;score_bg=16777215
+	;score_fg=0
+	;score_sel=16711680
+	;score_timesel=14745599
+	;score_loop=49407
+	;group_32=16777088
+	;group_33=8388736
+	;group_34=8453889
+	;group_35=16711808
+	;group_36=16776961
+	;group_37=8388609
+	;group_38=14745472
+	;group_39=8404864
+	;group_40=8453920
+	;group_41=14696320
+	;group_42=14745376
+	;group_43=8404768
+	;group_44=12648320
+	;group_45=8421248
+	;group_46=8453952
+	;group_47=12615552
+	;group_48=12648256
+	;group_49=8421184
+	;group_50=14712704
+	;group_51=8404800
+	;group_52=8421152
+	;group_53=14712704
+	;group_54=12648224
+	;group_55=12599168
+	;group_56=10551168
+	;group_57=8437632
+	;group_58=8453984
+	;group_59=10534784
+	;group_60=10551136
+	;group_61=8437600
+	;group_62=10551136
+	;group_63=8437600
+	;cc_chase_drawmode=147456
+	;wiring_grid=3355443
+	;wiring_grid2=3026478
+	;wiring_border=10066329
+	;wiring_tbg=2500134
+	;wiring_ticon=13421772
+	;wiring_recbg=5066085
+	;wiring_recitem=2171199
+	;wiring_media=2113568
+	;wiring_recv=6052956
+	;wiring_send=6052956
+	;wiring_hwout=4210752
+	;wiring_recinput=4210816
+	;wiring_horz_col=4737096
+	;wiring_pin_normal=12632256
+	;wiring_pin_connected=6328416
+	;wiring_pin_disconnected=2105408
+	;wiring_fader=12615808
+	;wiring_parent=8421440
+	;wiring_parentwire_border=6579300
+	;wiring_parentwire_master=12632256
+	;wiring_parentwire_folder=8421504
+	;wiring_sendwire=8421504
+	;wiring_hwoutwire=8421504
+	;wiring_recinputwire=8421631
+	;col_gridlines1dm=153856
+	;col_gridlines2dm=180224
+	;col_gridlines3dm=152576
+	;midi_leftbg=11645355
+	;midi_griddm1=138752
+	;midi_griddm2=138752
+	;midi_griddm3=144128
+	;midi_gridh=0
+	;midi_gridhc=0
+	;midi_gridhdm=163840
+	;midi_gridhcdm=196608
+	;midi_ccbut=7303023
+	;midi_itemctl2=0
+	;midi_itemctl_mode=170240
+	;midi_itemctl2_mode=163840
+	;col_main_resize2=9216020
+	;midifont_col_dark_unsel=0
+	;midifont_col_light_unsel=16777215
+	;midifont_mode=180224
+	;midifont_mode_unsel=163840
+	;col_explorer_seldm=157184
+	;col_explorer_seledge=13224393
+	;col_explorer_sel=16777215
+	;[REAPER]
+	;ui_img=Mnml
+	;tl_font=F3FFFFFF00000000000000000000000090010000000000000302012243616C6962726900742053616E73205365726966000000000000000000000000A1
+	;mi_font=F5FFFFFF00000000000000000000000090010000000000000302012243616C6962726900742053616E73205365726966000000000000000000000000A3
+	;lb_font=F5FFFFFF00000000000000000000000090010000000000000302012243616C6962726900742053616E73205365726966000000000000000000000000A3
+	;lb_font2=F3FFFFFF00000000000000000000000090010000000000000302012243616C696272690020446C67000000000000000000000000000000000000000096
+	;trans_font=F3FFFFFF00000000000000000000000090010000000000000302012243616C69627269004C696768740000000000000000000000000000000000000057
+	;user_font2=F3FFFFFF00000000000000000000000090010000000000000302012243616C69627269000000000000000000000000000000000000000000000000005F
+	;user_font4=F3FFFFFF00000000000000000000000090010000000000000302012243616C696272690030365F3635000000000000000000000000000000000000008F
+	;user_font5=F0FFFFFF00000000000000000000000090010000000000000302012243616C69627269000000000000000000000000000000000000000000000000005C
+	;user_font6=EFFFFFFF00000000000000000000000090010000000000000302012243616C69627269000000000000000000000000000000000000000000000000005B
+	;user_font7=ECFFFFFF00000000000000000000000090010000000000000302012243616C696272690000000000000000000000000000000000000000000000000058
+	;user_font10=EBFFFFFF00000000000000000000000090010000000000000302012243616C6962726900742053616E7320536572696600000000000000000000000099
+	;user_font1=F4FFFFFF00000000000000000000000090010000000000000302012243616C696272690000000000000000000000000000000000000000000000000060
+	;user_font3=F1FFFFFF00000000000000000000000090010000000000000302012243616C69627269004C696768740000000000000000000000000000000000000055
+	;user_font12=E5FFFFFF00000000000000000000000090010000000000000302012243616C6962726900742053616E7320536572696600000000000000000000000093
+	;user_font11=E8FFFFFF00000000000000000000000090010000000000000302012243616C6962726900742053616E7320536572696600000000000000000000000096
+	;user_font8=FBFFFFFF00000000000000000000000090010000000000000302012243616C6962726900742053616E73205365726966000000000000000000000000A9
+	;user_font13=E3FFFFFF00000000000000000000000090010000000000000302012243616C6962726900742053616E7320536572696600000000000000000000000091
