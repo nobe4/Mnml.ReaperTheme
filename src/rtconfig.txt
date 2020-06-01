@@ -13,7 +13,11 @@
 ; 	tcp_X_knob_stack = all the tcp steps
 ; 	*: width take the volume stack, no need for tcp_width_knob_stack
 ; transport_bg.png = 1px bgcolor
-; meter
+; mcp_extmixbg.png = 1px bgcolor
+; mcp_extmixbg_sel.png = 1px ligter
+; X = {fxlist, fxparm} Y = {bg, byp, empty, norm, off}
+; 	mcp_X_Y.png = 3 shade of black transparency: 10%, 5%, 10% same pic for Y
+; 	Color of the text on it is controlled by the colors
 
 ; Documentation
 
@@ -582,14 +586,34 @@
 	draw_master_mcp
 
 ; Transport
-	; Hide some buttons
-	set trans.automode [0] ; automation mode
-	set trans.pause [0]    ; pause
-	set trans.stop [0]     ; stop
-	set trans.fwd [0]      ; go to end of project
+	clear trans.*
 
-	;set trans.rate [0 0 200 h]
-	set trans.rate.fader.fadermode [1]
+	; Addition of all the elements inside
+	set trans_section_width 320
+
+	; Center the section (window - section)/2
+		set trans_section / - w trans_section_width{0} 2
+
+	; Buttons
+		set trans.rew    + [trans_section 0 30 30]
+		set trans.play   + [trans.rew 0 30 30]  [trans.rew{2}]
+		set trans.rec    + [trans.play 0 30 30] [trans.play{2}]
+		set trans.repeat + [trans.rec 0 30 30 ] [trans.rec{2}]
+
+	; Time signature
+		set trans.curtimesig + [trans.repeat 6 40 18] [trans.repeat{2}]
+
+	; BPM
+		set trans.bpm.tap + + [trans.curtimesig trans.curtimesig 30 18] [trans.curtimesig{2}]
+		set trans.bpm.tap.margin [0 0 0 0 0.5 0.5]
+
+		set trans.bpm.edit + trans.bpm.tap [trans.bpm.tap{w}]
+		set trans.bpm.edit.margin [0 0 0 0 0.5 0.5]
+
+	; Play rate
+		set trans.rate + [trans.bpm.edit trans.bpm.edit 70 20] [trans.bpm.edit{2}]
+		set trans.rate.margin [0 0 0 0 0.5 0.5]
+		set trans.rate.fader [0]
 
 ; To comment
 	;[color theme]
