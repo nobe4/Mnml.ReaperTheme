@@ -116,8 +116,8 @@
 			; Folder section.
 				set tcp_folder_section_width + + 4 tcp_folder_width * tcp_folder_indent maxfolderdepth
 				set tcp_folder_section [tcp_row_indent 0 tcp_folder_section_width h]
-				set tcp_folder_compact_button [tcp_folder_section{0} tcp_folder_section{1} 20 20]
-				set tcp_folder_modify_button [tcp_folder_section{0} 86 20 14 0 1 0 1]
+				set tcp_folder_compact_button + [5] [tcp_folder_section{0} tcp_folder_section{1} 20 20]
+				set tcp_folder_modify_button + [5] [tcp_folder_section{0} 86 20 14 0 1 0 1]
 
 				; Hide elements if supercollapsed
 				set tcp_folder_section ?tcp_supercollapsed{0} [0] .
@@ -528,7 +528,7 @@
 	clear tcp.*
 
 	; z-index
-	front tcp.label tcp.meter
+	front tcp.trackidx tcp.foldercomp tcp.folder tcp.label tcp.meter
 	compute_tcp
 
 	; Save button section for current track
