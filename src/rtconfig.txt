@@ -33,16 +33,19 @@
 		mcp_showborders 0
 		transport_showborders 0
 
+		; Deprecated tint option, left to render the items background
+			tinttcp 298
+		; Don't display items peaks
+			peaksedges 0
+
 		; TODO
-		tcp_vupeakwidth 5
-		mcp_vupeakheight 2
-		mcp_mastervupeakheight 4
-		mcp_altmeterpos 0
-		mcp_voltext_flags 5 5
-		tcp_voltext_flags 12
-		tinttcp 298
-		peaksedges 0
-		no_meter_reclbl 0
+	tcp_vupeakwidth 5
+	mcp_vupeakheight 2
+	mcp_mastervupeakheight 4
+	mcp_altmeterpos 0
+	mcp_voltext_flags 5 5
+	tcp_voltext_flags 5 5
+	no_meter_reclbl 0
 
 		tcp_heights 2 12 20 20   ; TPC heights presets: supercollapsed, collapsed, small(norecarm), recarm size
 		tcp_master_minheight 10
