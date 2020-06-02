@@ -34,6 +34,7 @@
 		transport_showborders 0
 
 		; Deprecated tint option, left to render the items background
+		; ref: https://forum.cockos.com/showpost.php?p=1875981
 			tinttcp 298
 		; Don't display items peaks
 			peaksedges 0
