@@ -71,22 +71,20 @@
 		set track_text_color ?track_text_white{0} [255 255 255 245 0 0 0 1] .
 	
 	; Track Control Panel
-		set tcp_folder_indent 2                                   ; Px to indent a folder by
-		set tcp_folder_width 30                                   ; Folder vertical width
-		set tcp_label_width 100                                   ; Label size for each tcp row
-		set tcp_meter_lit_color [100 100 100 255]                 ; Lit meter is light grey
-		set tcp_meter_readout_color [100 100 100 255 255 0 0 255] ; Top value, always visible, non clipped and clipped.
-		set tcp_meter_unlit_color [0]                             ; Unlit meter is transparent
-		set tcp_meter_width 19
-		set tcp_min_label_width 180                               ; Minimum size for the tcp label
-		set tcp_max_button_width 385                              ; Max size for the button section, 20 * 8 + 30 * 4 + 100 + 5 padding
-		set tcp_row_height 20                                     ; Height of a TCP row
-		set tcp_min_width tcp_row_height                          ; Min width of a row is its height
-		set tcp_track_id_width 30                                 ; Width of the track id, enough for 999
+		set tcp_folder_indent 4          ; Px to indent a folder by
+		set tcp_folder_width 30          ; Folder vertical width
+		set tcp_label_width 100          ; Label size for each tcp row
+		set tcp_meter_color [0]          ; Never display meter text on the tcp.
+		set tcp_meter_width 20
+		set tcp_min_label_width 180      ; Minimum size for the tcp label
+		set tcp_max_button_width 385     ; Max size for the button section, 20 * 8 + 30 * 4 + 100 + 5 padding
+		set tcp_row_height 20            ; Height of a TCP row
+		set tcp_min_width tcp_row_height ; Min width of a row is its height
+		set tcp_track_id_width 30        ; Width of the track id, enough for 999
 
-	; Envelope Control Panel
-		set envcp_button_max_width 155                            ; 3 * 20 + 3 * 30 + 5 padding
-		set envcp_value_width 60                                  ; Tuned by eye, roughly enough for max frequence and various effects value.
+		; Envelope Control Panel
+		set envcp_button_max_width 155   ; 3 * 20 + 3 * 30 + 5 padding
+		set envcp_value_width 60         ; Tuned by eye, roughly enough for max frequence and various effects value.
 		set envcp_label_min_width envcp_value_width
 
 	; Mixer control panel
@@ -98,7 +96,7 @@
 		set mcp_label_margin 8
 		set mcp_meter_unlit_color [255 255 255 120 0 0 0 0]
 		set mcp_meter_lit_color [0 0 0 200 0 0 0 0]
-		set mcp_meter_readout_color [255 255 255 255 0 0 0 0]
+		set mcp_meter_readout_color [255 255 255 120 0 0 0 0]
 
 ; Macro
 	; Track Control Panel
@@ -181,11 +179,11 @@
 				set tcp.meter.vu.div [1] ; show divisions
 
 				; meter text color
-					set tcp.meter.readout.color tcp_meter_readout_color
-					set tcp.meter.scale.color.unlit.bottom tcp_meter_unlit_color
-					set tcp.meter.scale.color.unlit.top tcp_meter_unlit_color
-					set tcp.meter.scale.color.lit.bottom tcp_meter_lit_color
-					set tcp.meter.scale.color.lit.top tcp_meter_lit_color
+					set tcp.meter.readout.color tcp_meter_color
+					set tcp.meter.scale.color.unlit.bottom tcp_meter_color
+					set tcp.meter.scale.color.unlit.top tcp_meter_color
+					set tcp.meter.scale.color.lit.bottom tcp_meter_color
+					set tcp.meter.scale.color.lit.top tcp_meter_color
 
 			; Buttons
 				; Fx
@@ -236,10 +234,7 @@
 				set tcp_button_section [0 0 master_tcp_button_section h]
 
 			; Meter
-				set meter_section \
-					?tcp_button_section_hidden{0} \
-						[0 0 w h] \
-						[master_tcp_button_section 0 tcp_meter_width h]
+				set meter_section [master_tcp_button_section 0 tcp_meter_width h]
 
 			set tcpNullElement [tcp_button_section]
 			set previous_element tcpNullElement
@@ -252,11 +247,11 @@
 
 				set master.tcp.meter meter_section
 				set master.tcp.meter.vu.div [1]
-				set master.tcp.meter.readout.color tcp_meter_readout_color
-				set master.tcp.meter.scale.color.unlit.bottom tcp_meter_unlit_color
-				set master.tcp.meter.scale.color.unlit.top tcp_meter_unlit_color
-				set master.tcp.meter.scale.color.lit.bottom tcp_meter_lit_color
-				set master.tcp.meter.scale.color.lit.top tcp_meter_lit_color
+				set master.tcp.meter.readout.color tcp_meter_color
+				set master.tcp.meter.scale.color.unlit.bottom tcp_meter_color
+				set master.tcp.meter.scale.color.unlit.top tcp_meter_color
+				set master.tcp.meter.scale.color.lit.bottom tcp_meter_color
+				set master.tcp.meter.scale.color.lit.top tcp_meter_color
 
 			; Label
 				set master.tcp.label.color [255 255 255 255]
@@ -418,11 +413,11 @@
 				; Meter
 					set mcp.meter mcp_left_column_section
 					set mcp.meter.vu.div [1]
-					set mcp.meter.readout.color tcp_meter_readout_color
-					set mcp.meter.scale.color.unlit.bottom tcp_meter_unlit_color
-					set mcp.meter.scale.color.unlit.top tcp_meter_unlit_color
-					set mcp.meter.scale.color.lit.bottom tcp_meter_lit_color
-					set mcp.meter.scale.color.lit.top tcp_meter_lit_color
+					set mcp.meter.readout.color mcp_meter_readout_color
+					set mcp.meter.scale.color.unlit.bottom mcp_meter_unlit_color
+					set mcp.meter.scale.color.unlit.top mcp_meter_unlit_color
+					set mcp.meter.scale.color.lit.bottom mcp_meter_lit_color
+					set mcp.meter.scale.color.lit.top mcp_meter_lit_color
 
 			; Right column: buttons
 				; Volume
@@ -551,6 +546,7 @@
 ; Master Track Control Panel
 	compute_master_ctp
 
+	;set button_section master_tcp_button_section
 	then master.tcp.label  50
 	then master.tcp.volume 20
 	then master.tcp.pan    20
