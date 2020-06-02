@@ -140,6 +140,7 @@
 			; Label
 				set tcp_label_section_width - - w tcp_button_section_width tcp_meter_width
 				set tcp_label_section + [tcp_button_section{2} 0 tcp_label_section_width h] [tcp_folder_section{2}]
+				set tcp_label_section_collapsed - [0 1 w 1] [0 0 tcp_meter_width 0]
 
 			; Meter
 				; Meter section is the position/size of the meter: rightmost - tcp width
@@ -218,12 +219,9 @@
 					set tcp.width.fadermode 1
 
 			; Label
-				; Default to all space
-				set tcp.label tcp_label_section
-
-				; 1px of margin, vertically centered, horizontally left-centerd
-				set tcp.label.margin [0 -2 0 0 0 0.5]
 				set tcp.label.color track_text_color
+				set tcp.label ?tcp_supercollapsed{0} tcp_label_section_collapsed tcp_label_section
+				set tcp.label.margin ?tcp_supercollapsed{0} [0 0 0 0 1 0.5] [0 -2 0 0 0 0.5]
 
 			; Fx parameter controls list
 				set tcp.fxparm [tcp_button_section main_section_last_visible_element{0} tcp_button_section tcp_button_section]
