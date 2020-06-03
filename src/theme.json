@@ -3,28 +3,26 @@
     "blue": {
       "color": "FF0000",
       "elements": [
-          "wiring_sendwire"
+          "col_env9"
       ]
     },
     "green": {
       "color": "00FF00",
       "elements": [
-          "wiring_tbg"
+          "col_envlane1_divline"
       ]
     },
     "red": {
       "color": "0000FF",
       "elements": [
-          "wiring_ticon"
+          "col_envlane2_divline"
       ]
     }
   },
   "elements": {
 
-
     "group_0": "TODO", "group_1": "TODO", "group_10": "TODO", "group_11": "TODO", "group_12": "TODO", "group_13": "TODO", "group_14": "TODO", "group_15": "TODO", "group_16": "TODO", "group_17": "TODO", "group_18": "TODO", "group_19": "TODO", "group_2": "TODO", "group_20": "TODO", "group_21": "TODO", "group_22": "TODO", "group_23": "TODO", "group_24": "TODO", "group_25": "TODO", "group_26": "TODO", "group_27": "TODO", "group_28": "TODO", "group_29": "TODO", "group_3": "TODO", "group_30": "TODO", "group_31": "TODO", "group_32": "TODO", "group_33": "TODO", "group_34": "TODO", "group_35": "TODO", "group_36": "TODO", "group_37": "TODO", "group_38": "TODO", "group_39": "TODO", "group_4": "TODO", "group_40": "TODO", "group_41": "TODO", "group_42": "TODO", "group_43": "TODO", "group_44": "TODO", "group_45": "TODO", "group_46": "TODO", "group_47": "TODO", "group_48": "TODO", "group_49": "TODO", "group_5": "TODO", "group_50": "TODO", "group_51": "TODO", "group_52": "TODO", "group_53": "TODO", "group_54": "TODO", "group_55": "TODO", "group_56": "TODO", "group_57": "TODO", "group_58": "TODO", "group_59": "TODO", "group_6": "TODO", "group_60": "TODO", "group_61": "TODO", "group_62": "TODO", "group_63": "TODO", "group_7": "TODO", "group_8": "TODO", "group_9": "TODO",
-    "col_env1": "TODO", "col_env10": "TODO", "col_env11": "TODO", "col_env12": "TODO", "col_env13": "TODO", "col_env14": "TODO", "col_env15": "TODO", "col_env16": "TODO", "col_env2": "TODO", "col_env3": "TODO", "col_env4": "TODO", "col_env5": "TODO", "col_env6": "TODO", "col_env7": "TODO", "col_env8": "TODO", "col_env9": "TODO", "col_envlane1_divline": "TODO", "col_envlane2_divline": "TODO",
-    "midi_ccbut": "TODO", "midi_editcurs": "TODO", "midi_endpt": "TODO", "midi_grid1": "TODO", "midi_grid2": "TODO", "midi_grid3": "TODO", "midi_griddm1": "TODO", "midi_griddm2": "TODO", "midi_griddm3": "TODO", "midi_gridh": "TODO", "midi_gridhc": "TODO", "midi_gridhcdm": "TODO", "midi_gridhdm": "TODO", "midi_inline_trackbg1": "TODO", "midi_inline_trackbg2": "TODO", "midi_itemctl": "TODO", "midi_itemctl2": "TODO", "midi_itemctl2_mode": "TODO", "midi_itemctl_mode": "TODO", "midi_leftbg": "TODO", "midi_notebg": "TODO", "midi_notefg": "TODO", "midi_notemute": "TODO", "midi_notemute_sel": "TODO", "midi_noteon_flash": "TODO", "midi_ofsn": "TODO", "midi_ofsnsel": "TODO", "midi_pkey1": "TODO", "midi_pkey2": "TODO", "midi_pkey3": "TODO", "midi_rulerbg": "TODO", "midi_rulerfg": "TODO", "midi_selbg": "TODO", "midi_selbg_drawmode": "TODO", "midi_selpitch1": "TODO", "midi_selpitch2": "TODO", "midi_trackbg1": "TODO", "midi_trackbg2": "TODO", "midi_trackbg_outer1": "TODO", "midi_trackbg_outer2": "TODO", "midieditorlist_bg": "TODO", "midieditorlist_bg2": "TODO", "midieditorlist_fg": "TODO", "midieditorlist_fg2": "TODO", "midieditorlist_grid": "TODO", "midieditorlist_selbg": "TODO", "midieditorlist_selbg2": "TODO", "midieditorlist_selfg": "TODO", "midieditorlist_selfg2": "TODO", "midieditorlist_seliabg": "TODO", "midieditorlist_seliafg": "TODO", "midifont_col_dark": "TODO", "midifont_col_dark_unsel": "TODO", "midifont_col_light": "TODO", "midifont_col_light_unsel": "TODO", "midifont_mode": "TODO", "midifont_mode_unsel": "TODO", "midioct": "TODO",
+
 
     "timesel_drawmode": "TODO",
     "itembg_drawmode": "TODO",
@@ -99,6 +97,8 @@
     "col_tr2_bg": "track background even tracks",
     "col_tr1_divline": "track divider line odd tracks",
     "col_tr2_divline": "track divider line even tracks",
+    "col_envlane1_divline": "envelope lane divider odd tracks",
+    "col_envlane2_divline": "envelope lane divider even tracks",
 
     "col_mi_label": "media item label",
     "col_mi_label_sel": "selected media item label",
@@ -194,7 +194,63 @@
     "mcp_fxparm_normal": "mixer fx parameter text",
     "mcp_fxparm_offlined": "mixer fx parameter text offline",
 
+    "midi_grid1": "midi editor grid between beats",
+    "midi_griddm1": "TODO",
+    "midi_grid2": "midi editor grid start of measure",
+    "midi_griddm2": "TODO",
+    "midi_grid3": "midi editor beat start of beat",
+    "midi_griddm3": "TODO",
+    "midi_gridh": "midi editor cc horizontal line",
+    "midi_gridhdm": "mode TODO",
+    "midi_gridhc": "midi editor cc horizontal center line",
+    "midi_gridhcdm": "mode TODO",
+    "midi_inline_trackbg1": "midi inline background color (natural)",
+    "midi_inline_trackbg2": "midi inline background color (sharp/flat)",
+    "midi_itemctl": "midi editor controls",
+    "midi_itemctl2": "TODO",
+    "midi_itemctl2_mode": "TODO",
+    "midi_itemctl_mode": "TODO",
+    "midi_leftbg": "midi editor piano background",
+    "midi_notebg": "midi editor note unselected (overriten by midi_note_colomap)",
+    "midi_notefg": "midi editor note selected (overriten by midi_note_colomap)",
+    "midi_notemute": "midi editor note muted unselected (overidden by midi_note_colomap)",
+    "midi_notemute_sel": "midi editor note muted selected (overidden by midi_note_colomap)",
+    "midi_noteon_flash": "midi piano key note-on flash",
+    "midi_ofsn": "midi editor note offscreen",
+    "midi_ofsnsel": "midi editor note offscreen selected",
+    "midi_pkey1": "midi piano key color (natural)",
+    "midi_pkey2": "midi piano key (sharp/flat)",
+    "midi_pkey3": "midi piano key (selected)",
+    "midi_rulerbg": "midi editor ruller background",
+    "midi_rulerfg": "midi editor ruler text",
+    "midi_selbg": "midi editor time selection color",
+    "midi_selbg_drawmode": "mode TODO",
+    "midi_selpitch1": "midi editor background color selected (natural)",
+    "midi_selpitch2": "midi editor background color selected (sharp/flat)",
+    "midi_trackbg1": "midi editor background color (natural)",
+    "midi_trackbg2": "midi editor background color (sharp/flat)",
+    "midi_trackbg_outer1": "midi editor background out of bound (natural)",
+    "midi_trackbg_outer2": "midi editor background out of bound (sharp/flat)",
 
+    "midieditorlist_bg": "midi list editor background",
+    "midieditorlist_fg": "midi list editor foreground",
+    "midieditorlist_grid": "midi list editor grid lines",
+    "midieditorlist_selbg": "midi list editor selected row",
+    "midieditorlist_selfg": "midi list editor selected text",
+    "midieditorlist_seliabg": "midi list editor selected row inactive",
+    "midieditorlist_seliafg": "midi list editor selected text inactive",
+    "midieditorlist_bg2": "midi list editor background secondary",
+    "midieditorlist_fg2": "midi list editor text secondary",
+    "midieditorlist_selbg2": "midi editor selected row secondary",
+    "midieditorlist_selfg2": "midi editor selected text secondary",
+
+    "midifont_col_dark": "midi editor note text and control (dark)",
+    "midifont_col_dark_unsel": "midi editor note text and control unselected (dark theme)",
+    "midifont_col_light": "midi editor note text and control (light)",
+    "midifont_col_light_unsel": "midi editor note text and control unselected (light theme)",
+    "midifont_mode": "midi editor note text and control mode selected",
+    "midifont_mode_unsel": "midi editor note text and control mode unselected",
+    "midioct": "midi editor octave line color",
 
     "col_explorer_seledge": "media explorer selection edge",
     "col_explorer_sel": "media explorer selection TODO mode",
@@ -207,6 +263,22 @@
     "docker_unselface": "tab control unselected tab",
     "windowtab_bg": "tab control background in window",
 
+    "col_env1": "envelope volume pre-fx",
+    "col_env2": "envelope volume",
+    "col_env3": "envelope pan pre-fx",
+    "col_env4": "envelope pan",
+    "col_env5": "envelope master playrate",
+    "col_env6": "envelope master tempo",
+    "col_env7": "envelope send volume",
+    "col_env8": "envelope send pan",
+    "col_env9": "envelope send volume 2",
+    "col_env10": "envelop send pan 2",
+    "col_env11": "envelop audio hardware output volume",
+    "col_env12": "envelope audio hardware output pan",
+    "col_env13": "envelope fx param 1",
+    "col_env14": "envelope fx param 2",
+    "col_env15": "envelope fx param 3",
+    "col_env16": "envelope fx param 4",
     "env_trim_vol": "envelope trim volume",
     "auto_item_unsel": "envelope unselected automation item",
     "env_item_mute": "envelope item take mute",
@@ -242,6 +314,10 @@
     "wiring_ticon": "wiring box foreground",
 
     "midioct_inline": "midi inline octave line color",
+
+    "midi_ccbut": "midi editor cc lane add/remove button",
+    "midi_editcurs": "midi editor cursor",
+    "midi_endpt": "midi editor end marker",
 
     "score_bg": "midi score background",
     "score_fg": "midi score foreground",
