@@ -310,7 +310,7 @@
 			; Value
 				set envcp.value envcp_value_section
 				set envcp.value.font [1]
-				set envcp.value.color [92 184 169]
+				set envcp.value.color [184 184 184]
 
 				set envcp_value_alignment_width * 2 envcp_value_width
 				set envcp_value_horizontal_alignment h>envcp_value_alignment_width{0} 0.5 1
