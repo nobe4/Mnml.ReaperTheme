@@ -25,45 +25,34 @@
 	; Reaper-defined
 		version 6.0
 
-		use_pngs 1
-		use_overlays 0
+		use_pngs 1     ; Use PNG images
+		use_overlays 0 ; Don't use overlay, all images are simple.
 
-		; Don't show borders
 		tcp_showborders 0
-		mcp_showborders 0
+		mcp_showborders 1
 		transport_showborders 0
 
 		; Deprecated tint option, left to render the items background
 		; ref: https://forum.cockos.com/showpost.php?p=1875981
-			tinttcp 298
+		tinttcp 298
 		; Don't display items peaks
-			peaksedges 0
+		peaksedges 1
 
 		; TODO
-	tcp_vupeakwidth 5
-	mcp_vupeakheight 2
-	mcp_mastervupeakheight 4
-	mcp_altmeterpos 0
-	mcp_voltext_flags 5 5
-	tcp_voltext_flags 5 5
-	no_meter_reclbl 0
+		tcp_vupeakwidth 5
+		mcp_vupeakheight 2
+		mcp_mastervupeakheight 4
+		mcp_altmeterpos 0
+		mcp_voltext_flags 5 5
+		tcp_voltext_flags 5 5
+		no_meter_reclbl 0
 
+		; Sizing
 		tcp_heights 2 12 20 20   ; TPC heights presets: supercollapsed, collapsed, small(norecarm), recarm size
 		tcp_master_minheight 10
 		envcp_min_height 12
 		mcp_min_height 100
-
-		; Envcp min height
 		tcp_folderindent 0 ; control the indent with tcp_folder_indent
-
-		misc_dpi_translate 134 150
-		misc_dpi_translate 174 200
-
-	; Font Settings
-		; font #1/6/11 - calibri 8
-		; font #2/7/12 - calibri 9
-		; font #3/8/13 - calibri 10
-		; font #4/9/14 - calibri 11
 
 	; Global text colors settings
 		; If luminosity of track is too low, switch text to white
@@ -142,7 +131,8 @@
 			; Label
 				set tcp_label_section_width - - w tcp_button_section_width tcp_meter_width
 				set tcp_label_section + [tcp_button_section{2} 0 tcp_label_section_width h] [tcp_folder_section{2}]
-				set tcp_label_section_collapsed - [0 1 w 1] [0 0 tcp_meter_width 0]
+				; Hide the text, but not the border
+				set tcp_label_section_collapsed - tcp_label_section [0 0 0 2]
 
 			; Meter
 				; Meter section is the position/size of the meter: rightmost - tcp width
@@ -158,8 +148,8 @@
 		macro draw_tcp
 			; Track id
 				set tcp.trackidx + [0 0 tcp_row_indent] [0 0 tcp_track_id_width 100 0 0 0 1]
-				; if collapsed, add to the current track some height to hide the text
-				set tcp.trackidx ?tcp_supercollapsed{0} + tcp.trackidx [0 0 0 40]
+				; If collapsed, hide the text
+				set tcp.trackidx ?tcp_supercollapsed{0} + tcp.trackidx [0 0 0 -2]
 
 				; vertical margin for track number
 				set tcp.trackidx.margin [tcp_row_indent 0 0 0 0.5 0.5]
