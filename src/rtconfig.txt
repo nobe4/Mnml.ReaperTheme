@@ -79,6 +79,7 @@
 		set envcp_button_max_width 155   ; 3 * 20 + 3 * 30 + 5 padding
 		set envcp_value_width 60         ; Tuned by eye, roughly enough for max frequence and various effects value.
 		set envcp_label_min_width envcp_value_width
+		set envcp_text_color [255 255 255 120]
 
 	; Mixer control panel
 		set mcp_column_width 20
@@ -155,7 +156,7 @@
 				set tcp.trackidx.margin [tcp_row_indent 0 0 0 0.5 0.5]
 
 				; font
-				set tcp.trackidx.font [2]
+				set tcp.trackidx.font [0]
 
 				; color
 				set tcp.trackidx.color track_text_color
@@ -194,7 +195,7 @@
 					set tcp.recinput - + [tcp.fxin{2}] [tcp.fxin tcp.fxin input_group tcp_row_height] [0 0 tcp.fxin{2}]
 					; Margin right 20 is to prevent overlap with the icon.
 					set tcp.recinput.margin [0 0 20 0 0.5]
-					set tcp.recinput.font [1]
+					set tcp.recinput.font [0]
 
 				; Fx and record input, with padding for button
 
@@ -217,7 +218,7 @@
 
 			; Fx parameter controls list
 				set tcp.fxparm [tcp_button_section main_section_last_visible_element{0} tcp_button_section tcp_button_section]
-				set tcp.fxparm.font [1]
+				set tcp.fxparm.font [0]
 				set tcp.fxparm.margin [0]
 		endMacro
 
@@ -249,7 +250,7 @@
 
 			; Label
 				set master.tcp.label.color [255 255 255 255]
-				set master.tcp.label.font [1]
+				set master.tcp.label.font [0]
 
 			; FX
 				set master.tcp.fx  !master_fx_group{2} [0] + [0 0 20] [master_fx_group master_fx_group 0 tcp_row_height]
@@ -273,7 +274,7 @@
 			; Fx Param
 				set master.tcp.fxparm [tcp_button_section main_section_last_visible_element{0} tcp_button_section tcp_button_section]
 				set master.tcp.fxparm.margin [0]
-				set master.tcp.fxparm.font [1]
+				set master.tcp.fxparm.font [0]
 		endMacro
 
 	; Envelope Control Panel
@@ -303,14 +304,15 @@
 			set envcp.margin [0 0 0 0]
 
 			set envcp.label envcp_label_section
-			set envcp.label.color [184 184 184]
+			set envcp.label.color envcp_text_color
 			set envcp.label.margin [1 0 1 0 0 0.5 0]
-			set envcp.label.font [1]
+			set envcp.label.font [0]
 
 			; Value
 				set envcp.value envcp_value_section
-				set envcp.value.font [1]
-				set envcp.value.color [184 184 184]
+				set envcp.value.font [0]
+				set envcp.value.color envcp_text_color
+
 
 				set envcp_value_alignment_width * 2 envcp_value_width
 				set envcp_value_horizontal_alignment h>envcp_value_alignment_width{0} 0.5 1
