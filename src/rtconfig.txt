@@ -659,7 +659,7 @@
 	;col_peaksedgesel=14803425
 	;col_peaksedgesel2=14803425
 	;item_grouphl=3192883
-	;col_main_bg=-2135838293
+	;col_main_bg ; Main window/transport background
 	;col_tcp_text=1907218
 	;col_tcp_textsel=1907218
 	;col_main_text=2236958

@@ -1,0 +1,12 @@
+[color theme]
+{#  macro for easier processing
+`f,a;a;akkkkve"jkhvi"y?FF0000jjvi"pjvey?00FF00jjVvi"pjvey?0000FFjjvi"p`
+#}
+{% for element, value in elements.items() -%}{% if value != "TODO" -%}
+{{ element }}={{ value.color }} ; {{ value.description }}
+{% endif %}{%- endfor -%}
+[REAPER]
+ui_img=Mnml
+{% for font in fonts -%}
+{{ font.name }}={{ font.value }} ; {{ font.description }}
+{%- endfor -%}
