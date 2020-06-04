@@ -25,16 +25,22 @@ def render_theme():
     # Compute the elements in the data
     for color, value in data_parsed["colors"].items():
         for element in value["elements"]:
-            data_parsed["elements"][element] = {
-                "color": str(int(value["color"], 16)),
-                "description": data_parsed["elements"][element],
-            }
+            if "color" in value:
+                data_parsed["elements"][element] = {
+                    "value": str(int(value["color"], 16)),
+                    "description": data_parsed["elements"][element],
+                }
+            elif "mode" in value:
+                data_parsed["elements"][element] = {
+                    "value": value["mode"],
+                    "description": data_parsed["elements"][element],
+                }
 
     # Set default value for non-set elements:
     for element, config in data_parsed["elements"].items():
         if config == "TODO":
             data_parsed["elements"][element] = {
-                "color": "0",
+                "value": "0",
                 "description": data_parsed["elements"][element],
             }
 
