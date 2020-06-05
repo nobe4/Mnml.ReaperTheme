@@ -12,43 +12,43 @@ source = "src"
 rtconfig = "rtconfig.txt"
 template = "Mnml.ReaperTheme.jinja"
 theme = "Mnml.ReaperTheme"
-data = "theme.json"
+data = "theme2.json"
 
 dir_img = join(destination, "Mnml")
+
+template_data = {}
 
 
 def render_theme():
     # Load data from the theme
     with open(join(source, data), "r") as f:
         data_parsed = loads(f.read())
+        elements = data_parsed["elements"]
+        modes = data_parsed["modes"]
+        colors = data_parsed["colors"]
 
-    # Compute the elements in the data
-    for color, value in data_parsed["colors"].items():
-        for element in value["elements"]:
-            if "color" in value:
-                data_parsed["elements"][element] = {
-                    "value": str(int(value["color"], 16)),
-                    "description": data_parsed["elements"][element],
-                }
-            elif "mode" in value:
-                data_parsed["elements"][element] = {
-                    "value": value["mode"],
-                    "description": data_parsed["elements"][element],
-                }
+    for name, element in elements.items():
+        if "separator" in name:
+            continue
 
-    # Set default value for non-set elements:
-    for element, config in data_parsed["elements"].items():
-        if config == "TODO":
-            data_parsed["elements"][element] = {
-                "value": "0",
-                "description": data_parsed["elements"][element],
-            }
+        template_data[name] = {"description": element["description"]}
+
+        if element.get("color", False):
+            value = int(colors[element["color"]], 16)
+
+            if element.get("checked", False):
+                value = -2147483648 + value
+
+            template_data[name]["value"] = value
+
+        elif element.get("mode", False):
+            template_data[name]["value"] = modes[element["mode"]]
 
     with open(join(source, template), "r") as f:
         t = Template(f.read())
 
     with open(join(destination, theme), "w") as f:
-        f.write(t.render(data_parsed))
+        f.write(t.render({"elements": template_data}))
 
 
 while True:
