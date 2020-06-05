@@ -57,7 +57,7 @@
 	; Global text colors settings
 		; If luminosity of track is too low, switch text to white
 		set luma + + * 0.299 [trackcolor_r] * 0.587 [trackcolor_g] * 0.114 [trackcolor_b]
-		set track_text_white luma{0}<180 1 0
+		set track_text_white luma{0}<100 1 0
 		; The background color (0001) is basically transparent, but (0000) fails for some reason to be 100% transparent. We can't see it, so that's fine.
 		set track_text_color [trackcolor_r trackcolor_g trackcolor_b 245 0 0 0 1]
 		; If the track color is too dark, just put white

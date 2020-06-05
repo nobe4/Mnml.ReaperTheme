@@ -16,7 +16,7 @@ data = "theme.json"
 
 dir_img = join(destination, "Mnml")
 
-template_data = {}
+template_data = {"elements": {}}
 
 
 def render_theme():
@@ -26,12 +26,13 @@ def render_theme():
         elements = data_parsed["elements"]
         modes = data_parsed["modes"]
         colors = data_parsed["colors"]
+        template_data["fonts"] = data_parsed["fonts"]
 
     for name, element in elements.items():
         if "separator" in name:
             continue
 
-        template_data[name] = {"description": element["description"]}
+        template_data["elements"][name] = {"description": element["description"]}
 
         if element.get("color", False):
             value = int(colors[element["color"]], 16)
@@ -39,16 +40,16 @@ def render_theme():
             if element.get("checked", False):
                 value = -2147483648 + value
 
-            template_data[name]["value"] = value
+            template_data["elements"][name]["value"] = value
 
         elif element.get("mode", False):
-            template_data[name]["value"] = modes[element["mode"]]
+            template_data["elements"][name]["value"] = modes[element["mode"]]
 
     with open(join(source, template), "r") as f:
         t = Template(f.read())
 
     with open(join(destination, theme), "w") as f:
-        f.write(t.render({"elements": template_data}))
+        f.write(t.render(template_data))
 
 
 while True:

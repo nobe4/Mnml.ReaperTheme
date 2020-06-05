@@ -8,5 +8,6 @@
 [REAPER]
 ui_img=Mnml
 {% for font in fonts -%}
-{{ font.name }}={{ font.value }} ; {{ font.description }}
-{%- endfor -%}
+; {{ font.description }}
+{{ font.name }}={{ font.value }}
+{% endfor -%}
