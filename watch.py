@@ -12,7 +12,7 @@ source = "src"
 rtconfig = "rtconfig.txt"
 template = "Mnml.ReaperTheme.jinja"
 theme = "Mnml.ReaperTheme"
-data = "theme2.json"
+data = "theme.json"
 
 dir_img = join(destination, "Mnml")
 
