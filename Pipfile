@@ -1,13 +1,12 @@
 [[source]]
-verify_ssl = true
-url = "https://pypi.org/simple"
 name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
 
 [dev-packages]
 
-[requires]
-python_version = "3.6"
-
 [packages]
-black = "*"
-"jinja2" = "*"
+jinja2 = "*"
+
+[requires]
+python_version = "3.7"

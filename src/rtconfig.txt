@@ -182,12 +182,12 @@
 
 			; Buttons
 				; Fx
-					; Add fx button at its position, fixing width to 20.
-					set tcp.fx !fx_group{2} [0] [fx_group fx_group 20 tcp_row_height]
+					; Add fx button at its position, fixing width to 15.
+					set tcp.fx !fx_group{2} [0] [fx_group fx_group 16 tcp_row_height]
 
-					; Fx bypass button, after fx button, width of 16
+					; Fx bypass button, after fx button, width of 12
 					set tcp_fxbyp_x + tcp.fx{0} tcp.fx{2}
-					set tcp.fxbyp !fx_group{2} [0] [tcp_fxbyp_x tcp.fx 16 tcp_row_height]
+					set tcp.fxbyp !fx_group{2} [0] [tcp_fxbyp_x tcp.fx 14 tcp_row_height]
 
 				; Fx input, with padding for button.
 					set tcp.fxin !input_group{2} [0] [input_group input_group 29 tcp_row_height]
@@ -531,10 +531,10 @@
 	then tcp.mute    20
 	then tcp.solo    20
 	then tcp.phase   20
-	then tcp.io      30
+	then tcp.io      20
 	then fx_group    30
-	then tcp.env     30
-	then tcp.recmode 30
+	then tcp.env     20
+	then tcp.recmode 20
 	then input_group 100
 
 	draw_tcp
@@ -550,9 +550,9 @@
 	then master.tcp.mono   20
 	then master.tcp.solo   20
 	then master.tcp.mute   20
-	then master.tcp.io     30
+	then master.tcp.io     20
 	then master_fx_group   30
-	then master.tcp.env    30
+	then master.tcp.env    20
 
 	draw_master_tcp
 
