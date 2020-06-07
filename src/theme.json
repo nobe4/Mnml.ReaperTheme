@@ -74,8 +74,11 @@
   "colors": {
     "black": "1b1b1b",
     "black2": "1e1e1e",
+    "0": "000000",
     "red": "000ff",
+    "green": "ff000",
     "dark": "424242",
+    "dark2": "464646",
     "grey": "6d6d6d",
     "white": "ffffff"
   },
@@ -591,21 +594,27 @@
     },
     "separator-14": "---",
     "col_vudoint": {
+      "color": "0",
       "description": "vue meter interlaced"
     },
     "col_vubot": {
+      "color": "green",
       "description": "vue meter bottom"
     },
     "col_vumid": {
+      "color": "green",
       "description": "vue meter middle"
     },
     "col_vutop": {
+      "color": "green",
       "description": "vue meter top"
     },
     "col_vuclip": {
+      "color": "red",
       "description": "vue meter clip"
     },
     "col_vuintcol": {
+      "color": "black",
       "description": "vu meter interlace/edge color"
     },
     "col_vumidi": {
@@ -613,15 +622,19 @@
       "description": "vu meter midi activity"
     },
     "col_vuind1": {
+      "color": "green",
       "description": "vu indicator no signal"
     },
     "col_vuind2": {
+      "color": "green",
       "description": "vu indicator low signal"
     },
     "col_vuind3": {
+      "color": "green",
       "description": "vu indicator med signal"
     },
     "col_vuind4": {
+      "color": "green",
       "description": "vu indicator hot signal"
     },
     "separator-15": "---",
@@ -699,11 +712,11 @@
       "description": "midi editor grid between beats mode"
     },
     "midi_trackbg1": {
-      "color": "black",
+      "color": "dark2",
       "description": "midi editor background color (natural)"
     },
     "midi_trackbg2": {
-      "color": "black",
+      "color": "dark",
       "description": "midi editor background color (sharp/flat)"
     },
     "midi_trackbg_outer1": {
@@ -751,7 +764,7 @@
       "description": "midi editor cc lane add/remove button"
     },
     "midioct": {
-      "color": "dark",
+      "color": "black",
       "description": "midi editor octave line color"
     },
     "midi_inline_trackbg1": {
