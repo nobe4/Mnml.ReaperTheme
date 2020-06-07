@@ -48,7 +48,7 @@
 		no_meter_reclbl 0
 
 		; Sizing
-		tcp_heights 2 12 20 20   ; TPC heights presets: supercollapsed, collapsed, small(norecarm), recarm size
+		tcp_heights 1 12 20 20   ; TPC heights presets: supercollapsed, collapsed, small(norecarm), recarm size
 		tcp_master_minheight 10
 		envcp_min_height 12
 		mcp_min_height 100

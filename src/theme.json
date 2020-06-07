@@ -73,6 +73,8 @@
   },
   "colors": {
     "black": "1b1b1b",
+    "black2": "1e1e1e",
+    "red": "000ff",
     "dark": "424242",
     "grey": "6d6d6d",
     "white": "ffffff"
@@ -445,23 +447,23 @@
       "description": "track background odd track"
     },
     "col_tr2_bg": {
-      "color": "black",
+      "color": "black2",
       "description": "track background even tracks"
     },
     "col_tr1_divline": {
-      "color": "dark",
+      "color": "black",
       "description": "track divider line odd tracks"
     },
     "col_tr2_divline": {
-      "color": "dark",
+      "color": "black",
       "description": "track divider line even tracks"
     },
     "col_envlane1_divline": {
-      "color": "dark",
+      "color": "black",
       "description": "envelope lane divider odd tracks"
     },
     "col_envlane2_divline": {
-      "color": "dark",
+      "color": "black",
       "description": "envelope lane divider even tracks"
     },
     "separator-11": "---",
@@ -507,28 +509,28 @@
       "description": "play cursor fill"
     },
     "col_gridlines": {
-      "color": "grey",
-      "description": "grid lines (start of measure)"
+      "color": "dark",
+      "description": "grid lines (between beats)"
     },
     "col_gridlines2dm": {
       "mode": "normal 30%",
-      "description": "grid lines (start of measure) mode "
+      "description": "grid lines (between beats) mode "
     },
     "col_gridlines2": {
       "color": "grey",
-      "description": "grid lines (start of beats)"
+      "description": "grid lines (start of measures)"
     },
     "col_gridlines1dm": {
       "mode": "normal 20%",
-      "description": "grid lines (start of beats) mode"
+      "description": "grid lines (start of measures) mode"
     },
     "col_gridlines3": {
-      "color": "grey",
-      "description": "grid lines (in between beats)"
+      "color": "dark",
+      "description": "grid lines (start of beats)"
     },
     "col_gridlines3dm": {
       "mode": "normal 20%",
-      "description": "grid lines (in between beats) mode"
+      "description": "grid lines (start of beats) mode"
     },
     "guideline_color": {
       "color": "grey",
@@ -607,6 +609,7 @@
       "description": "vu meter interlace/edge color"
     },
     "col_vumidi": {
+      "color": "red",
       "description": "vu meter midi activity"
     },
     "col_vuind1": {
@@ -949,99 +952,99 @@
     },
     "separator-24": "---",
     "auto_item_unsel": {
-      "color": "white",
+      "color": "grey",
       "description": "envelope unselected automation item"
     },
     "col_env1": {
-      "color": "white",
+      "color": "grey",
       "description": "envelope volume pre-fx"
     },
     "col_env2": {
-      "color": "white",
+      "color": "grey",
       "description": "envelope volume"
     },
     "env_trim_vol": {
-      "color": "white",
+      "color": "grey",
       "description": "envelope trim volume"
     },
     "col_env3": {
-      "color": "white",
+      "color": "grey",
       "description": "envelope pan pre-fx"
     },
     "col_env4": {
-      "color": "white",
+      "color": "grey",
       "description": "envelope pan"
     },
     "env_item_mute": {
-      "color": "white",
+      "color": "grey",
       "description": "envelope item take mute"
     },
     "col_env5": {
-      "color": "white",
+      "color": "grey",
       "description": "envelope master playrate"
     },
     "col_env6": {
-      "color": "white",
+      "color": "grey",
       "description": "envelope master tempo"
     },
     "col_env7": {
-      "color": "white",
+      "color": "grey",
       "description": "envelope send volume"
     },
     "col_env8": {
-      "color": "white",
+      "color": "grey",
       "description": "envelope send pan"
     },
     "col_env9": {
-      "color": "white",
+      "color": "grey",
       "description": "envelope send volume 2"
     },
     "col_env10": {
-      "color": "white",
+      "color": "grey",
       "description": "envelop send pan 2"
     },
     "env_sends_mute": {
-      "color": "white",
+      "color": "grey",
       "description": "envelope send mute"
     },
     "col_env11": {
-      "color": "white",
+      "color": "grey",
       "description": "envelop audio hardware output volume"
     },
     "col_env12": {
-      "color": "white",
+      "color": "grey",
       "description": "envelope audio hardware output pan"
     },
     "col_env13": {
-      "color": "white",
+      "color": "grey",
       "description": "envelope fx param 1"
     },
     "col_env14": {
-      "color": "white",
+      "color": "grey",
       "description": "envelope fx param 2"
     },
     "col_env15": {
-      "color": "white",
+      "color": "grey",
       "description": "envelope fx param 3"
     },
     "col_env16": {
-      "color": "white",
+      "color": "grey",
       "description": "envelope fx param 4"
     },
     "env_item_vol": {
-      "color": "white",
+      "color": "grey",
       "description": "envelope item volume"
     },
     "env_item_pan": {
-      "color": "white",
+      "color": "grey",
       "description": "envelope item take pan"
     },
     "env_track_mute": {
-      "color": "white",
+      "color": "grey",
       "description": "envelope track mute"
     },
     "env_item_pitch": {
-      "color": "white",
+      "color": "grey",
       "description": "envelope item take pitch"
     },
     "separator-25": "---",
