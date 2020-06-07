@@ -561,7 +561,7 @@
       "description": "marker lane background"
     },
     "marker_lane_text": {
-      "color": "grey",
+      "color": "white",
       "description": "marker lane text"
     },
     "col_tsigmark": {
@@ -577,7 +577,7 @@
       "description": "time signature lane background"
     },
     "ts_lane_text": {
-      "color": "grey",
+      "color": "white",
       "description": "time signature text"
     },
     "separator-13": "---",
