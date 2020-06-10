@@ -281,11 +281,11 @@
     },
     "separator-7": "---",
     "col_mi_label": {
-      "color": "grey",
+      "color": "black",
       "description": "media item label"
     },
     "col_mi_label_sel": {
-      "color": "grey",
+      "color": "black",
       "description": "selected media item label"
     },
     "col_mi_label_float": {
