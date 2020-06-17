@@ -20,6 +20,7 @@ data = "theme.json"
 dir_img_src = join(source, "images")
 dir_img_dest = join(destination, "Mnml")
 
+
 def render_theme():
     template_data = {"elements": {}}
 
@@ -38,7 +39,10 @@ def render_theme():
         template_data["elements"][name] = {"description": element["description"]}
 
         if element.get("color", False):
-            value = int(colors[element["color"]], 16)
+            color = colors[element["color"]]
+            # RGB => BGR
+            color = color[4:6] + color[2:4] + color[0:2]
+            value = int(color, 16)
 
             if element.get("checked", False):
                 value = -2147483648 + value
@@ -54,11 +58,13 @@ def render_theme():
     with open(join(destination, theme), "w") as f:
         f.write(t.render(template_data))
 
+
 def copy_images():
     for f in listdir(dir_img_src):
         file_path = join(dir_img_src, f)
         if isfile(file_path):
             copyfile(file_path, join(dir_img_dest, f))
+
 
 while True:
     try:
