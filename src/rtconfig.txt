@@ -565,9 +565,9 @@
 	then envcp.arm    20
 	then envcp.bypass 20
 	then envcp.fader  20
-	then envcp.mod    30
-	then envcp.learn  30
-	then envcp.hide   30
+	then envcp.mod    20
+	then envcp.learn  20
+	then envcp.hide   20
 
 	draw_envcp
 

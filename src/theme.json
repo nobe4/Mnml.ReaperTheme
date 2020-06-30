@@ -832,29 +832,27 @@
     },
     "separator-19": "---",
     "midifont_col_dark_unsel": {
-      "color": "grey",
+      "color": "black",
       "description": "midi editor note text and control unselected (dark theme)"
     },
     "midifont_col_light_unsel": {
-      "color": "grey",
+      "color": "black",
       "description": "midi editor note text and control unselected (light theme)"
     },
     "midifont_mode_unsel": {
-      "mode": "add 50%",
-      "color": "grey",
+      "mode": "normal 100%",
       "description": "midi editor note text and controle unselected mode"
     },
     "midifont_col_dark": {
-      "color": "grey",
+      "color": "black",
       "description": "midi editor note text and control (dark)"
     },
     "midifont_col_light": {
-      "color": "grey",
+      "color": "black",
       "description": "midi editor note text and control (light)"
     },
     "midifont_mode": {
-      "mode": "add 50%",
-      "color": "grey",
+      "mode": "normal 100%",
       "description": "midi editor note text and control mode"
     },
     "separator-20": "---",
