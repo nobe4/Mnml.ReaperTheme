@@ -1,0 +1,9 @@
+hex 20000/30000 + index and hsv is strange
+
+-        0      1
+normal   131072 196608
+add      131073 196609
+dodge    131074 196610
+multiply 131075 196611
+overlay  131076 196612
+hsv      131326 196862
